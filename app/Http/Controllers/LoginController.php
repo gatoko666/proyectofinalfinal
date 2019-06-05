@@ -30,52 +30,10 @@ class LoginController extends Controller
        // return view('login.login');
     }
 
-    public function loginAdministrador(Request $request)
-    {
-  
-        $userdata = array(
-            'email'     => $request->email,
-            'password'  =>   $request->password
-        );
-    
-         
-        //dd($userdata);
-         if (Auth::attempt($userdata)) {
-                         // Authentication passed...
+   
 
-             return redirect('/indexadministrador');
-        }else{
-         
-             
-             return redirect('/')->with('warning', 'Error al ingresar como Administrador');
-         }
-    }
-
-
-
-    public function loginOperador(Request $request)
-    {
-  
-        $userdata = array(
-            'Correo'     => $request->email,
-            'password'  =>  $request->password
-        );
-    
-                     // Authentication passed...
-
-         if (Auth::guard('operador')->attempt($userdata)) {
-            echo 'pasaste';
-             return redirect('/indexoperador');
-        }else{
-            echo 'Fallaste';
-            return redirect('/')->with('warning', 'Error al ingresar como operador');
-             
-         
-         }
 
     
-    }
-
 
 
     public function logout()

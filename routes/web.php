@@ -20,13 +20,13 @@ Route::get('/',['as' => 'index',  function(){return view('index'); }] );
  
 
 
-Route::post('logino', 'LoginController@loginOperador')->name('loginoperador');
-Route::post('logina', 'LoginController@loginAdministrador')->name('loginadministrador');
+Route::post('logino', 'OperadorController@loginOperador')->name('loginoperador');
+Route::post('logina', 'AdminController@loginAdministrador')->name('loginadministrador');
 Route::get('logout', 'LoginController@logout')->name('logout');
 Route::post('registrar', 'LoginController@registrar')->name('registrar');
 
 
-Route::get('/indexoperador', 'MenuController@indexOperador');
+Route::get('/indexoperador', 'MenuController@indexOperador')->middleware('auth');
 Route::get('/indexadministrador', 'MenuController@indexAdministrador')->middleware('auth');
 
 
