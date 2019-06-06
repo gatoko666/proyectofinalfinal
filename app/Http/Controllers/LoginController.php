@@ -17,6 +17,25 @@ class LoginController extends Controller
 
 
 
+    public function loginOperador(Request $request)
+    {
+      
+        $userdata = array(
+            'Correo'     => $request->email,
+            'password'  =>  $request->password
+        );   
+         if (Auth::guard('operador')->attempt($userdata)) {
+            echo 'pasaste';
+             return redirect('/indexoperador');
+        }else{
+            echo 'Fallaste';
+            return redirect('/')->with('warning', 'Error al ingresar como operador');
+                     
+         }   
+    }
+
+    
+
 
 /*
     public function __construct() {
@@ -70,9 +89,6 @@ class LoginController extends Controller
         } catch (\Exception   $exception) {
 
             return redirect('/')->with('warning', 'Error al ingresar nuevo usuario');
-             
-             
-
         }
         return redirect('/')->with('warning', 'Error al ingresar nuevo usuario');
 

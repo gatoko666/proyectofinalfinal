@@ -20,17 +20,22 @@ Route::get('/',['as' => 'index',  function(){return view('index'); }] );
  
 
 
-Route::post('logino', 'OperadorController@loginOperador')->name('loginoperador');
+Route::post('logino', 'LoginController@loginOperador')->name('loginoperador');
+
 Route::post('logina', 'AdminController@loginAdministrador')->name('loginadministrador');
-Route::get('logout', 'LoginController@logout')->name('logout');
+Route::post('logout', 'LoginController@logout')->name('logout');
 Route::post('registrar', 'LoginController@registrar')->name('registrar');
 
 
-Route::get('/indexoperador', 'MenuController@indexOperador')->middleware('auth');
+Route::get('/indexoperador', 'MenuController@indexOperador')->middleware('auth:operador');
 Route::get('/indexadministrador', 'MenuController@indexAdministrador')->middleware('auth');
 
 
+Route::resource('tiposdeturnos','TiposDeTurnosController')->middleware('auth');
+Route::resource('administracionoperador','OperadorGestionController')->middleware('auth');
+//Route::get('administracionoperador','OperadorController@index')->middleware('auth');
+
+Route::resource('documentos','DocumentoController')->middleware('auth');
 
 
-
- 
+Route::resource('generarturnos','TurnosController')->middleware('auth');
