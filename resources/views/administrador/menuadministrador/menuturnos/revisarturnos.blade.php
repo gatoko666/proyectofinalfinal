@@ -106,30 +106,39 @@
                         </thead>
                         <tbody>
                       
+                            <tr>
 
-                                                             
+                                @foreach ($idoperador as $item)                                  
+                                <th class="text-nowrap" scope="row">{{$item->NombreOperador}}</th>   
+                            </tr>                            
+                            @endforeach                           
                            
-                                <tr>
-                                    @foreach ($operadorpresente as $item)                                  
-                                    <td class="text-nowrap" scope="row">{{$item->NombreOperador}}</td>                              
-                                   
-                                       
-                                    @endforeach      
-                                </tr>   
-                                <tr>   
-                                 @foreach($turnospresentes as $op) 
-                                 
-                                    <th class="text-nowrap" scope="row">{{$op->RutOperador}}</th>                                                                    
-                                    <td>{{$op->nombreturnol}}</td>
-                                    <td>{{$op->nombreturnom}}</td>
-                                    <td>{{$op->nombreturnomm}}</td>                                                            
-                                    <td>{{$op->nombreturnoj}}</td>  
-                                    <td>{{$op->nombreturnov}}</td>  
-                                    
+
+                             
+                              
+
                                       
-                                </tr> 
+                                        @foreach($abreviacionturno as $op ) 
+                                        
+                                        <td class="text-nowrap" scope="row">{{$op->AbreviacionTurno}}</td>                                                                    
+                                       
+                                        @endforeach 
+                                            
+                                      
+
+
+                               
+                                      
+                             
                                                               
-                                @endforeach                          
+                                                       
+
+
+
+
+
+
+
                         
                            
                         </tbody>

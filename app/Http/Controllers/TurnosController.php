@@ -7,7 +7,7 @@ use Carbon\Carbon;
 use App\Operador;
 use App\TipoDeTurno;
 use App\DetalleTurnoAsignado;
-
+use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 
 class TurnosController extends Controller
@@ -28,25 +28,7 @@ class TurnosController extends Controller
 
 
                             public function store(Request $request){   
-                                //$operador=Auth::id();     
-                            //$iddetalletipoturno=TiposDeTurnos::where('IdAdministrador', $operador) ;                         
-                           // $IdAdministrador=Auth::id();          
-                           //dd( $request->all()   );
-
-/*
-                           $rutOperador=$request->RutTrabajador;
-                           $NumeroSemanaAno=$request->NumeroSemanaAno;
-                           $IdDetalleTipoTurno=$request->IdDetalleTipoTurno;
-                           $DiaSemanal=$request->DiaSemanal;
-                           $DiaSemanam=$request->DiaSemanam;
-                           $DiaSemanamm=$request->DiaSemanamm;
-                           $DiaSemanaj=$request->DiaSemanaj;
-                           $DiaSemanav=$request->DiaSemanav;
-                           $DiaSemanas=$request->DiaSemanas;
-                           $DiaSemanad=$request->DiaSemanad;
-*/
-
-
+                    
 
                            
                             if(count($request->NombreTrabajadori) > 0)
@@ -59,7 +41,46 @@ class TurnosController extends Controller
                                     'RutOperador'=>$request->RutTrabajadori[$trabajador],
                                     'NumeroSemanaAno'=>$request->NumeroSemanaAno,
                                     'IdDetalleTipoTurno'=>$request->nombreturnol[$trabajador] ,
-                                     'DiaSemana'=>$request->DiaSemanal[$trabajador],
+                                     'DiaSemana'=>$request->DiaSemanal,
+                                     
+                                                                
+                                );    
+                                    
+                                DetalleTurnoAsignado::insert($data2);
+
+
+                                $data2=array(    
+                                   
+                                    'RutOperador'=>$request->RutTrabajadori[$trabajador],
+                                    'NumeroSemanaAno'=>$request->NumeroSemanaAno,
+                                    'IdDetalleTipoTurno'=>$request->nombreturnol[$trabajador] ,
+                                     'DiaSemana'=>$request->DiaSemanam,
+                                     
+                                                                
+                                );    
+                                    
+                                DetalleTurnoAsignado::insert($data2);
+
+
+                                $data2=array(    
+                                   
+                                    'RutOperador'=>$request->RutTrabajadori[$trabajador],
+                                    'NumeroSemanaAno'=>$request->NumeroSemanaAno,
+                                    'IdDetalleTipoTurno'=>$request->nombreturnol[$trabajador] ,
+                                     'DiaSemana'=>$request->DiaSemanamm,
+                                     
+                                                                
+                                );    
+                                    
+                                DetalleTurnoAsignado::insert($data2);
+
+
+                                $data2=array(    
+                                   
+                                    'RutOperador'=>$request->RutTrabajadori[$trabajador],
+                                    'NumeroSemanaAno'=>$request->NumeroSemanaAno,
+                                    'IdDetalleTipoTurno'=>$request->nombreturnol[$trabajador] ,
+                                     'DiaSemana'=>$request->DiaSemanaj,
                                      
                                                                 
                                 );    
@@ -71,41 +92,100 @@ class TurnosController extends Controller
                                     'RutOperador'=>$request->RutTrabajadori[$trabajador],
                                     'NumeroSemanaAno'=>$request->NumeroSemanaAno,
                                     'IdDetalleTipoTurno'=>$request->nombreturnol[$trabajador] ,
-                                     'DiaSemana'=>$request->DiaSemanam[$trabajador],
+                                     'DiaSemana'=>$request->DiaSemanav,
                                      
                                                                 
                                 );    
                                     
                                 DetalleTurnoAsignado::insert($data2);
 
-
-
-                                  /*
-                                $detalleturnoasignado= new DetalleTurnoAsignado;
-                                $detalleturnoasignado=$rutOperador[$trabajador];
-                                $detalleturnoasignado=$NumeroSemanaAno;
-                                $detalleturnoasignado=$IdDetalleTipoTurno[$trabajador];
-                                $detalleturnoasignado=$DiaSemanal;
-                               $detalleturnoasignado->save();  
-                              
-                            
-                          DetalleTurnoAsignado::insert($data2); 
-
-                                $detalleturnoasignado= new DetalleTurnoAsignado;
-                                $detalleturnoasignado=$rutOperador[$trabajador];
-                                $detalleturnoasignado=$NumeroSemanaAno;
-                                $detalleturnoasignado=$IdDetalleTipoTurno[$trabajador];                              
-                                $detalleturnoasignado=$DiaSemanam;
-                                $detalleturnoasignado->save();  
-*/
-                                       // dd($data2); 
-                               // DetalleTurnoAsignado::insert($data2); 
+                                $data2=array(    
+                                   
+                                    'RutOperador'=>$request->RutTrabajadori[$trabajador],
+                                    'NumeroSemanaAno'=>$request->NumeroSemanaAno,
+                                    'IdDetalleTipoTurno'=>$request->nombreturnol[$trabajador] ,
+                                     'DiaSemana'=>$request->DiaSemanas,
+                                     
+                                                                
+                                );    
                                     
+                                DetalleTurnoAsignado::insert($data2);
+
+                                $data2=array(    
+                                   
+                                    'RutOperador'=>$request->RutTrabajadori[$trabajador],
+                                    'NumeroSemanaAno'=>$request->NumeroSemanaAno,
+                                    'IdDetalleTipoTurno'=>$request->nombreturnol[$trabajador] ,
+                                     'DiaSemana'=>$request->DiaSemanad,
+                                     
+                                                                
+                                );    
+                                    
+                                DetalleTurnoAsignado::insert($data2);
+                                 
                         }
                             }                  
 
-                            return redirect()->back()->with('success','data insert successfully');
+                            return redirect()->back()->with('success','Turno Insertado correctamente');
                         }
+
+
+
+
+
+
+                        public function turnospresentes(Request $request)
+                        {
+ 
+                         //   $request->user()->authorizeRoles([ 'admin']);  
+
+                       //  $IdAAdministrador=Auth::id();
+ 
+                      //  $operadorpresente =DB::table('operador')
+//->join('users', 'operador.IdAdministrador', '=', 'users.id')                          
+                     //   ->where('IdAdministrador', '=',$IdAAdministrador )
+                     //   ->select('NombreOperador')
+                  //      ->get() ;
+                 
+                           //    $turnospresentes = TurnoRegistroAsignado::where('IdAdministrador',   $IdAAdministrador  )-> paginate(100);
+  
+                       //  return view('administrador/menuadministrador/menuturnos.revisarturnos', compact('turnospresentes','operadorpresente'));
+
+                              $IdAdministrador=Auth::id();
+
+                                    $idoperador=DB::table('operador')
+                                    ->where('IdAdministrador', '=',$IdAdministrador )
+                                    ->select('NombreOperador')
+                                    ->get() ;
+
+                                   
+                                $diadelasemana=DB::table('turnoasignado')
+                                ->join('operador', 'turnoasignado.RutOperador', '=', 'operador.RutOperador')                              
+                                ->select('DiaSemana' )
+                                ->get();
+                                 
+                                $variableasignar=$request->RutTrabajadori;
+
+ 
+                                $abreviacionturno=DB::table('detalletipoturno')
+                                ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
+                                ->join('operador', 'turnoasignado.RutOperador', '=', 'operador.RutOperador')                              
+                                ->select('detalletipoturno.AbreviacionTurno' )
+                               // ->where('operador.RutOperador', $variableasignar)
+                                ->get();
+
+  
+                                //dd($diadelasemana);
+
+
+                            
+                         return view('administrador/menuadministrador/menuturnos.revisarturnos', compact('idoperador','diadelasemana','abreviacionturno'));
+                    }
+
+
+
+
+
 
 
 

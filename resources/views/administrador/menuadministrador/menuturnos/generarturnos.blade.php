@@ -73,47 +73,47 @@
                                     
                                     <br>
                                     
-                                </th><input   name="DiaSemanal[]"  value="lunes"  type="hidden"  >
+                                </th><input   name="DiaSemanal"  value="lunes"  type="hidden"  >
                                 <th name="DiaDeLaSemanaAsignado[]" value="lunes" class="text-center">
                                     Lunes
                                     
                                     <br>
                                     
-                                </th><input   name="DiaSemanam[]"  value="martes"  type="hidden"  >
+                                </th><input   name="DiaSemanam"  value="martes"  type="hidden"  >
                                 <th name="DiaDeLaSemanaAsignado[]" value="martes" class="text-center">
                                     Martes
                                 
                                     <br>
                                     
-                                </th><input   name="DiaSemanamm[]"  value="miercoles"  type="hidden"  >
+                                </th><input   name="DiaSemanamm"  value="miercoles"  type="hidden"  >
                                 <th name="DiaDeLaSemanaAsignado[]" value="miercoles" class="text-center">
                                     Miercoles
                                     
                                     <br>
                                    
                                 </th>
-                                <input   name="DiaSemanaj[]"  value="jueves"  type="hidden"  >
+                                <input   name="DiaSemanaj"  value="jueves"  type="hidden"  >
                                 <th name="DiaDeLaSemanaAsignado[]" value="jueves" class="text-center">
                                     Jueves
                                     
                                     <br>
                                      
                                 </th>
-                                <input   name="DiaSemanav[]"  value="viernes"  type="hidden"  >
+                                <input   name="DiaSemanav"  value="viernes"  type="hidden"  >
                                 <th name="DiaDeLaSemanaAsignado[]" value="viernes" class="text-center">
                                     Viernes
                                     
                                     <br>
                                      
                                 </th>
-                                <input   name="DiaSemanas[]"  value="sabado"  type="hidden"  >
+                                <input   name="DiaSemanas"  value="sabado"  type="hidden"  >
                                 <th name="DiaDeLaSemanaAsignado[]"  value="sabado" class="text-center">
                                     Sábado
                                     
                                     <br>
                                    
                                 </th>
-                                <input   name="DiaSemanad[]"  value="domingo"  type="hidden"  >
+                                <input   name="DiaSemanad"  value="domingo"  type="hidden"  >
                                 <th name="DiaDeLaSemanaAsignado[]" value="domingo"  class="text-center">
                                     
                                     

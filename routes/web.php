@@ -39,3 +39,4 @@ Route::resource('documentos','DocumentoController')->middleware('auth');
 
 
 Route::resource('generarturnos','TurnosController')->middleware('auth');
+Route::get('revisarturnos', 'TurnosController@turnospresentes')->middleware('auth');
