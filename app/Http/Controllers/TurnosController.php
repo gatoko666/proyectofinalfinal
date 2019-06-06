@@ -33,7 +33,7 @@ class TurnosController extends Controller
                            // $IdAdministrador=Auth::id();          
                            //dd( $request->all()   );
 
-
+/*
                            $rutOperador=$request->RutTrabajador;
                            $NumeroSemanaAno=$request->NumeroSemanaAno;
                            $IdDetalleTipoTurno=$request->IdDetalleTipoTurno;
@@ -44,7 +44,7 @@ class TurnosController extends Controller
                            $DiaSemanav=$request->DiaSemanav;
                            $DiaSemanas=$request->DiaSemanas;
                            $DiaSemanad=$request->DiaSemanad;
-
+*/
 
 
 
@@ -53,7 +53,34 @@ class TurnosController extends Controller
                             {
                             foreach($request->NombreTrabajadori as $trabajador=>$t){
                                  
-                                  
+
+                                $data2=array(    
+                                   
+                                    'RutOperador'=>$request->RutTrabajadori[$trabajador],
+                                    'NumeroSemanaAno'=>$request->NumeroSemanaAno,
+                                    'IdDetalleTipoTurno'=>$request->nombreturnol[$trabajador] ,
+                                     'DiaSemana'=>$request->DiaSemanal[$trabajador],
+                                     
+                                                                
+                                );    
+                                    
+                                DetalleTurnoAsignado::insert($data2);
+
+                                $data2=array(    
+                                   
+                                    'RutOperador'=>$request->RutTrabajadori[$trabajador],
+                                    'NumeroSemanaAno'=>$request->NumeroSemanaAno,
+                                    'IdDetalleTipoTurno'=>$request->nombreturnol[$trabajador] ,
+                                     'DiaSemana'=>$request->DiaSemanam[$trabajador],
+                                     
+                                                                
+                                );    
+                                    
+                                DetalleTurnoAsignado::insert($data2);
+
+
+
+                                  /*
                                 $detalleturnoasignado= new DetalleTurnoAsignado;
                                 $detalleturnoasignado=$rutOperador[$trabajador];
                                 $detalleturnoasignado=$NumeroSemanaAno;
@@ -70,7 +97,7 @@ class TurnosController extends Controller
                                 $detalleturnoasignado=$IdDetalleTipoTurno[$trabajador];                              
                                 $detalleturnoasignado=$DiaSemanam;
                                 $detalleturnoasignado->save();  
-
+*/
                                        // dd($data2); 
                                // DetalleTurnoAsignado::insert($data2); 
                                     
