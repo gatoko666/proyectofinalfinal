@@ -32,23 +32,23 @@ class TurnosController extends Controller
                             //$iddetalletipoturno=TiposDeTurnos::where('IdAdministrador', $operador) ;                         
                            // $IdAdministrador=Auth::id();          
                            //dd( $request->all()   );
+
+
+
+
+
                            
-                            if(count($request->DiaSemana) > 0)
+                           
+                            if(count($request->NombreTrabajadori) > 0)
                             {
-                            foreach($request->DiaSemana as $trabajador=>$t){
+                            foreach($request->NombreTrabajadori as $trabajador=>$t){
                                 
                                 $data2=array(    
                                    
                                     'RutOperador'=>$request->RutTrabajadori[$trabajador],
                                     'NumeroSemanaAno'=>$request->NumeroSemanaAno,
                                     'IdDetalleTipoTurno'=>$request->nombreturnol[$trabajador] ,
-                                     'DiaSemana'=>$request->DiaSemana[$trabajador],
-                                   // 'fechacreacion'=>now(),                                                 
-                                  //  'nombreturnol'=>$request->nombreturnol[$trabajador],                                   
-                                   // 'NumeroSemana'=>$request->NumeroSemana,
-                                   // 'MesDeLaSemanaAsignado'=>$request->MesDeLaSemanaAsignado,
-                                    //'AnoDeLaSemanaAsignado'=>$request->AnoDeLaSemanaAsignado,   
-                                  //  'IdAdministrador'=>Auth::id(),      
+                                     'DiaSemana'=>$request->DiaSemana[$trabajador],                             
                                                                 
                                 );    
                                         dd($data2);
