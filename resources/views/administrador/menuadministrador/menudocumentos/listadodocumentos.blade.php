@@ -39,6 +39,38 @@
                     
                     <table class="table table-bordered table-striped">
                         <thead>
+                                <tr>
+                                        
+                                        <th class="text-center">
+                                             
+                                            <br>
+                                           
+                                        </th>
+                                        <th class="text-center">
+                                             
+                                                <br>
+                                               
+                                            </th>
+                                      
+                                       
+                                       
+                                        <th class="text-center">
+                                             
+                                            <br>
+                                        
+                                        </th>
+                                        <th class="text-center">
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
+                                                        <a href="{{ route('documentos.create') }}" data-toggle="modal">Agregar</a>
+                            
+                                                        
+                                                      </button> 
+                                                <br>
+                                            
+                                            </th>                                      
+                                    </tr>
+
+
                             <tr>
                                 
                                 <th class="text-center">
@@ -66,27 +98,28 @@
                             </tr>
                         </thead>
                         <tbody>
-                            <tr>
-                                <th class="text-nowrap" scope="row">Documento 1</th>
-                                <td>Manual de  usuario</td>
-                                <td>05/05/2015</td>
-                                <td>
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
-                                                <a href="#fee-details1" data-toggle="modal">Editar</a>
-    
-                                                
-                                              </button>  
-                                        <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal2">
+
+                                @foreach($detalledocumentos as $dd)
+                                <tr>
+                                    <th class="text-nowrap" scope="row">{{$dd->NombreDocumento}}</th>
+                                    <td>{{$dd->Descripcion}}</td>
+                                    <td>{{$dd->created_at}}</td>                                
+                                    <td>          
+                                    <a href="" class="btn btn-secondary">Editar</a>     
+                                        <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2">
                                             Eliminar
-                                          </button>
-                                          <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
-                                            Descargar
-                                          </button>
+                                          </button>   
+
+                                          
+                                          <a href="{{route('descargadocumentos', $dd->NombreDocumento,$dd->IdDocumento)}}," class="btn btn-info">Descargar</a>   
+                                         
+                                               
+                                </td>       
+                                </tr>                                   
+                                @endforeach   
 
 
-
-                                </td>
-                                
+                         
                           
 
                                 <!-- Modal -->
@@ -132,48 +165,12 @@
                                 </div>
 
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+ 
                                
-                            </tr>
-                            <tr>
-                                <th class="text-nowrap" scope="row">Documento 2</th>
-                                <td>
-                                    Manual Servidor
-                                </td>
-                                <td>
-                                    06/06/2015
-                                </td>                                                               
-                                <td>                                    
-                                </td>                                                                 
-                            </tr>
-                           
-                           
+                            </tr>                         
                         </tbody>
                     </table>
+                    {{ $detalledocumentos->links() }}
                 </div>
 
          </section>      
@@ -235,17 +232,7 @@
                                                                     </td>
                                                                      
                                                                 </tr>
-                                                                <tr>
-                                                                    <th class="text-nowrap" scope="row">Documento 2</th>
-                                                                    <td>
-                                                                        Manual Servidor
-                                                                    </td>
-                                                                    <td>
-                                                                        06/06/2015
-                                                                    </td>                                                               
-                                                                    <td>                                    
-                                                                    </td>                                                                 
-                                                                </tr>
+                                                            
                                     
                                                                 
                                                                 

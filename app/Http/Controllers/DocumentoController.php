@@ -33,16 +33,10 @@ class DocumentoController extends Controller
 
 
                             public function store(Request $request) {
-                                $operador=Auth::id(); 
-
-                           
- 
-
-
+                           $operador=Auth::id(); 
 
                              //$documento=$request->file('file') ;
-                             $documento=new Documento; 
-                             $documento->NombreDocumento=$request->NombreDocumento;                         
+                                            
                             /*
                              if ($files = $request->file('image')) {
                                 $destinationPath = 'public/image/'; // upload path
@@ -50,16 +44,35 @@ class DocumentoController extends Controller
                                 $files->move($destinationPath, $profileImage);
                                 $insert['image'] = "$profileImage";
                              }
-                             
-*/
-                                $document = $request->file('userfile');
-                                Storage::put('avatars/1', $document);     
-                      
+                             getClientOriginalExtension
 
-                                 //   $documento->Ruta = Storage::disk($request->Archivo) -> put($Ruta, file_get_contents($img -> getRealPath()));;
-                                   
+*/                                 // $adjunto = $request->file('userfile');
+                                  //  $name= $adjunto->getClientOriginalName();
+                                  //  $nombre= time().'_'.$name;
+
+                                $datoDocumento=$request->file('userfile');
+                                $datoDocumentoExtension= $datoDocumento->getClientOriginalExtension();
+                                $datoDocumentoTime=time();
+                                //dd($name);
 
 
+                              //  $adjunto->storeAs('ss','nani'.'_'.$name);
+
+                                $documento=new Documento; 
+                                $documento->NombreDocumento=$request->NombreDocumento;    
+                                    $document = $request->file('userfile')->storeAs(
+                                        'Documentos',$datoDocumentoTime.'_'.                                       
+                                        $request->NombreDocumento.'.'. $datoDocumentoExtension);
+
+
+                           // $path = Storage::putFileAs(
+                            //    'Documentos', $request->file('$documento->NombreDocumento'));
+
+                               // $document = $request->file('userfile');
+                              //  Storage::putFileAs('Documentos', $document);     
+
+                              //  dd($document);                  
+                             $documento->Ruta = Storage::url( $document);                                   
                              $documento->Descripcion=$request->Descripcion;                             
                              $documento->IdAdministrador=Auth::id();
                              $documento->save() ;
@@ -72,7 +85,21 @@ class DocumentoController extends Controller
 
 
 
-
+                            public function descargar(Request $request )
+                            {
+                               // $mime= Storage::mimeType('ss/nani_1.jpg');
+                                //$archivo = Storage::get('ss/nani_1.jpg');
+                                
+                               // $nombreDocumento=$request->NombreDocumento;
+                            //   $fechaSubida=$request->created_at;
+                                dd(                                  $request->all()
+                                );
+                                 
+                                return Storage::download($nombreDocumento);
+                                
+                                //return response()->make($archivo, 200, ['content-type' => $mime]);
+                            }
+                        
 
 
 
