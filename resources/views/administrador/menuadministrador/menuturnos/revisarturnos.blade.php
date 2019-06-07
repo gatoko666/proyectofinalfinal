@@ -108,26 +108,27 @@
                       
                             <tr>
 
-                                @foreach ($idoperador as $item)                                  
-                                <th class="text-nowrap" scope="row">{{$item->NombreOperador}}</th>   
-                            </tr>                            
-                            @endforeach                           
-                           
-
-                             
-                              
-
-                                      
-                                        @foreach($abreviacionturno as $op ) 
-                                        
-                                        <td class="text-nowrap" scope="row">{{$op->AbreviacionTurno}}</td>                                                                    
-                                       
-                                        @endforeach 
-                                            
-                                      
+                                @foreach ($turnoOperador as $item)                                  
+                                <th class="text-nowrap" scope="row">{{$item->NombreOperador}}</th>  
+                                <td   class="text-nowrap" scope="row">{{$item->AbreviacionTurno}}</td>  
 
 
+
+
+                                <td  onload="firstDayOfWeek()"  class="text-nowrap" id="numerosemana" scope="row">{{$item->NumeroSemanaAno}} 
+                                <p onload="test()"  id="d"></p>    
+                                
+                                </td> 
+                                
+
+
+                                <td   class="text-nowrap" scope="row">{{$item->DiaSemana }}</td>  
                                
+                            </tr>          
+                                             
+                            @endforeach                        
+                           
+   
                                       
                              
                                                               

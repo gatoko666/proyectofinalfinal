@@ -153,33 +153,69 @@ class TurnosController extends Controller
 
                               $IdAdministrador=Auth::id();
 
-                                    $idoperador=DB::table('operador')
+                              //rut operadfor
+                                     $idoperador=DB::table('operador')
                                     ->where('IdAdministrador', '=',$IdAdministrador )
-                                    ->select('NombreOperador')
+                                    ->select('NombreOperador','RutOperador')
                                     ->get() ;
 
-                                   
-                                $diadelasemana=DB::table('turnoasignado')
-                                ->join('operador', 'turnoasignado.RutOperador', '=', 'operador.RutOperador')                              
-                                ->select('DiaSemana' )
-                                ->get();
+                                  // dd($idoperador );
+                                  //dia de la semana del turno
+                          //      $diadelasemana=DB::table('turnoasignado')
+                      //          ->join('operador', 'turnoasignado.RutOperador', '=', 'operador.RutOperador')                              
+                         //       ->select('DiaSemana' )
+                         //       ->get();
                                  
-                                $variableasignar=$request->RutTrabajadori;
+                           //     $variableasignar=$request->RutTrabajador;
 
- 
-                                $abreviacionturno=DB::table('detalletipoturno')
-                                ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
-                                ->join('operador', 'turnoasignado.RutOperador', '=', 'operador.RutOperador')                              
-                                ->select('detalletipoturno.AbreviacionTurno' )
-                               // ->where('operador.RutOperador', $variableasignar)
+                                // abreviacion del detalle de turno
+                               $abreviacionturno=DB::table('detalletipoturno')
+                                 ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
+                               ->join('operador', 'turnoasignado.RutOperador', '=', 'operador.RutOperador')                              
+                               ->select('detalletipoturno.AbreviacionTurno' )
+                              //  ->where('operador.RutOperador', $variableasignar)
                                 ->get();
 
   
                                 //dd($diadelasemana);
 
 
+                                //select * from operador where IdAdministrador='111111111 '
+                             //   $rutOperador=DB::table('operador')                                                          
+                             //   ->select('RutOperador' )
+                            //    ->where('IdAdministrador', $IdAdministrador)
+                          //      ->get();
+
+                               // dd($rutOperador);
+
+
+                               
+
+                              // $operador=Operador::where('$IdAdministrador');
+
+
+
+
+                             // dd($operador);
+                         
+
+                             $turnoOperador=DB::table('detalletipoturno')
+                             ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
+                           ->join('operador', 'operador.RutOperador', '=', 'turnoasignado.RutOperador')                              
+                           ->select('operador.NombreOperador','detalletipoturno.AbreviacionTurno','turnoasignado.NumeroSemanaAno','turnoasignado.DiaSemana')
+                           ->where('operador.IdAdministrador', $IdAdministrador)
+                            ->get();
+
+
+
+
+
+
+                           return view('administrador/menuadministrador/menuturnos.revisarturnos', compact('turnoOperador'));    
+
                             
-                         return view('administrador/menuadministrador/menuturnos.revisarturnos', compact('idoperador','diadelasemana','abreviacionturno'));
+                         //return view('administrador/menuadministrador/menuturnos.revisarturnos', compact('idoperador','abreviacionturno'));
+                        // return view('administrador/menuadministrador/menuturnos.revisarturnos');
                     }
 
 

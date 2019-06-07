@@ -21,4 +21,30 @@ class Administrador extends Model
 
 
 
+                // 1 a muchos
+                public function documentos()
+                {
+                    return $this->hasMany('App\Documento');
+                }
+
+
+                 // 1 a muchos
+                 public function operadores()
+                 {
+                     return $this->hasMany('App\Operador');
+                 }
+
+                 // 1 a muchos
+                 public function detalleturnosasognados()
+                 {
+                     return $this->hasMany('App\DetalleTurnoAsignado');
+                 }
+
+
+                 
+
+
+
+ 
+
 }

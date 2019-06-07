@@ -107,7 +107,7 @@
                                 </a>
                                 <ul class="collapse list-unstyled" id="homeSubmenu5">
                                     <li>
-                                        <a href="agregardocumentos">Subir archivo</a>
+                                        <a href="documentos/create">Subir archivo</a>
                                     </li>
                                     <li>
                                         <a href="documentos">Revisar archivos</a>

@@ -18,5 +18,22 @@ class DetalleTurnoAsignado extends Model
     ];
 
     public $timestamps = false;
+
+
+
+
+       // many to many 
+       public function operadores()
+       {
+           return $this->belongsToMany('App\Operador');
+       }
+
+           // many to many 
+           public function detalletipoturno()
+           {
+               return $this->belongsToMany('App\TipoDeTurno');
+           }
+
+
     
 }

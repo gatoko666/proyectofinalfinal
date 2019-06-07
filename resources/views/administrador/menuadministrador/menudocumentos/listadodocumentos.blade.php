@@ -20,6 +20,23 @@
                 <!-- Grids Info -->
                 <div class="outer-w3-agile mt-3">
                     <h4 class="tittle-w3-agileits mb-4">Listado de documentos</h4>
+                    @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div><br />
+                    @endif
+                      <br>
+                      @if ($message = Session::get('success'))
+                      <div class="alert alert-success">
+                          <p>{{ $message }}</p>
+                      </div>
+                  @endif     
+                    <br>
+                    
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>

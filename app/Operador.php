@@ -41,7 +41,16 @@ class Operador extends Authenticatable
         {
             parent::setAttribute($key, $value);
         }
+
+        
     }
+                // many to many 
+                public function detalleturnosasignados()
+                {
+                    return $this->belongsToMany('App\DetalleTurnoAsignado');
+                }
+
+
     
 
 

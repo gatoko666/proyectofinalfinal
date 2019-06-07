@@ -50,6 +50,7 @@ class TiposDeTurnosController extends Controller
                  'DescripcionDetalleTipoTurno' => 'required|max:50',
                  'IdTurnos' => '',  
              ]);
+             
              TipoDeTurno::where('IdDetalleTipoTurno', $IdDetalleTipoTurno)->update($validatedData);
              return redirect('tiposdeturnos')->with('success', 'Tipo de turno  is successfully updated');
                }

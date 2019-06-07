@@ -28,4 +28,10 @@ class TipoDeTurno extends Model
 
 public $timestamps = false;
 
+
+                
+
+
+
+
 }

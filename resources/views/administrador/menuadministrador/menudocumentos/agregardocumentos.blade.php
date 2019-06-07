@@ -50,13 +50,18 @@
 
                         
 
+                        
+
 
                             <!--// upload file -->
 
                             <form action="{{ route('documentos.store') }}" method="post"   files="true"  enctype="multipart/form-data">
                                 @csrf
                                 <div class="form-group">
-                                    <input type="file" class="form-control-file" accept="application/pdf"  name="file" id="exampleInputFile" aria-describedby="fileHelp">
+                                    <input type="file" class="form-control-file" accept="application/pdf"  name="userfile" id="exampleInputFile" aria-describedby="fileHelp">
+                                    <br>
+                                    <label for="exampleFormControlTextarea1">Nombre Archivo</label>
+                                    <input type="text" class="form-control" id="exampleFormControlTextarea1" maxlength="20" name="NombreDocumento" rows="3"></input>  
                                     <br>
                                   <label for="exampleFormControlTextarea1">Descripción</label>
                                   <textarea class="form-control" id="exampleFormControlTextarea1" name="Descripcion" rows="3"></textarea>      
