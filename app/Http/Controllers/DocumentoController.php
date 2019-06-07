@@ -17,7 +17,7 @@ class DocumentoController extends Controller
     {
      
         $operador=Auth::id();
-        $detalledocumentos = Documento::where('IdAdministrador', $operador)-> paginate(10);
+        $detalledocumentos = Documento::where('IdAdministrador', $operador)->paginate(10);
         return view('administrador/menuadministrador/menudocumentos/listadodocumentos', compact('detalledocumentos'));
    
      }
@@ -59,11 +59,15 @@ class DocumentoController extends Controller
                               //  $adjunto->storeAs('ss','nani'.'_'.$name);
 
                                 $documento=new Documento; 
-                                $documento->NombreDocumento=$request->NombreDocumento;    
-                                    $document = $request->file('userfile')->storeAs(
+
+                                $documento->NombreDocumento=$request->NombreDocumento; 
+
+                             $document = $request->file('userfile')->storeAs(
                                         'Documentos',$datoDocumentoTime.'_'.                                       
                                         $request->NombreDocumento.'.'. $datoDocumentoExtension);
 
+                                  $nombrearchiv=  $datoDocumentoTime.'_'.                                       
+                                        $request->NombreDocumento.'.'. $datoDocumentoExtension;
 
                            // $path = Storage::putFileAs(
                             //    'Documentos', $request->file('$documento->NombreDocumento'));
@@ -72,7 +76,7 @@ class DocumentoController extends Controller
                               //  Storage::putFileAs('Documentos', $document);     
 
                               //  dd($document);                  
-                             $documento->Ruta = Storage::url( $document);                                   
+                            $documento->Ruta =$nombrearchiv;                                   
                              $documento->Descripcion=$request->Descripcion;                             
                              $documento->IdAdministrador=Auth::id();
                              $documento->save() ;
@@ -85,20 +89,31 @@ class DocumentoController extends Controller
 
 
 
-                            public function descargar(Request $request )
+                            public function descargar($id)
                             {
                                // $mime= Storage::mimeType('ss/nani_1.jpg');
                                 //$archivo = Storage::get('ss/nani_1.jpg');
                                 
                                // $nombreDocumento=$request->NombreDocumento;
                             //   $fechaSubida=$request->created_at;
-                                dd(                                  $request->all()
-                                );
                                  
-                                return Storage::download($nombreDocumento);
+
+                                 
+                                 
+                                    $idDocumento=Documento::where('IdDocumento', $id)->first();
+
+                                 //  dd($idDocumento);
+
+                                    return Storage::download('Documentos/'.$idDocumento->Ruta);
+
+                                //return Storage::download();
                                 
                                 //return response()->make($archivo, 200, ['content-type' => $mime]);
                             }
+
+
+
+                            
                         
 
 

@@ -111,7 +111,7 @@
                                           </button>   
 
                                           
-                                          <a href="{{route('descargadocumentos', $dd->NombreDocumento,$dd->IdDocumento)}}," class="btn btn-info">Descargar</a>   
+                                          <a href="{{ url('descargadocumentos/'. $dd->IdDocumento)}}" class="btn btn-info">Descargar</a>   
                                          
                                                
                                 </td>       

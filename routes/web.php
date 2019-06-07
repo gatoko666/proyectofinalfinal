@@ -36,7 +36,7 @@ Route::resource('administracionoperador','OperadorGestionController')->middlewar
 //Route::get('administracionoperador','OperadorController@index')->middleware('auth');
 
 Route::resource('documentos','DocumentoController')->middleware('auth');
-Route::get('descargadocumentos','DocumentoController@descargar')->name('descargadocumentos')->middleware('auth');
+Route::get('descargadocumentos/{id}','DocumentoController@descargar')->name('descargadocumentos')->middleware('auth');
 
 
 
