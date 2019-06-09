@@ -29,9 +29,9 @@ class TurnosController extends Controller
 
                             public function store(Request $request){   
                     
-
-                           
-                            if(count($request->NombreTrabajadori) > 0)
+                       try {
+                                 
+                                if(count($request->NombreTrabajadori) > 0)
                             {
                             foreach($request->NombreTrabajadori as $trabajador=>$t){
                                  
@@ -116,17 +116,18 @@ class TurnosController extends Controller
                                     'RutOperador'=>$request->RutTrabajadori[$trabajador],
                                     'NumeroSemanaAno'=>$request->NumeroSemanaAno,
                                     'IdDetalleTipoTurno'=>$request->nombreturnol[$trabajador] ,
-                                     'DiaSemana'=>$request->DiaSemanad,
-                                     
+                                     'DiaSemana'=>$request->DiaSemanad,                                    
                                                                 
-                                );    
-                                    
-                                DetalleTurnoAsignado::insert($data2);
-                                 
+                                );                                        
+                                DetalleTurnoAsignado::insert($data2);                                 
                         }
                             }                  
-
                             return redirect()->back()->with('success','Turno Insertado correctamente');
+
+                              } catch (\Throwable $th) {
+                                return redirect()->back()->with('success', 'Error al ingresar los turnos.');                            
+                              }
+                              return redirect()->back()->with('success', 'Error al ingresar los turnos.');                            
                         }
 
 
@@ -136,84 +137,44 @@ class TurnosController extends Controller
 
                         public function turnospresentes(Request $request)
                         {
- 
-                         //   $request->user()->authorizeRoles([ 'admin']);  
-
-                       //  $IdAAdministrador=Auth::id();
- 
-                      //  $operadorpresente =DB::table('operador')
-//->join('users', 'operador.IdAdministrador', '=', 'users.id')                          
-                     //   ->where('IdAdministrador', '=',$IdAAdministrador )
-                     //   ->select('NombreOperador')
-                  //      ->get() ;
-                 
-                           //    $turnospresentes = TurnoRegistroAsignado::where('IdAdministrador',   $IdAAdministrador  )-> paginate(100);
-  
-                       //  return view('administrador/menuadministrador/menuturnos.revisarturnos', compact('turnospresentes','operadorpresente'));
-
-                              $IdAdministrador=Auth::id();
-
-                              //rut operadfor
+                         
+                              $IdAdministrador=Auth::id(); 
                                      $idoperador=DB::table('operador')
                                     ->where('IdAdministrador', '=',$IdAdministrador )
                                     ->select('NombreOperador','RutOperador')
-                                    ->get() ;
-
-                                  // dd($idoperador );
-                                  //dia de la semana del turno
-                          //      $diadelasemana=DB::table('turnoasignado')
-                      //          ->join('operador', 'turnoasignado.RutOperador', '=', 'operador.RutOperador')                              
-                         //       ->select('DiaSemana' )
-                         //       ->get();
-                                 
-                           //     $variableasignar=$request->RutTrabajador;
-
+                                    ->get() ;                                 
                                 // abreviacion del detalle de turno
                                $abreviacionturno=DB::table('detalletipoturno')
                                  ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
                                ->join('operador', 'turnoasignado.RutOperador', '=', 'operador.RutOperador')                              
                                ->select('detalletipoturno.AbreviacionTurno' )
                               //  ->where('operador.RutOperador', $variableasignar)
-                                ->get();
+                                ->get();                              
 
-  
-                                //dd($diadelasemana);
-
-
-                                //select * from operador where IdAdministrador='111111111 '
-                             //   $rutOperador=DB::table('operador')                                                          
-                             //   ->select('RutOperador' )
-                            //    ->where('IdAdministrador', $IdAdministrador)
-                          //      ->get();
-
-                               // dd($rutOperador);
-
-
-                               
-
-                              // $operador=Operador::where('$IdAdministrador');
-
-
-
-
-                             // dd($operador);
-                         
-
-                             $turnoOperador=DB::table('detalletipoturno')
+                                $IdAdministrador=Auth::id(); 
+                             $turnoOperadorlunes=DB::table('detalletipoturno')
                              ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
                            ->join('operador', 'operador.RutOperador', '=', 'turnoasignado.RutOperador')                              
                            ->select('operador.NombreOperador','detalletipoturno.AbreviacionTurno','turnoasignado.NumeroSemanaAno','turnoasignado.DiaSemana')
-                           ->where('operador.IdAdministrador', $IdAdministrador)
+                           //->where('operador.IdAdministrador', $IdAdministrador)
+                          // ->Where('turnoasignado.DiaSemana','=','lunes')
+                          // ->Where('turnoasignado.NumeroSemanaAno','=','2019-W24')      
+                           ->where(function ($query) {
+                            $IdAdministrador=Auth::id();    
+
+                            $query->where('operador.IdAdministrador', '=', $IdAdministrador)                       
+                                 //   ->where('turnoasignado.DiaSemana', '=', 'lunes')   
+                                 ->where('turnoasignado.NumeroSemanaAno','=','2019-W24');                            })
+                            //->groupBy('turnoasignado.NumeroSemanaAno')                        
+                           ->orderBy('turnoasignado.NumeroSemanaAno', 'ASC')
+                            ->orderByRaw(DB::raw("FIELD(turnoasignado.DiaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo')"))
                             ->get();
 
-
-
-
-
-
-                           return view('administrador/menuadministrador/menuturnos.revisarturnos', compact('turnoOperador'));    
-
-                            
+                            //dd($turnoOperador);
+                              // ORDER BY turnoasignado.NumeroSemanaAno ASC,
+                              //FIELD(turnoasignado.DiaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo')
+                           return view('administrador/menuadministrador/menuturnos.revisarturnos',
+                            compact('turnoOperadorlunes' ));                                
                          //return view('administrador/menuadministrador/menuturnos.revisarturnos', compact('idoperador','abreviacionturno'));
                         // return view('administrador/menuadministrador/menuturnos.revisarturnos');
                     }
@@ -222,7 +183,42 @@ class TurnosController extends Controller
 
 
 
+                      public function buscarturnos(Request $request ){
+                          
+                        $numberWeek=$request->NumeroSemanaAno;
 
+                        $turnoOperadorlunes=DB::table('detalletipoturno')
+                        ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
+                      ->join('operador', 'operador.RutOperador', '=', 'turnoasignado.RutOperador')                              
+                      ->select('operador.NombreOperador','detalletipoturno.AbreviacionTurno','turnoasignado.NumeroSemanaAno','turnoasignado.DiaSemana')
+                      ->where(function ($query) use ($request)  {
+                        $IdAdministrador=Auth::id();    
+                         $numberWeek=$request->input('NumeroSemanaAno');
+
+                        $query->where('operador.IdAdministrador', '=', $IdAdministrador)  
+                        ->where('turnoasignado.NumeroSemanaAno','=',$numberWeek);                          })
+                                    
+                       ->orderBy('turnoasignado.NumeroSemanaAno', 'ASC')
+                        ->orderByRaw(DB::raw("FIELD(turnoasignado.DiaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo')"))
+                        ->get();
+
+
+
+
+
+
+
+                        
+                       return view('administrador/menuadministrador/menuturnos.revisarturnos',
+                        compact('turnoOperadorlunes' ));     
+                        
+                        
+
+
+
+
+
+                      }
 
 
 

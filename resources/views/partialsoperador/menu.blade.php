@@ -36,26 +36,8 @@
                                 <h6>4 mins ago</h6>
                             </div>
                         </a>
-                        <a href="#" class="dropdown-item mt-3">
-                            <div class="notif-img-agileinfo">
-                                <img src="images/clone.jpg" class="img-fluid" alt="Responsive image">
-                            </div>
-                            <div class="notif-content-wthree">
-                                <p class="paragraph-agileits-w3layouts py-2">
-                                    <span class="text-diff">Diana</span> Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
-                                <h6>6 mins ago</h6>
-                            </div>
-                        </a>
-                        <a href="#" class="dropdown-item mt-3">
-                            <div class="notif-img-agileinfo">
-                                <img src="images/clone.jpg" class="img-fluid" alt="Responsive image">
-                            </div>
-                            <div class="notif-content-wthree">
-                                <p class="paragraph-agileits-w3layouts py-2">
-                                    <span class="text-diff">Steffie</span> Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
-                                <h6>12 mins ago</h6>
-                            </div>
-                        </a>
+                      
+                      
                         <a href="#" class="dropdown-item mt-3">
                             <div class="notif-img-agileinfo">
                                 <img src="images/clone.jpg" class="img-fluid" alt="Responsive image">
@@ -84,9 +66,7 @@
                     </a>
                     <div class="dropdown-menu drop-3">
                         <div class="profile d-flex mr-o">
-                            <div class="profile-l align-self-center">
-                                <img src="images/profile.jpg" class="img-fluid mb-3" alt="Responsive image">
-                            </div>
+                            
                             <div class="profile-r align-self-center">
                                 <h3 class="sub-title-w3-agileits"> {{ Auth::user()->NombreOperador }}</h3>
                                 <a href="mailto:info@example.com">{{ Auth::user()->Correo }}</a>
@@ -96,10 +76,7 @@
                             <h4>
                                 <i class="far fa-user mr-3"></i>Mi Perfil</h4>
                         </a>
-                        <a href="#" class="dropdown-item mt-3">
-                            <h4>
-                                <i class="fas fa-link mr-3"></i>Actividades</h4>
-                        </a>
+                        
                         <a href="notificaciones" class="dropdown-item mt-3">
                             <h4>
                                 <i class="far fa-envelope mr-3"></i>Notificaciones</h4>
@@ -108,10 +85,7 @@
                             <h4>
                                 <i class="far fa-question-circle mr-3"></i>Faq</h4>
                         </a>
-                        <a href="#" class="dropdown-item mt-3">
-                            <h4>
-                                <i class="far fa-thumbs-up mr-3"></i>Soporte</h4>
-                        </a>
+                       
                         <div class="dropdown-divider"></div>
 
 

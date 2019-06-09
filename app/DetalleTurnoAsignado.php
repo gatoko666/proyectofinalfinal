@@ -3,11 +3,15 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Notifiable;
+use SoftDeletes;
+
 
 class DetalleTurnoAsignado extends Model
 {
+   
+    protected $dates = ['deleted_at'];
     protected $table = 'turnoasignado';
-
     protected $primaryKey = 'IdDetalleTipoTurno';
 
     protected $fillable = [
@@ -17,22 +21,14 @@ class DetalleTurnoAsignado extends Model
 
     ];
 
-    public $timestamps = false;
+   // public $timestamps = false;
 
-
-
-
-       // many to many 
-       public function operadores()
-       {
-           return $this->belongsToMany('App\Operador');
-       }
-
-           // many to many 
-           public function detalletipoturno()
-           {
-               return $this->belongsToMany('App\TipoDeTurno');
-           }
+      
+            
+           public function operador()
+                {
+                    return $this->belongsTo(Operador::class);
+                }
 
 
     

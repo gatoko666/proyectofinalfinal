@@ -35,9 +35,8 @@ class OperadorGestionController extends Controller
                          $operador->FechaAltaOperador=now();
                          $operador->Password=Hash::make($request->Password);
                          $operador->IdAdministrador=Auth::id();
-                         $operador->RutOperador=Rut::parse($request->RutOperador)->number(); 
-                         $operador->LocalizacionOperador=$request->LocalizacionOperador;                              
-                         
+                         $operador->RutOperador=Rut::parse($request->RutOperador)->fix()->format(); 
+                         $operador->LocalizacionOperador=$request->LocalizacionOperador;   
                          $operador->save();                    
 
                         } catch (\Exception   $exception) {
@@ -79,9 +78,16 @@ class OperadorGestionController extends Controller
 
                        public function destroy($RutOperador)
                        {
-                         Operador::where('RutOperador',$RutOperador)->delete();                   
-                           return redirect('administracionoperador')->with('success','Operador eliminado correctamente');       
 
+
+                        try {
+                          Operador::where('RutOperador',$RutOperador)->delete();    
+                          return redirect('administracionoperador')->with('success','Operador eliminado correctamente');   
+                        } catch (\Throwable $th) {
+                          return redirect('administracionoperador')->with('warning','No se puede eliminar. Operador con turnos asignados.'); 
+                        }
+
+ 
                        }
 
 

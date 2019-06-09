@@ -35,6 +35,16 @@
                           <p>{{ $message }}</p>
                       </div>
                   @endif
+                  @if ($message = Session::get('errors'))
+                  <div class="alert alert-danger">
+                      <p>{{ $message }}</p>
+                  </div>
+              @endif
+              @if ($message = Session::get('warning'))
+              <div class="alert alert-warning">
+                  <p>{{ $message }}</p>
+              </div>
+          @endif
                   <br>
                          
                     <table class="table table-bordered table-striped">

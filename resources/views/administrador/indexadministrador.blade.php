@@ -42,17 +42,7 @@
                                 </h6>
                             </div>
                         </div>
-                        <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-danger">
-                            <div class="s-l">
-                                <h5>Total Festivos del año </h5>
-                                <p class="paragraph-agileits-w3layouts">Lorem Ipsum</p>
-                            </div>
-                            <div class="s-r">
-                                <h6>232
-                                    <i class="fas fa-tasks"></i>
-                                </h6>
-                            </div>
-                        </div>
+                       
                         <div class="stat-grid p-3 mt-3 d-flex align-items-center justify-content-between bg-warning">
                             <div class="s-l">
                                 <h5>Total documentos subidos</h5>

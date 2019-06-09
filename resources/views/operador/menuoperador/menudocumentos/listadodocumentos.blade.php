@@ -1,5 +1,5 @@
 
-    @include('partials/header')
+    @include('partialsoperador/header')
     
     <body>
         <div class="se-pre-con"></div>
@@ -8,11 +8,11 @@
 
             <!-- Sidebar Holder -->
            
-            @include('partials/sidebar')
+            @include('partialsoperador/sidebar')
             <!-- Page Content Holder -->
 
 
-            @include('partials/menu')
+            @include('partialsoperador/menu')
                 <!--// top-bar -->
 
 
@@ -61,7 +61,7 @@
                                         </th>
                                         <th class="text-center">
 
-                                                <a href="documentos/create" class="btn btn-primary">Crear</a>  
+                                           
 
  
                                                 <br>
@@ -105,68 +105,17 @@
                                     <td>{{$dd->created_at}}</td>                                
                                     <td>          
                                 
-                                          <a href="{{ url('eliminardocumentos/'. $dd->IdDocumento)}}" class="btn btn-danger">Eliminar</a>  
-                                          
+                                                                                  
                                           <a href="{{ url('descargadocumentos/'. $dd->IdDocumento)}}" class="btn btn-info">Descargar</a>   
                                          
                                                
                                 </td>       
                                 </tr>                                   
-                                @endforeach   
-
-
-                         
-                          
-
-                                <!-- Modal -->
-                                <div class="modal fade" id="exampleModal1" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel1" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel1">Modal title</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        Modal 1
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                                        <button type="button" class="btn btn-primary">Save changes</button>
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-                                <!-- Modal 2 -->
-                                <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel2" aria-hidden="true">
-                                  <div class="modal-dialog" role="document">
-                                    <div class="modal-content">
-                                      <div class="modal-header">
-                                        <h5 class="modal-title" id="exampleModalLabel2">Confirmación</h5>
-                                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                                          <span aria-hidden="true">&times;</span>
-                                        </button>
-                                      </div>
-                                      <div class="modal-body">
-                                        Eliminar
-                                      </div>
-                                      <div class="modal-footer">
-                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>
-                                        
-                                      </div>
-                                    </div>
-                                  </div>
-                                </div>
-
-
- 
-                               
+                                @endforeach      
                             </tr>                         
                         </tbody>
                     </table>
-                    {{ $detalledocumentos->links() }}
+                  
                 </div>
 
          </section>      
@@ -281,7 +230,7 @@
                 <!--// Countdown -->
                 <!-- Copyright -->
 
-                @include('partials/footer')
+                @include('partialsoperador/footer')
 
 
 

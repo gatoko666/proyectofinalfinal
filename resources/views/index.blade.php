@@ -759,7 +759,7 @@
 
 							<div class="form-group">
 								<label>Rut</label>
-								<input id="rut" type="rut" size="20" class="form-control @error('rut') is-invalid @enderror" name="rut" value="{{ old('rut') }}" required autocomplete="rut">
+								<input id="rut" type="rut" size="20" class="form-control @error('rut') is-invalid @enderror"required oninput="checkRut(this)"   name="rut" value="{{ old('rut') }}" required autocomplete="rut">
 							 
 								@error('rut')
                                     <span class="invalid-feedback" role="alert">

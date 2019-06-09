@@ -100,7 +100,7 @@
                             <h4>
                                 <i class="fas fa-link mr-3"></i>Actividades</h4>
                         </a>
-                        <a href="notificaciones" class="dropdown-item mt-3">
+                        <a href="notificacion" class="dropdown-item mt-3">
                             <h4>
                                 <i class="far fa-envelope mr-3"></i>Notificaciones</h4>
                         </a>

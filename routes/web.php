@@ -32,13 +32,51 @@ Route::get('/indexadministrador', 'MenuController@indexAdministrador')->middlewa
 
 
 Route::resource('tiposdeturnos','TiposDeTurnosController')->middleware('auth');
+
+ Route::resource('turnosoperador','TurnosControllerOperador')->middleware('auth:operador');
+Route::post('buscarturnosoperador', 'TurnosControllerOperador@buscarturnos')->name('buscarturnosoperador')->middleware('auth:operador');
+Route::get('imprimirturnos', 'TurnosControllerOperador@imprimirturnos')->name('imprimirturnos')->middleware('auth:operador');
+
+
+
+
+
 Route::resource('administracionoperador','OperadorGestionController')->middleware('auth');
+
+
+
 //Route::get('administracionoperador','OperadorController@index')->middleware('auth');
 
 Route::resource('documentos','DocumentoController')->middleware('auth');
 Route::get('descargadocumentos/{id}','DocumentoController@descargar')->name('descargadocumentos')->middleware('auth');
+Route::get('eliminardocumentos/{id}','DocumentoController@eliminarArchivo')->name('eliminardocumentos')->middleware('auth');
+
+
+Route::resource('documentosoperador','DocumentoControllerOperador')->middleware('auth:operador');
+
+
 
 
 
 Route::resource('generarturnos','TurnosController')->middleware('auth');
 Route::get('revisarturnos', 'TurnosController@turnospresentes')->middleware('auth');
+Route::post('buscarturnos', 'TurnosController@buscarturnos')->name('buscarturnos')->middleware('auth');
+
+
+
+
+ 
+
+Route::get('perfil', 'PerfilController@index')->name('perfil')->middleware('auth');
+Route::get('perfiloperador', 'PerfilController@indexOperadorPerfil')->name('perfiloperador')->middleware('auth:operador');
+
+
+
+//Route::get('updateperfil', 'PerfilController@update')->middleware('auth');
+Route::post('updateperfil/{id}','PerfilController@update')->name('updateperfil')->middleware('auth');
+
+Route::get('notificacion', 'NotificacionController@index')->name('notificacion')->middleware('auth');
+
+Route::get('notificacionoperador', 'NotificacionController@indexNotificacionOperador')->name('notificacionoperador')->middleware('auth:operador');
+
+

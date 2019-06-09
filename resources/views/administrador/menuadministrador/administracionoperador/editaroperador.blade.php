@@ -37,23 +37,23 @@
                             @csrf
                             @method('PATCH')
                             <label for="name">Nombre Operador :</label>
-                            <input type="text" class="form-control" name="NombreOperador" value="{{$operador->NombreOperador}}"/>
+                            <input type="text" class="form-control" name="NombreOperador" maxlength="20"  value="{{$operador->NombreOperador}}"/>
                         </div>
                       
                         <div class="form-group">
                                 <label for="price">Correo Operador  :</label>
-                                <input type="mail" class="form-control" name="Correo" value="{{$operador->Correo}}"/>
+                                <input type="mail" class="form-control" name="Correo" maxlength="20" value="{{$operador->Correo}}"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="price">Teléfono Operador  :</label>
-                                <input type="text" class="form-control" name="TelefonoOperador" size="10" value="{{$operador->TelefonoOperador}}"/>
+                                <input type="text" class="form-control" name="TelefonoOperador" maxlength="13" value="{{$operador->TelefonoOperador}}"/>
                             </div>                            
 
                             
                             <div class="form-group">
                                     <label for="price">Localización Operador  :</label>
-                                    <input type="text" class="form-control" name="LocalizacionOperador" value="{{$operador->LocalizacionOperador}}"/>
+                                    <input type="text" class="form-control" name="LocalizacionOperador" maxlength="20" value="{{$operador->LocalizacionOperador}}"/>
                                 </div>
                               
                          

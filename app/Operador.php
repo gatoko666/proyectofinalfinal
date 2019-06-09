@@ -5,10 +5,14 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Foundation\Auth\User as Authenticatable;
  use Illuminate\Contracts\Auth\MustVerifyEmail;
+ use Notifiable;
+use SoftDeletes;
+
 
 
 class Operador extends Authenticatable
 {
+     
 
     protected $guard='operador' ;
     
@@ -45,15 +49,18 @@ class Operador extends Authenticatable
         
     }
                 // many to many 
-                public function detalleturnosasignados()
+               // public function detalleturnosasignados()
+              //  {
+              //      return $this->belongsToMany('App\DetalleTurnoAsignado');
+            //    }
+
+
+                protected $dates = ['deleted_at'];
+
+                public function detalleturnoasignado()
                 {
-                    return $this->belongsToMany('App\DetalleTurnoAsignado');
+                    return $this->hasMany(DetalleTurnoAsignado::class);
                 }
-
-
-    
-
-
 
    
 }

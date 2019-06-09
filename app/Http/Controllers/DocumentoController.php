@@ -112,9 +112,38 @@ class DocumentoController extends Controller
                             }
 
 
+                            public function eliminarArchivo($id){
 
-                            
-                        
+                                $idDocumento=Documento::where('IdDocumento', $id)->first();
+                             
+
+                                 Storage::delete('Documentos/'.$idDocumento->Ruta);
+                                 Documento::where('IdDocumento',$id)->delete();
+
+                                return redirect('documentos')->with('success','Documento Eliminado correctamente.'); 
+
+                            }
+
+
+                            public function descargarOperador($id)
+                            {
+                           
+                                 
+
+                                 
+                                 
+                                    $idDocumento=Documento::where('IdDocumento', $id)->first();
+
+                                 
+
+                                    return Storage::download('Documentos/'.$idDocumento->Ruta);
+
+                             
+                            }
+
+
+
+                           
 
 
 

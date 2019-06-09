@@ -56,9 +56,7 @@
                     <li>
                         <a href="revisarturnos">Revisar Turnos</a>
                     </li>
-                    <li>
-                        <a href="solicitarcambiodeturno">Solicitar Cambio de turno</a>
-                    </li>
+                   
                     <li>
                         <a href="solicitarvacaciones">Solicitar Vacaciones</a>
                     </li>
@@ -72,30 +70,7 @@
             </li>
 
 
-            <li>
-                    <a href="#homeSubmenu2" data-toggle="collapse" aria-expanded="false">
-                        <i class="fas fa-archive"></i>
-                        Registro
-                        <i class="fas fa-angle-down fa-pull-right"></i>
-                    </a>
-                    <ul class="collapse list-unstyled" id="homeSubmenu2">
-                        <li>
-                            <a href="registroturnos">Turnos y Horas</a>
-                        </li>
-                        <li>
-                            <a href="absentismos">Absentismos</a>
-                        </li>
-                        <!--
-                        <li>
-                            <a href="turnospendientes">Turnos pendientes</a>
-                        </li>
-                    -->
-                        <li>
-                            <a href="vacaciones">Vacaciones</a>
-                        </li>
-                        
-                    </ul>
-                </li>
+     
 
               
 
@@ -118,20 +93,13 @@
 
 
         <li>
-            <a href="notificaciones">
+            <a href="notificacion">
                 <i class="far fa-envelope"></i>
                 Notificaciones
                 <span class="badge badge-secondary float-md-right bg-danger">5 New</span>
             </a>
         </li>
-        <!--
-        <li>
-            <a href="pricing">
-                <i class="fas fa-table"></i>
-                Selección de plan
-            </a>
-        </li>
-    -->
+        
         <li>
                 <a href="perfil">
                     <i class="fas fa-user"></i>

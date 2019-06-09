@@ -162,6 +162,8 @@ return [
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
         Freshwork\ChileanBundle\Laravel\ChileanBundleServiceProvider::class,
+        Barryvdh\DomPDF\ServiceProvider::class,
+
         
 
 
@@ -229,6 +231,8 @@ return [
         'Validator' => Illuminate\Support\Facades\Validator::class,
         'View' => Illuminate\Support\Facades\View::class,
         'Rut'   => Freshwork\ChileanBundle\Laravel\Facades\Rut::class,
+        'PDF' => Barryvdh\DomPDF\Facade::class,
+
          
 
 

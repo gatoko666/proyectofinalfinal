@@ -1,5 +1,5 @@
  
-    @include('partials/header')
+    @include('partialsoperador/header')
     
     <body>
         <div class="se-pre-con"></div>
@@ -8,11 +8,11 @@
 
             <!-- Sidebar Holder -->
            
-            @include('partials/sidebar')
+            @include('partialsoperador/sidebar')
             <!-- Page Content Holder -->
 
 
-            @include('partials/menu')
+            @include('partialsoperador/menu')
                 <!--// top-bar -->
 
 
@@ -37,13 +37,19 @@
                   @endif
                     <div class="container">
                             Fecha     
-                            <form action="{{ route('buscarturnos') }}" method="POST">
+                            <form action="{{ route('buscarturnosoperador') }}" method="POST">
                                     @csrf         
 
                                     <input name="NumeroSemanaAno"  value="NumeroSemanaAno" type="week"> 
                                     <button type="submit" class="btn btn-primary ">Buscar</button>
-                            </form>    
-                            </div>                      
+                            </form>
+                         
+                         
+                            </div>   
+                            
+                           
+
+
                             <br>
                             <h4 class="tittle-w3-agileits mb-4">Semana </h4>
                     <table class="table table-bordered table-striped">
@@ -89,7 +95,7 @@
                 <!--// Countdown -->
                 <!-- Copyright -->
 
-                @include('partials/footer')
+                @include('partialsoperador/footer')
 
 
 

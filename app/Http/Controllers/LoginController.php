@@ -64,19 +64,7 @@ class LoginController extends Controller
      
 
     protected function registrar(Request $request)
-    {/*
-        $user = Administrador::create([
-            'name' => $data['name'],
-            'email' => $data['email'],
-            'RutAdministrador' => $data['rut'],
-            'password' => Hash::make($data['password']),
-        ]);
-*/
-            
-
-
-
-
+    {
         try {
             
             $insertAdmin=new Administrador;
@@ -90,33 +78,13 @@ class LoginController extends Controller
 
             return redirect('/')->with('warning', 'Error al ingresar nuevo usuario');
         }
-        return redirect('/')->with('warning', 'Error al ingresar nuevo usuario');
+       
 
 
 
-
- 
-              
-                      //  $password=Hash::make($request->password);
-/*
-                        $request->validate([
-                            'name' => 'required|max:50',
-                            'email' => 'required|email',                           
-                            'RutAdministrador' => 'required',  
-                            'password' => 'required ',                             
-                                                       
-                        ]);                      
-                                //dd($request);
-                Administrador::create($request->all());*/
 
         return redirect('/')->with('success','Administrador creado correctamente');
- // return redirect('/')->with('warning','Rut en formato incorrecto');
 
-
-
-      // $user->roles()->attach(Role::where('name', 'user')->first());
-
-      // return $user;
     }
 
 
