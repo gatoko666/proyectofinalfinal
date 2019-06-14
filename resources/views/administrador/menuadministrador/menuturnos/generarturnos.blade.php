@@ -48,11 +48,11 @@
                                     <div class="row">
                                   
                                      
-                                      <div class="col-sm">
+                                      <div class="col-sm-md-lg-xl">
                                         Selección semana para asignar turnos
                                       </div>
                                       
-                                      <div class="col-sm">
+                                      <div class="col-sm-md-lg-xl">
                                             <p align="justify"> <input name="NumeroSemanaAno"  value="NumeroSemanaAno" type="week"> </p>
                                       </div>
                                     

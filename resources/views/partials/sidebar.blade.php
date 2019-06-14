@@ -57,15 +57,7 @@
                         <a href="revisarturnos">Revisar Turnos</a>
                     </li>
                    
-                    <li>
-                        <a href="solicitarvacaciones">Solicitar Vacaciones</a>
-                    </li>
-                    <li>
-                        <a href="solicitardialibre">Solicitar dia libre</a>
-                    </li>
-                    <li>
-                        <a href="revisarsolicitudes">Revisar solicitudes</a>
-                    </li>
+              
                 </ul>
             </li>
 

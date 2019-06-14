@@ -58,9 +58,19 @@ class TiposDeTurnosController extends Controller
      
                public function destroy($IdDetalleTipoTurno)
                {
-                TipoDeTurno::where('IdDetalleTipoTurno',$IdDetalleTipoTurno)->delete();
+
+                try {
+                    TipoDeTurno::where('IdDetalleTipoTurno',$IdDetalleTipoTurno)->delete();
            
-                   return redirect('tiposdeturnos')->with('success','Tipo de turno eliminado correctamente');       
+                    return redirect('tiposdeturnos')->with('success','Tipo de turno eliminado correctamente');      
+                    
+                } catch (\Throwable $th) {
+                    return redirect('tiposdeturnos')->with('success','Problema al eliminar el Tipo de turno');   
+                }
+
+
+
+              
      
                }
      

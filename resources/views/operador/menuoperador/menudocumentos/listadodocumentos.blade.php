@@ -106,7 +106,7 @@
                                     <td>          
                                 
                                                                                   
-                                          <a href="{{ url('descargadocumentos/'. $dd->IdDocumento)}}" class="btn btn-info">Descargar</a>   
+                                          <a href="{{ url('descargadocumentoso/'. $dd->IdDocumento)}}" class="btn btn-info">Descargar</a>   
                                          
                                                
                                 </td>       

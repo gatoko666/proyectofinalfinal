@@ -56,11 +56,7 @@
                         </div>
                     </div>
                     <!--// Stats -->
-                    <!-- Pie-chart -->
-                    <div class="outer-w3-agile col-xl ml-xl-3 mt-xl-0 mt-3">
-                        <h4 class="tittle-w3-agileits mb-4">Absentismos</h4>
-                        <div id="chartdiv"></div>
-                    </div>
+                   
                     <!--// Pie-chart -->
                 </div>
             </div>
@@ -161,50 +157,7 @@
                         </ul>
                     </div>
                     <!--// Profile -->
-                    <!-- Browser stats -->
-                    <div class="outer-w3-agile col-xl mt-3">
-                        <h4 class="tittle-w3-agileits mb-4">Estadísticas </h4>
-                        <div class="stats-info stats-body">
-                            <ul class="list-unstyled">
-                                <li class="pb-3">GoogleChrome
-                                    <span class="float-right">85%</span>
-                                    <div class="progress progress-striped active progress-right">
-                                        <div class="bar green" style="width:85%;"></div>
-                                    </div>
-                                </li>
-                                <li class="py-md-4 py-3">Firefox
-                                    <span class="float-right">35%</span>
-                                    <div class="progress progress-striped active progress-right">
-                                        <div class="bar yellow" style="width:35%;"></div>
-                                    </div>
-                                </li>
-                                <li class="py-md-4 py-3">Internet Explorer
-                                    <span class="float-right">78%</span>
-                                    <div class="progress progress-striped active progress-right">
-                                        <div class="bar red" style="width:78%;"></div>
-                                    </div>
-                                </li>
-                                <li class="py-md-4 py-3">Safari
-                                    <span class="float-right">50%</span>
-                                    <div class="progress progress-striped active progress-right">
-                                        <div class="bar blue" style="width:50%;"></div>
-                                    </div>
-                                </li>
-                                <li class="py-md-4 py-3">Opera
-                                    <span class="float-right">80%</span>
-                                    <div class="progress progress-striped active progress-right">
-                                        <div class="bar light-blue" style="width:80%;"></div>
-                                    </div>
-                                </li>
-                                <li class="last py-md-4 py-3">Others
-                                    <span class="float-right">60%</span>
-                                    <div class="progress progress-striped active progress-right">
-                                        <div class="bar orange" style="width:60%;"></div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                
                     <!--// Browser stats -->
                 </div>
             </div>

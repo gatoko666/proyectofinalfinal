@@ -33,57 +33,64 @@ class DocumentoController extends Controller
 
 
                             public function store(Request $request) {
-                           $operador=Auth::id(); 
 
-                             //$documento=$request->file('file') ;
-                                            
-                            /*
-                             if ($files = $request->file('image')) {
-                                $destinationPath = 'public/image/'; // upload path
-                                $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
-                                $files->move($destinationPath, $profileImage);
-                                $insert['image'] = "$profileImage";
-                             }
-                             getClientOriginalExtension
+                              try {
+                                 $operador=Auth::id(); 
 
-*/                                 // $adjunto = $request->file('userfile');
-                                  //  $name= $adjunto->getClientOriginalName();
-                                  //  $nombre= time().'_'.$name;
+                                 //$documento=$request->file('file') ;
+                                                
+                                /*
+                                 if ($files = $request->file('image')) {
+                                    $destinationPath = 'public/image/'; // upload path
+                                    $profileImage = date('YmdHis') . "." . $files->getClientOriginalExtension();
+                                    $files->move($destinationPath, $profileImage);
+                                    $insert['image'] = "$profileImage";
+                                 }
+                                 getClientOriginalExtension
+    
+    */                                 // $adjunto = $request->file('userfile');
+                                      //  $name= $adjunto->getClientOriginalName();
+                                      //  $nombre= time().'_'.$name;
+    
+                                    $datoDocumento=$request->file('userfile');
+                                    $datoDocumentoExtension= $datoDocumento->getClientOriginalExtension();
+                                    $datoDocumentoTime=time();
+                                    //dd($name);
+    
+    
+                                  //  $adjunto->storeAs('ss','nani'.'_'.$name);
+    
+                                    $documento=new Documento; 
+    
+                                    $documento->NombreDocumento=$request->NombreDocumento; 
+    
+                                 $document = $request->file('userfile')->storeAs(
+                                            'Documentos',$datoDocumentoTime.'_'.                                       
+                                            $request->NombreDocumento.'.'. $datoDocumentoExtension);
+    
+                                      $nombrearchiv=  $datoDocumentoTime.'_'.                                       
+                                            $request->NombreDocumento.'.'. $datoDocumentoExtension;
+    
+                               // $path = Storage::putFileAs(
+                                //    'Documentos', $request->file('$documento->NombreDocumento'));
+    
+                                   // $document = $request->file('userfile');
+                                  //  Storage::putFileAs('Documentos', $document);     
+    
+                                  //  dd($document);                  
+                                $documento->Ruta =$nombrearchiv;                                   
+                                 $documento->Descripcion=$request->Descripcion;                             
+                                 $documento->IdAdministrador=Auth::id();
+                                 $documento->save() ;
+    
+    
+    
+                                    return redirect('documentos')->with('success','Documento Agregado correctamente.'); 
+                              } catch (\Throwable $th) {
+                                 return redirect('documentos')->with('success','Problema al realizar la accion requerida.'); 
+                              }
 
-                                $datoDocumento=$request->file('userfile');
-                                $datoDocumentoExtension= $datoDocumento->getClientOriginalExtension();
-                                $datoDocumentoTime=time();
-                                //dd($name);
-
-
-                              //  $adjunto->storeAs('ss','nani'.'_'.$name);
-
-                                $documento=new Documento; 
-
-                                $documento->NombreDocumento=$request->NombreDocumento; 
-
-                             $document = $request->file('userfile')->storeAs(
-                                        'Documentos',$datoDocumentoTime.'_'.                                       
-                                        $request->NombreDocumento.'.'. $datoDocumentoExtension);
-
-                                  $nombrearchiv=  $datoDocumentoTime.'_'.                                       
-                                        $request->NombreDocumento.'.'. $datoDocumentoExtension;
-
-                           // $path = Storage::putFileAs(
-                            //    'Documentos', $request->file('$documento->NombreDocumento'));
-
-                               // $document = $request->file('userfile');
-                              //  Storage::putFileAs('Documentos', $document);     
-
-                              //  dd($document);                  
-                            $documento->Ruta =$nombrearchiv;                                   
-                             $documento->Descripcion=$request->Descripcion;                             
-                             $documento->IdAdministrador=Auth::id();
-                             $documento->save() ;
-
-
-
-                                return redirect('documentos')->with('success','Documento Agregado correctamente.'); 
+                           
                             }
 
 

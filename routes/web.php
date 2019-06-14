@@ -53,6 +53,7 @@ Route::get('eliminardocumentos/{id}','DocumentoController@eliminarArchivo')->nam
 
 
 Route::resource('documentosoperador','DocumentoControllerOperador')->middleware('auth:operador');
+Route::get('descargadocumentoso/{id}','DocumentoControllerOperador@descargar')->name('descargadocumentoso')->middleware('auth:operador');
 
 
 
