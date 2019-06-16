@@ -149,7 +149,7 @@ class TurnosController extends Controller
 
                          function notificarOperadorTurnos($Admin,$NumernoSemanaAno,$NombreTrabajador,$CorreoOp){
 
-                        // dd($CorreoOp);
+                          //dd($CorreoOp);
 
                           $data = array(
                              // 'name' => "Turno Semana ",
@@ -160,32 +160,44 @@ class TurnosController extends Controller
                                          
                           );      
 
+
+                        //  $correo=$data->correooperador;
+                       //  $correo=var_dump($data["correooperador"]);
+                       //  $operadorName=var_dump($data["nombretrabajador"]);
+                         $correo='pedro@yopmail.com' ;
+                         $operadorName=var_dump($data["nombretrabajador"]);
+
+                         // dd($operadorName);
+
+
                          // Mail::to($CorreoOp);
-                          Mail::send('testmail', $data,function ($message,$CorreoOp) {                                      
+
+
+
+
+
+
+                          Mail::send('testmail', $data,function ($message)use ($correo,$operadorName) {                                      
                             
-                          //  $correo=['data'];
+                            //$correo=var_dump($data["correooperador"]);
+
+                         
+                            //dd($correo);
                            // $correo=array_get($correo,'Correo');
+                           $message->from('adturnmail@gmail.com', 'Gestor de turnos Adturn.'.$operadorName.$correo);                      
+                         $message->to($correo);  
+                         $message->subject('Turnos de la Semana'.$operadorName.$correo); 
+
                               
-                     try     {
-                                            /* Envio del Email */
-
-                                        
-                                            
-                                            $message->from('adturnmail@gmail.com', 'Gestor de turnos Adturn.');                      
-                                            $message->to($CorreoOp)->subject('Turnos de la Semana');   
-                                           
-                                        }
-                                        catch (\Exception $e)
-                                        {
-                                           
-                                            echo("Error al enviar el correo");
-                                        }
-                                        
-
-                          });      
-                          
-                      
-                          //return redirect()->back();                  
+                                                              try     {
+                                                                                      /* Envio del Email */   
+                                                                                  }
+                                                                                  catch (\Exception $e)
+                                                                                  {
+                                                                                      echo("Error al enviar el correo");
+                                                                                  }    
+                          });                
+                          //return redirect()->back();                 
                       }
 
 
