@@ -24,6 +24,7 @@
                             <div class="s-l">
                                 <h5>Total trabajadores</h5>
                                 <p class="paragraph-agileits-w3layouts text-white">Lorem Ipsum</p>
+                                
                             </div>
                             <div class="s-r">
                                 <h6>340

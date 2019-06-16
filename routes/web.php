@@ -76,8 +76,32 @@ Route::get('perfiloperador', 'PerfilController@indexOperadorPerfil')->name('perf
 //Route::get('updateperfil', 'PerfilController@update')->middleware('auth');
 Route::post('updateperfil/{id}','PerfilController@update')->name('updateperfil')->middleware('auth');
 
-Route::get('notificacion', 'NotificacionController@index')->name('notificacion')->middleware('auth');
+//Route::get('notificacionadmin', 'MailTurnosNotificacionController@notificarAdministrador')->name('notificacionadmin')->middleware('auth');
 
-Route::get('notificacionoperador', 'NotificacionController@indexNotificacionOperador')->name('notificacionoperador')->middleware('auth:operador');
+//Route::get('notificacionoperador', 'MailTurnosNotificacionController@notificarOperadorTurnos')->name('notificacionoperador')->middleware('auth:operador');
 
 
+Route::get('sendemail', function () {
+
+    $data = array(
+        'name' => "Curso Laravel",
+    );
+
+    Mail::send('testmail', $data, function ($message) {
+
+        $message->from('adturnmail@gmail.com', 'Curso Laravel');
+
+        $message->to('adturnmail@gmail.com')->subject('test email Curso Laravel');
+
+    });
+
+    return "Tú email ha sido enviado correctamente";
+
+});
+
+Route::get('notificacionadmin', 'MailTurnosNotificacionController@notificarAdministrador')->name('notificacionadmin')->middleware('auth');
+
+Route::get('notificacionoperador', 'MailTurnosNotificacionController@notificarOperadorTurnos')->name('notificacionoperador');
+
+
+ 

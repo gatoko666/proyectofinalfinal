@@ -131,6 +131,7 @@
                                             <th class="text-nowrap" name="NombreTrabajador"   scope="row">{{$op->NombreOperador}}</th> 
                                             <input   name="RutTrabajadori[]"  value="{{$op->RutOperador}}"  type="hidden"  >   
                                             <th class="text-nowrap" name="RutTrabajador[]"  value="{{$op->RutOperador}}"  scope="row">{{$op->RutOperador}}</th>                                                                                      
+                                            <input   name="CorreoTrabajadori[]"  value="{{$op->Correo}}"  type="hidden"  >   
                                             
                                                                                                                         
                                                 <td>

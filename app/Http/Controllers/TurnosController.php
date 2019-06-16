@@ -9,6 +9,8 @@ use App\TipoDeTurno;
 use App\DetalleTurnoAsignado;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Mail;
+
 
 class TurnosController extends Controller
 {
@@ -28,12 +30,20 @@ class TurnosController extends Controller
 
 
                             public function store(Request $request){   
+
+                             
+               
                     
                        try {
                                  
                                 if(count($request->NombreTrabajadori) > 0)
                             {
-                            foreach($request->NombreTrabajadori as $trabajador=>$t){
+                            foreach($request->NombreTrabajadori as $trabajador=>$t){   
+                              $Admin=Auth::user()->name;
+                              $NumernoSemanaAno=$request->NumeroSemanaAno;
+                              $NombreTrabajador=$request->NombreTrabajadori[$trabajador];
+                              $CorreoOp=$request->CorreoTrabajadori[$trabajador];  
+                              $RutOperador=$request->RutTrabajadori[$trabajador];                 
                                  
 
                                 $data2=array(    
@@ -119,11 +129,16 @@ class TurnosController extends Controller
                                      'DiaSemana'=>$request->DiaSemanad,                                    
                                                                 
                                 );                                        
-                                DetalleTurnoAsignado::insert($data2);                                 
-                        }
-                            }                  
-                            return redirect()->back()->with('success','Turno Insertado correctamente');
+                                DetalleTurnoAsignado::insert($data2);             
+                                $this->notificarOperadorTurnos($Admin,$NumernoSemanaAno,$NombreTrabajador,$CorreoOp);                              
+                        }                     
+                            }    
+                          
 
+
+                              
+
+                            return redirect()->back()->with('success','Turno Insertado correctamente. Notifiación realizada con éxito.');
                               } catch (\Throwable $th) {
                                 return redirect()->back()->with('success', 'Error al ingresar los turnos.');                            
                               }
@@ -132,12 +147,53 @@ class TurnosController extends Controller
 
 
 
+                         function notificarOperadorTurnos($Admin,$NumernoSemanaAno,$NombreTrabajador,$CorreoOp){
+
+                        // dd($CorreoOp);
+
+                          $data = array(
+                             // 'name' => "Turno Semana ",
+                             'nombreadmin' => "$Admin",
+                             'semana' => "$NumernoSemanaAno",
+                             'nombretrabajador' => "$NombreTrabajador",  
+                              'correooperador' => "$CorreoOp",                           
+                                         
+                          );      
+
+                         // Mail::to($CorreoOp);
+                          Mail::send('testmail', $data,function ($message,$CorreoOp) {                                      
+                            
+                          //  $correo=['data'];
+                           // $correo=array_get($correo,'Correo');
+                              
+                     try     {
+                                            /* Envio del Email */
+
+                                        
+                                            
+                                            $message->from('adturnmail@gmail.com', 'Gestor de turnos Adturn.');                      
+                                            $message->to($CorreoOp)->subject('Turnos de la Semana');   
+                                           
+                                        }
+                                        catch (\Exception $e)
+                                        {
+                                           
+                                            echo("Error al enviar el correo");
+                                        }
+                                        
+
+                          });      
+                          
+                      
+                          //return redirect()->back();                  
+                      }
+
+
 
 
 
                         public function turnospresentes(Request $request)
-                        {
-                         
+                        {        
                               $IdAdministrador=Auth::id(); 
                                      $idoperador=DB::table('operador')
                                     ->where('IdAdministrador', '=',$IdAdministrador )
@@ -149,8 +205,7 @@ class TurnosController extends Controller
                                ->join('operador', 'turnoasignado.RutOperador', '=', 'operador.RutOperador')                              
                                ->select('detalletipoturno.AbreviacionTurno' )
                               //  ->where('operador.RutOperador', $variableasignar)
-                                ->get();                              
-
+                                ->get();        
                                 $IdAdministrador=Auth::id(); 
                              $turnoOperadorlunes=DB::table('detalletipoturno')
                              ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
@@ -160,8 +215,7 @@ class TurnosController extends Controller
                           // ->Where('turnoasignado.DiaSemana','=','lunes')
                           // ->Where('turnoasignado.NumeroSemanaAno','=','2019-W24')      
                            ->where(function ($query) {
-                            $IdAdministrador=Auth::id();    
-
+                            $IdAdministrador=Auth::id();   
                             $query->where('operador.IdAdministrador', '=', $IdAdministrador)                       
                                  //   ->where('turnoasignado.DiaSemana', '=', 'lunes')   
                                  ->where('turnoasignado.NumeroSemanaAno','=','2019-W24');                            })
@@ -169,7 +223,6 @@ class TurnosController extends Controller
                            ->orderBy('turnoasignado.NumeroSemanaAno', 'ASC')
                             ->orderByRaw(DB::raw("FIELD(turnoasignado.DiaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo')"))
                             ->get();
-
                             //dd($turnoOperador);
                               // ORDER BY turnoasignado.NumeroSemanaAno ASC,
                               //FIELD(turnoasignado.DiaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo')
@@ -186,7 +239,6 @@ class TurnosController extends Controller
                       public function buscarturnos(Request $request ){
                           
                         $numberWeek=$request->NumeroSemanaAno;
-
                         $turnoOperadorlunes=DB::table('detalletipoturno')
                         ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
                       ->join('operador', 'operador.RutOperador', '=', 'turnoasignado.RutOperador')                              
@@ -194,30 +246,15 @@ class TurnosController extends Controller
                       ->where(function ($query) use ($request)  {
                         $IdAdministrador=Auth::id();    
                          $numberWeek=$request->input('NumeroSemanaAno');
-
                         $query->where('operador.IdAdministrador', '=', $IdAdministrador)  
                         ->where('turnoasignado.NumeroSemanaAno','=',$numberWeek);                          })
                                     
                        ->orderBy('turnoasignado.NumeroSemanaAno', 'ASC')
                         ->orderByRaw(DB::raw("FIELD(turnoasignado.DiaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo')"))
                         ->get();
-
-
-
-
-
-
-
                         
                        return view('administrador/menuadministrador/menuturnos.revisarturnos',
                         compact('turnoOperadorlunes' ));     
-                        
-                        
-
-
-
-
-
                       }
 
 
