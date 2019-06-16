@@ -164,10 +164,11 @@ class TurnosController extends Controller
                         //  $correo=$data->correooperador;
                        //  $correo=var_dump($data["correooperador"]);
                        //  $operadorName=var_dump($data["nombretrabajador"]);
-                         $correo='pedro@yopmail.com' ;
-                         $operadorName=var_dump($data["nombretrabajador"]);
+                         $correo=$data["correooperador"];
+                         $operadorName=$data["nombretrabajador"];
+                         $semana=$data["semana"];
 
-                         // dd($operadorName);
+                        //dd($correo);
 
 
                          // Mail::to($CorreoOp);
@@ -177,19 +178,23 @@ class TurnosController extends Controller
 
 
 
-                          Mail::send('testmail', $data,function ($message)use ($correo,$operadorName) {                                      
+                          Mail::send('testmail', $data,function ($message)use ($correo,$operadorName,$semana) {                                      
                             
                             //$correo=var_dump($data["correooperador"]);
 
                          
                             //dd($correo);
                            // $correo=array_get($correo,'Correo');
-                           $message->from('adturnmail@gmail.com', 'Gestor de turnos Adturn.'.$operadorName.$correo);                      
-                         $message->to($correo);  
-                         $message->subject('Turnos de la Semana'.$operadorName.$correo); 
+                        
 
                               
                                                               try     {
+
+                                                                $message->from('adturnmail@gmail.com', 'Gestor de turnos Adturn.');                      
+                                                                $message->to($correo);  
+                                                                $message->subject('Turnos de la Semana '.$semana); 
+
+
                                                                                       /* Envio del Email */   
                                                                                   }
                                                                                   catch (\Exception $e)

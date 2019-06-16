@@ -415,7 +415,7 @@
 <div style="color:#ffffff;font-family:'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif;line-height:120%;padding-top:0px;padding-right:0px;padding-bottom:5px;padding-left:0px;">
 <div style="font-size: 12px; line-height: 14px; font-family: 'Montserrat', 'Trebuchet MS', 'Lucida Grande', 'Lucida Sans Unicode', 'Lucida Sans', Tahoma, sans-serif; color: #ffffff;">
 <p style="font-size: 14px; line-height: 57px; text-align: center; margin: 0;"><span style="font-size: 48px;"><strong><span style="line-height: 57px; font-size: 48px;">Turno publicado</span></strong></span></p>
-<p style="font-size: 14px; line-height: 57px; text-align: center; margin: 0;"><span style="font-size: 48px;"><strong><span style="line-height: 57px; font-size: 48px;">Semana  {{$semana}} , {{$nombreadmin}} , {{$nombretrabajador}}  . <br/></span></strong></span></p>
+<p style="font-size: 14px; line-height: 57px; text-align: center; margin: 0;"><span style="font-size: 48px;"><strong><span style="line-height: 57px; font-size: 48px;">Semana  {{$semana}}. <br/></span></strong></span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
@@ -423,10 +423,10 @@
 <div style="color:#FFFFFF;font-family:'Lato', Tahoma, Verdana, Segoe, sans-serif;line-height:200%;padding-top:10px;padding-right:25px;padding-bottom:20px;padding-left:25px;">
 <div style="line-height: 24px; font-family: 'Lato', Tahoma, Verdana, Segoe, sans-serif; font-size: 12px; color: #FFFFFF;">
 <p style="line-height: 36px; text-align: center; font-size: 12px; margin: 0;"><span style="font-size: 18px;"> </span></p>
-<p style="font-size: 12px; line-height: 36px; text-align: left; margin: 0;"><span style="font-size: 18px;">Estimado operador XXX, se a realizado la publicación del turno correspondiente a la semana XX, favor revisarlo en el sitio web.</span></p>
+<p style="font-size: 12px; line-height: 36px; text-align: left; margin: 0;"><span style="font-size: 18px;">Estimado operador Sr(a). {{$nombretrabajador}}, se a realizado la publicación del turno correspondiente a la semana {{$semana}}, favor revisarlo en el sitio web.</span></p>
 <p style="font-size: 12px; line-height: 36px; text-align: left; margin: 0;"><span style="font-size: 18px;"> </span></p>
 <p style="font-size: 12px; line-height: 36px; text-align: left; margin: 0;"><span style="font-size: 18px;"> </span></p>
-<p style="font-size: 12px; line-height: 36px; text-align: left; margin: 0;"><span style="font-size: 18px;">Atentamente su supervisor Sr(a).XXXX.</span></p>
+<p style="font-size: 12px; line-height: 36px; text-align: left; margin: 0;"><span style="font-size: 18px;">Atentamente su supervisor Sr(a). {{$nombreadmin}}.</span></p>
 </div>
 </div>
 <!--[if mso]></td></tr></table><![endif]-->
