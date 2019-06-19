@@ -16,7 +16,7 @@ class DetalleTurnoAsignado extends Model
 
     protected $fillable = [
         'IdDetalleTipoTurno', 'RutOperador',
-         'NumeroSemanaAno ', 'DiaSemana'
+         'NumeroSemanaAno ', 'DiaSemana', 'created_at', 'updated_at','deleted_at'
         
 
     ];

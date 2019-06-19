@@ -10,6 +10,7 @@ use App\DetalleTurnoAsignado;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Mail;
+ 
 
 
 class TurnosController extends Controller
@@ -178,15 +179,11 @@ class TurnosController extends Controller
 
 
 
-                          Mail::send('testmail', $data,function ($message)use ($correo,$operadorName,$semana) {                                      
+                          Mail::send('partials.tnotificacion', $data,function ($message)use ($correo,$operadorName,$semana) {                                      
                             
-                            //$correo=var_dump($data["correooperador"]);
-
-                         
+                            //$correo=var_dump($data["correooperador"]);                         
                             //dd($correo);
-                           // $correo=array_get($correo,'Correo');
-                        
-
+                           // $correo=array_get($correo,'Correo');        
                               
                                                               try     {
 
@@ -259,7 +256,7 @@ class TurnosController extends Controller
                         $turnoOperadorlunes=DB::table('detalletipoturno')
                         ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
                       ->join('operador', 'operador.RutOperador', '=', 'turnoasignado.RutOperador')                              
-                      ->select('operador.NombreOperador','detalletipoturno.AbreviacionTurno','turnoasignado.NumeroSemanaAno','turnoasignado.DiaSemana')
+                      ->select('operador.NombreOperador','operador.RutOperador','detalletipoturno.AbreviacionTurno','turnoasignado.NumeroSemanaAno','turnoasignado.DiaSemana')
                       ->where(function ($query) use ($request)  {
                         $IdAdministrador=Auth::id();    
                          $numberWeek=$request->input('NumeroSemanaAno');
@@ -278,13 +275,201 @@ class TurnosController extends Controller
 
 
 
+                      public function editarTurnos(Request $request){
+
+                       // dd(                        $request->all()                          );
+                          $numeroSemana=$request->NumeroSemanaAno[0];                          
+                          //dd($numeroSemana);
+                        $data2=array(                                       
+                          'NombreOperador'=>$request->NombreOperador ,
+                          'AbreviacionTurno'=>$request->AbreviacionTurno ,
+                          'NumeroSemanaAno'=>$request->NumeroSemanaAno  ,
+                           'DiaSemana'=>$request->DiaSemana ,                                   
+                                                      
+                      );
+                      $numberWeek=$request->NumeroSemanaAno[0];
+                      //dd($numberWeek);
+                        $turnoOperadorlunes=DB::table('detalletipoturno')
+                        ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
+                      ->join('operador', 'operador.RutOperador', '=', 'turnoasignado.RutOperador')                              
+                      ->select('operador.NombreOperador','operador.RutOperador','operador.Correo','detalletipoturno.AbreviacionTurno','detalletipoturno.IdDetalleTipoTurno','turnoasignado.NumeroSemanaAno','turnoasignado.DiaSemana')
+                      ->where(function ($query) use ($request)  {
+                        $IdAdministrador=Auth::id();    
+                         $numberWeek=$request->input('NumeroSemanaAno');
+                        $query->where('operador.IdAdministrador', '=', $IdAdministrador)  
+                        ->where('turnoasignado.NumeroSemanaAno','=',$numberWeek);                })
+                                    
+                       ->orderBy('turnoasignado.NumeroSemanaAno', 'ASC')
+                        ->orderByRaw(DB::raw("FIELD(turnoasignado.DiaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo')"))
+                        ->get();
+                     
+                         
+
+                        $operador=Auth::id();
+                        $operadorexterno=Auth::id();
+                        $detalleoperador = Operador::where('IdAdministrador', $operador)-> paginate(100);
+                        $detalletiposdeturnos = TipoDeTurno::where('IdAdministrador', $operador)-> paginate(100);  
+                       
+                        return view('administrador/menuadministrador/menuturnos.editarturno', compact('turnoOperadorlunes','detalletiposdeturnos'));
+
+                      }
+
+
+
+                      public function actualizarTurnos(Request $request){
+                                   
+                          $DiaSemana=$request->DiaSemana;
+                          $NumeroSemanaAno=$request->NumeroSemanaAno;               
+                          
+
+                            if(count($request->NombreTrabajadori) > 0)
+                            {
+                            foreach($request->NombreTrabajadori as $trabajador=>$t){   
+                              $Admin=Auth::user()->name;
+                              $RutOperador=$request->RutOperador[$trabajador];  
+                              $NumeroSemanaAno=$request->NumeroSemanaAno[$trabajador];
+                              $DiaSemana=$request->DiaSemana[$trabajador];
+                              $AbreviacionTurno=$request->tipodeTurnoCambiar[$trabajador];
+                              $NombreTrabajador=$request->NombreTrabajadori[$trabajador];
+/*
+                              foreach ($request->AbreviacionTurno as $AT) {
+                                $Admin=Auth::user()->RutAdministrador;
+                                $AbreviacionTurno=$request->AbreviacionTurno;
+                                $IdDeTurnoTrabajoa=DB::table('detalletipoturno')
+                                ->where('IdAdministrador', $Admin)
+                                ->where('AbreviacionTurno', $AbreviacionTurno)                             
+                               ->select('IdDetalleTipoTurno')
+                                ->get();
+                               
+                              }*/        
+                         //  dd( $IdDeTurnoTrabajo );
+                                $data2=array(    
+                                    'IdDetalleTipoTurno'=>$request->tipodeTurnoCambiar[$trabajador],
+                                  //  'RutOperador'=>$request->RutOperador[$trabajador],
+                                  //  'NumeroSemanaAno'=>$request->NumeroSemanaAno[$trabajador],                                   
+                               //      'DiaSemana'=>$request->DiaSemana[$trabajador],
+                                     //'AbreviacionTurno'=>$request->AbreviacionTurno,                                    
+                                     //'AbreviacionTurnoAAsignar'=>$request->tipodeTurnoCambiar, 
+                                );    
+                              //  $NumeroSemanaAno=$request->NumeroSemanaAno;
+                               // $IdDetalleTipoTurnoActual=$request->IdDetalleTipoTurnoActual;
+                                // dd( $IdDetalleTipoTurnoActual );
+                               // $numberWeek=$request->NumeroSemanaAno[0];
+                               //dd( $data2 );
+                               $IdDetalleTipoTurnoActual=$request->IdDetalleTipoTurnoActual[$trabajador];
+
+
+                               DetalleTurnoAsignado::where('IdDetalleTipoTurno', $IdDetalleTipoTurnoActual)
+                               -> where('RutOperador', $RutOperador) 
+                               ->where('NumeroSemanaAno', $NumeroSemanaAno) 
+                               ->where('DiaSemana', $DiaSemana) 
+                               ->update($data2); 
+
+                               $CorreoOp=$request->CorreoOp[$trabajador];  
+
+
+                             //  $this->notificarOperadorTurnosActualizacion($Admin,$NumeroSemanaAno,$NombreTrabajador,$CorreoOp); 
+                               
+
+                              //return redirect()->back()->with('success', 'Turnos Actualizados Correctamente.');
+                                
+                               //$actuaTurno=DB::table('turnoasignado')
+                             //  ->where('IdAdministrador', $Admin)
+                            //   ->where('AbreviacionTurno', $AbreviacionTurno)                           
+                              
+                           //    ->get();
+
+
+
+                              //  DetalleTurnoAsignado::update($data2);             
+                               // $this->notificarOperadorTurnos($Admin,$NumernoSemanaAno,$NombreTrabajador,$CorreoOp);                              
+                        }    
+                        
+                        $this->notificarOperadorTurnosActualizacion($Admin,$NumeroSemanaAno,$NombreTrabajador,$CorreoOp);
+                        $numberWeek=$request->NumeroSemanaAno;
+                        $turnoOperadorlunes=DB::table('detalletipoturno')
+                        ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
+                      ->join('operador', 'operador.RutOperador', '=', 'turnoasignado.RutOperador')                              
+                      ->select('operador.NombreOperador','operador.RutOperador','detalletipoturno.AbreviacionTurno','turnoasignado.NumeroSemanaAno','turnoasignado.DiaSemana')
+                      ->where(function ($query) use ($request)  {
+                        $IdAdministrador=Auth::id();    
+                         $numberWeek=$request->input('NumeroSemanaAno');
+                        $query->where('operador.IdAdministrador', '=', $IdAdministrador)  
+                        ->where('turnoasignado.NumeroSemanaAno','=',$numberWeek);                          })
+                                    
+                       ->orderBy('turnoasignado.NumeroSemanaAno', 'ASC')
+                        ->orderByRaw(DB::raw("FIELD(turnoasignado.DiaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo')"))
+                        ->get();
+                        
+                       return view('administrador/menuadministrador/menuturnos.revisarturnos',
+                        compact('turnoOperadorlunes' ))->with('success', 'Turnos Actualizados Correctamente.'); 
+                                       
+                            }    
+
+
+                           
+
+
+                          
+                          //  return view('administrador/menuadministrador/menuturnos/revisarturnos')->with('success', 'Turnos Actualizados.');
 
 
 
 
+                           
 
 
 
+
+                        //    return redirect()->back()->with('success', 'Turnos Actualizados.');
+                       
+                   // dd( $data2 );
+
+
+                   //  return view('administrador/indexadministrador')->with('success', 'Turnos Actualizados.'); 
+
+                  // return view('administrador/menuadministrador/menuturnos.revisarturnos')->with('success', 'Turnos Actualizados.'); 
+
+
+                      
+
+}
+
+
+
+
+                            function notificarOperadorTurnosActualizacion($Admin,$NumernoSemanaAno,$NombreTrabajador,$CorreoOp){    
+                              $data = array(
+                                // 'name' => "Turno Semana ",
+                                'nombreadmin' => "$Admin",
+                                'semana' => "$NumernoSemanaAno",
+                                'nombretrabajador' => "$NombreTrabajador",  
+                                  'correooperador' => "$CorreoOp",                           
+                                            
+                              );                              
+                            $correo=$data["correooperador"];
+                            $operadorName=$data["nombretrabajador"];
+                            $semana=$data["semana"];
+ 
+                              Mail::send('partials.tnotificacionupdate', $data,function ($message)use ($correo,$operadorName,$semana) {                                      
+                                
+                      
+                                                                  try     {
+
+                                                                    $message->from('adturnmail@gmail.com', 'Gestor de turnos Adturn.');                      
+                                                                    $message->to($correo);  
+                                                                    $message->subject('Actualización de turnos de la semana  '.$semana); 
+
+
+                                                                                          /* Envio del Email */   
+                                                                                      }
+                                                                                      catch (\Exception $e)
+                                                                                      {
+                                                                                          echo("Error al enviar el correo");
+                                                                                      }    
+                              });                
+                                     
+                            }
 
 
 }

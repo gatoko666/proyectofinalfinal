@@ -34,7 +34,9 @@
                       <div class="alert alert-success">
                           <p>{{ $message }}</p>
                       </div>
-                  @endif
+                  @endif 
+
+                 
                     <div class="container">
                             Fecha     
                             <form action="{{ route('buscarturnos') }}" method="POST">
@@ -64,15 +66,29 @@
                                 </th>                               
                             </tr>
                         </thead>
+                        
                         <tbody>                      
                             <tr>
-                                    @foreach ($turnoOperadorlunes as $item)                                   
-                                <th class="text-nowrap" scope="row">{{$item->NombreOperador}}</th>  
+                                     
+                                    
+                                            <form action="{{ route('editarTurno')}}" method="POST">
+                                                    @csrf
+
+                                            <button type="submit"class="btn btn-primary">Editar turnos</button> <br>
+
+                                    @foreach ($turnoOperadorlunes as $item)   
+
+                                    
+                                <th class="text-nowrap"    value="{{$item->NombreOperador}}"  scope="row">{{$item->NombreOperador}}</th>  
+                                <input type="hidden"  name="NombreOperador[]" class="form-control" value="{{$item->NombreOperador}}"  >
                                 <td   class="text-nowrap" scope="row">{{$item->AbreviacionTurno}}</td>  
+                                <input type="hidden"  name="AbreviacionTurno[]" class="form-control" value="{{$item->AbreviacionTurno}}"  >
                                 <td  onload="firstDayOfWeek()"  class="text-nowrap" id="numerosemana" scope="row">{{$item->NumeroSemanaAno}} 
+                                        <input type="hidden"  name="NumeroSemanaAno[]" class="form-control" value="{{$item->NumeroSemanaAno}}"  >
                                 <p onload="test()"  id="d"></p>                                    
                                 </td> 
-                                <td   class="text-nowrap" scope="row">{{$item->DiaSemana }}</td>                                 
+                                <td   class="text-nowrap" scope="row">{{$item->DiaSemana }}</td>  
+                                <input type="hidden"  name="DiaSemana[]" class="form-control" value="{{$item->DiaSemana}}"  >                               
                             </tr>          
                             @endforeach    
                         </tbody>
@@ -81,6 +97,7 @@
                    
    
                 </div>
+            </form>
 
          </section>      
 

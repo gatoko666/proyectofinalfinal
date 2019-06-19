@@ -76,6 +76,12 @@ Route::get('perfiloperador', 'PerfilController@indexOperadorPerfil')->name('perf
 //Route::get('updateperfil', 'PerfilController@update')->middleware('auth');
 Route::post('updateperfil/{id}','PerfilController@update')->name('updateperfil')->middleware('auth');
 
+Route::post('/changePassword','PerfilController@changePassword')->name('changePassword');
+
+Route::post('/changePasswordOp','PerfilController@changePasswordOp')->name('changePasswordOp')->middleware('auth:operador');
+
+
+
 //Route::get('notificacionadmin', 'MailTurnosNotificacionController@notificarAdministrador')->name('notificacionadmin')->middleware('auth');
 
 //Route::get('notificacionoperador', 'MailTurnosNotificacionController@notificarOperadorTurnos')->name('notificacionoperador')->middleware('auth:operador');
@@ -104,4 +110,6 @@ Route::get('notificacionadmin', 'MailTurnosNotificacionController@notificarAdmin
 Route::get('notificacionoperador', 'MailTurnosNotificacionController@notificarOperadorTurnos')->name('notificacionoperador');
 
 
- 
+Route::post('/editarTurno','TurnosController@editarTurnos')->name('editarTurno');
+
+Route::post('/actualizarTurno','TurnosController@actualizarTurnos')->name('actualizarturno');

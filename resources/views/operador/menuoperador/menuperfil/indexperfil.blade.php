@@ -21,6 +21,28 @@
                 <div class="outer-w3-agile mt-3">
                     <h4 class="tittle-w3-agileits mb-4">Información del perfil </h4>
                           <br>
+                          @if ($errors->any())
+                    <div class="alert alert-danger">
+                        <ul>
+                            @foreach ($errors->all() as $error)
+                            <li>{{ $error }}</li>
+                            @endforeach
+                        </ul>
+                    </div><br />
+                    @endif
+                      <br>
+                     
+                          
+                          @if (session('error'))
+                          <div class="alert alert-danger">
+                              {{ session('error') }}
+                          </div>
+                      @endif
+                          @if (session('success'))
+                              <div class="alert alert-success">
+                                  {{ session('success') }}
+                              </div>
+                          @endif
                     <table class="table table-bordered table-striped">                               
                         <thead>
                             <tr>
@@ -36,15 +58,15 @@
                             <tr>
                                 
                                 <td>
-                                        <form action="  " method="post">
-                                             
-                                            @csrf
-                                          
+                                        <form class="form-horizontal" method="POST" action="{{ route('changePasswordOp') }}">
+                                                {{ csrf_field() }}   
+                                                 
                                                 <div class="form-group row">
                                                   <label for="inputdescripcion" class="col-sm-2  col-form-label">Nombre </label>
                                                   <div class="col-sm-5">
+                                                    
                                                     <input type="text" class="form-control" id="inputdescripcion"  disabled placeholder="{{ Auth::user()->NombreOperador
-                                                          }}">
+                                                    }}">
                                                   </div>
                                                 </div>
 
@@ -52,20 +74,75 @@
                                                       <div class="form-group row">
                                                             <label for="inputdescripcion" class="col-sm-2 col-form-label">Correo</label>
                                                             <div class="col-sm-5">
-                                                              <input type="text" class="form-control" id="inputdescripcion" disabled placeholder="{{ Auth::user()->Correo }}">
+                                                                    <input type="text" class="form-control" id="inputdescripcion" disabled placeholder="{{ Auth::user()->Correo }}">
                                                             </div>
                                                           </div>
+
+
+                                                          <div class="form-group row">
+                                                            <label for="inputdescripcion" class="col-sm-2 col-form-label">Contraseña Actual</label>
+                                                            <div class="col-sm-5">
+                                                                    
+                                                              <input type="password" class="form-control" id="current-password"   name="current-password" required placeholder="Contraseña Actual">
+                                                            </div>
+                                                          </div>
+
+
+                                                          <div class="form-group row">
+                                                            <label for="inputdescripcion" class="col-sm-2 col-form-label">Nueva Contraseña</label>
+                                                            <div class="col-sm-5">
+                                                                    <input id="new-password" type="password" class="form-control" name="new-password" placeholder="Nueva Contraseña"  required> 
+                                                               
+                                                            </div>
+                                                          </div>
+
+                                                          <div class="form-group row">
+                                                            <label for="inputdescripcion" class="col-sm-2 col-form-label">Confirmar Nueva Contraseña</label>
+                                                            <div class="col-sm-5">
+                                                                    <input id="new-password-confirm" type="password" class="form-control"  placeholder="Nueva Contraseña" name="new-password_confirmation" required>
+                                                        
+                                                            </div>
+                                                          </div>
+
+
+
+
+                                                           
+
+
+                                                            
+                                                            
+                                               
+
+
+                                                            
+                                                              
+                                                            <div class="form-group">
+                                                                <div class="col-md-6 col-md-offset-4">
+                                                                    <button type="submit" class="btn btn-primary">
+                                                                        Change Password
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                
+
+
+
+
                                                           
                                      
                                 </td>
                             </tr>
                         </tbody>
                     </table>
-                    
+                   
                 </div>
-            </form>
+             
 
-         </section>      
+
+         
+         </section>  
 
 
        
