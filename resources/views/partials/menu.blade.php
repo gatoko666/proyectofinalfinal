@@ -32,40 +32,13 @@
                             </div>
                             <div class="notif-content-wthree">
                                 <p class="paragraph-agileits-w3layouts py-2">
-                                    <span class="text-diff">John Doe</span> Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
+                                    <span class="text-diff">John Doe</span> Curaon null lis quis ac lectus.</p>
                                 <h6>4 mins ago</h6>
                             </div>
                         </a>
-                        <a href="#" class="dropdown-item mt-3">
-                            <div class="notif-img-agileinfo">
-                                <img src="images/clone.jpg" class="img-fluid" alt="Responsive image">
-                            </div>
-                            <div class="notif-content-wthree">
-                                <p class="paragraph-agileits-w3layouts py-2">
-                                    <span class="text-diff">Diana</span> Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
-                                <h6>6 mins ago</h6>
-                            </div>
-                        </a>
-                        <a href="#" class="dropdown-item mt-3">
-                            <div class="notif-img-agileinfo">
-                                <img src="images/clone.jpg" class="img-fluid" alt="Responsive image">
-                            </div>
-                            <div class="notif-content-wthree">
-                                <p class="paragraph-agileits-w3layouts py-2">
-                                    <span class="text-diff">Steffie</span> Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
-                                <h6>12 mins ago</h6>
-                            </div>
-                        </a>
-                        <a href="#" class="dropdown-item mt-3">
-                            <div class="notif-img-agileinfo">
-                                <img src="images/clone.jpg" class="img-fluid" alt="Responsive image">
-                            </div>
-                            <div class="notif-content-wthree">
-                                <p class="paragraph-agileits-w3layouts py-2">
-                                    <span class="text-diff">Jack</span> Curabitur non nulla sit amet nisl tempus convallis quis ac lectus.</p>
-                                <h6>1 days ago</h6>
-                            </div>
-                        </a>
+                        
+                       
+                       
                         <div class="dropdown-divider"></div>
                         <a class="dropdown-item" href="#">view all notifications</a>
                     </div>

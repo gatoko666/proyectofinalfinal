@@ -62,5 +62,11 @@ class Operador extends Authenticatable
                     return $this->hasMany(DetalleTurnoAsignado::class);
                 }
 
+
+                public function solicitudes()
+                {
+                    return $this->hasMany(Solicitud::class);
+                }
+
    
 }

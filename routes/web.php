@@ -113,3 +113,18 @@ Route::get('notificacionoperador', 'MailTurnosNotificacionController@notificarOp
 Route::post('/editarTurno','TurnosController@editarTurnos')->name('editarTurno');
 
 Route::post('/actualizarTurno','TurnosController@actualizarTurnos')->name('actualizarturno');
+
+
+ 
+
+
+Route::get('solicitud', 'SolicitudController@index')->name('solicitud')->middleware('auth:operador');
+Route::post('/realizarSolicitud', 'SolicitudController@realizarSolicitud')->name('realizarsolicitud')->middleware('auth:operador');
+
+Route::get('revisarsolicitud', 'SolicitudController@revisarSolicitud')->name('revisarsolicitud')->middleware('auth:operador');
+
+Route::get('revisarsolicitudadmin', 'SolicitudControllerAdmin@revisarSolicitudAdmin')->name('revisarsolicitudadmin')->middleware('auth');
+
+Route::post('aprobarsolicitud', 'SolicitudControllerAdmin@aprobarSolicitud')->name('aprobarsolicitud')->middleware('auth');
+
+Route::post('rechazarsolicitud', 'SolicitudControllerAdmin@rechazarSolicitud')->name('rechazarsolicitud')->middleware('auth');

@@ -40,6 +40,10 @@
                         <a href="revisarturnos">Revisar Turnos</a>
                     </li>
                     <li>
+                            <a href="revisarsolicitudadmin">Revisar Solicitudes</a>
+                        </li>
+
+                    <li>
                         <a href="tiposdeturnos">Tipos de turno</a>
                     </li>
                      

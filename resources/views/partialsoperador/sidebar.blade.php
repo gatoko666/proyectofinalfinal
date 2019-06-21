@@ -28,11 +28,15 @@
                     </li>
                     
                     <li>
-                        <a href="solicitarvacaciones">Solicitar Vacaciones</a>
+                        <a href="solicitud">Realizar Solicitud</a>
                     </li>
                     <li>
-                        <a href="solicitardialibre">Solicitar dia libre</a>
-                    </li>
+                            <a href="revisarsolicitud">Revisar Estado Solicitud</a>
+                        </li>
+                    
+                        
+                       
+                            
                      
                 </ul>
             </li>       
