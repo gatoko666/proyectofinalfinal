@@ -92,13 +92,23 @@
                                                         @foreach($detalletiposdeturnos as $dtt)    
                                                         
                                                         <option value="{{$dtt->IdDetalleTipoTurno}} " selected >  
-                                                                {{$dtt->AbreviacionTurno}}      
-                                                            
+                                                             
+                                                            @if (($dtt->AbreviacionTurno)==$op->AbreviacionTurno)                                                            
+                                                            {{$dtt->AbreviacionTurno}}                                                             
+                                                            @else                                                            
+                                                            {{$op->AbreviacionTurno}}                                                                     
+                                                            @endif                                                          
+                                                           
                                                           
                                                         </option>  
                                                         
                                                         
-                                                        @endforeach                                                        
+                                                        @endforeach        
+                                                        
+                                                        
+
+
+
                                                         </select> 
                                                 </p>                                                        
                                            </td>      
