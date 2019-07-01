@@ -89,18 +89,24 @@
 
                                                             
 
-                                                        @foreach($detalletiposdeturnos as $dtt)    
-                                                        
-                                                        <option value="{{$dtt->IdDetalleTipoTurno}} " selected >  
+                                                        @foreach($detalletiposdeturnos as $dtt)   
+
+                                                      
                                                              
-                                                            @if (($dtt->AbreviacionTurno)==$op->AbreviacionTurno)                                                            
-                                                            {{$dtt->AbreviacionTurno}}                                                             
-                                                            @else                                                            
-                                                            {{$op->AbreviacionTurno}}                                                                     
+                                                            @if ($op->IdDetalleTipoTurno==$dtt->IdDetalleTipoTurno)                                                            
+                                                            <option value="{{$op->IdDetalleTipoTurno}}"  selected>                                                           
+                                                                    {{$op->AbreviacionTurno}}
+                                                                    
+                                                        </option> 
+                                                                                         
+                                                        
+                                                            @else   
+                                                            <option value="{{$dtt->IdDetalleTipoTurno}}">{{$dtt->AbreviacionTurno}}  </option>  
+                                                                                                                                      
                                                             @endif                                                          
                                                            
                                                           
-                                                        </option>  
+                                                        
                                                         
                                                         
                                                         @endforeach        
