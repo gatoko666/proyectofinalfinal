@@ -35,23 +35,12 @@
                           <p>{{ $message }}</p>
                       </div>
                   @endif
-                    <div class="container">
-                            Fecha     
-                            <form action="{{ route('buscarturnosoperador') }}" method="POST">
-                                    @csrf         
-
-                                    <input name="NumeroSemanaAno"  value="NumeroSemanaAno" type="week"> 
-                                    <button type="submit" class="btn btn-primary ">Buscar</button>
-                            </form>
-                         
-                         
-                            </div>   
-                            
+                
                            
 
 
                             <br>
-                            <h4 class="tittle-w3-agileits mb-4">Solicitudes </h4>
+                             
                     <table class="table table-bordered table-striped">
                         <thead>
                             <tr>
@@ -81,7 +70,21 @@
                             <tr>
                                     @foreach ($listadoSolicitud as $item)                                   
                                 <th class="text-nowrap" scope="row">{{$item->IdSolicitud}}</th>  
-                                <td   class="text-nowrap" scope="row">{{$item->TipoSolicitud}}</td> 
+                                <td   class="text-nowrap" scope="row">
+
+                                @if (($item->TipoSolicitud) ==='DiaLibre')
+                                Solicitud Día libre
+                                   @elseif  (($item->TipoSolicitud) ==='Vacacion')
+                                        Solicitud Vacaciones
+                                   @elseif  (($item->TipoSolicitud) ==='DiaAdministrativo')
+                                   Solicitud Día Administrativo
+                                   @elseif  (($item->TipoSolicitud) ==='InformarLicencia')
+                                   Solicitud Informar Licencia
+                                   @elseif  (($item->TipoSolicitud) ==='InformarAusencia')
+                                   Solicitud Ausencia
+                                
+                                @endif
+                            </td> 
                                 <td   class="text-nowrap" scope="row">{{$item->EstadoSolicitud}}</td>  
                                 <td    class="text-nowrap" id="numerosemana" scope="row">{{$item->DesdeSolicitud}} 
                                                             

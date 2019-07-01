@@ -36,7 +36,12 @@
                       <div class="alert alert-success">
                           <p>{{ $message }}</p>
                       </div>
-                  @endif     
+                  @endif   <br>
+                  @if (session('error'))
+                  <div class="alert alert-danger">
+                      {{ session('error') }}
+                  </div>
+              @endif  
                     <div class="container">
                            
                             <form action="{{ route('generarturnos.store') }}" method="POST">
@@ -45,213 +50,129 @@
     
                             </div>
                             <div class="container">
-                                    <div class="row">
-                                  
-                                     
+                                    <div class="row">    
                                       <div class="col-sm-md-lg-xl">
                                         Selección semana para asignar turnos
-                                      </div>
-                                      
+                                      </div>                                      
                                       <div class="col-sm-md-lg-xl">
                                             <p align="justify"> <input name="NumeroSemanaAno"  value="NumeroSemanaAno" type="week"> </p>
                                       </div>
-                                    
-                                          
-                                       
                                     </div>
-                                  </div>
-
-                      
+                                  </div>                      
                             <br>
-                    <table class="table table-bordered table-striped">
-                        <thead>
-                            <tr>
-                                <th>Trabajadores</th>
-                                <input   name="RutOperador[]"  value="RutOperador"  type="hidden"  >
-                                <th name="RutOperador[]" value="RutOperador" class="text-center">
-                                    Rut Operador
-                                    
-                                    <br>
-                                    
-                                </th><input   name="DiaSemanal"  value="lunes"  type="hidden"  >
-                                <th name="DiaDeLaSemanaAsignado[]" value="lunes" class="text-center">
-                                    Lunes
-                                    
-                                    <br>
-                                    
-                                </th><input   name="DiaSemanam"  value="martes"  type="hidden"  >
-                                <th name="DiaDeLaSemanaAsignado[]" value="martes" class="text-center">
-                                    Martes
-                                
-                                    <br>
-                                    
-                                </th><input   name="DiaSemanamm"  value="miercoles"  type="hidden"  >
-                                <th name="DiaDeLaSemanaAsignado[]" value="miercoles" class="text-center">
-                                    Miercoles
-                                    
-                                    <br>
-                                   
-                                </th>
-                                <input   name="DiaSemanaj"  value="jueves"  type="hidden"  >
-                                <th name="DiaDeLaSemanaAsignado[]" value="jueves" class="text-center">
-                                    Jueves
-                                    
-                                    <br>
+                            <div class="table-responsive">
+                                <table class="table table-bordered table-striped table-hover">
+                                    <thead>
+                                      <tr>                                       
+                                        <th scope="col">Trabajadores</th>
+                                        <th scope="col"> Rut Operador</th>
+                                        <input   name="DiaSemanal"  value="Lunes"  type="hidden"  >
+                                        <th scope="col">Lunes</th>
+                                        <input   name="DiaSemanam"  value="Martes"  type="hidden"  >
+                                        <th scope="col">Martes</th>
+                                        <input   name="DiaSemanamm"  value="Miercoles"  type="hidden"  >
+                                        <th scope="col">Miercoles</th>
+                                        <input   name="DiaSemanaj"  value="Jueves"  type="hidden"  >
+                                        <th scope="col">Jueves</th>
+                                        <input   name="DiaSemanav"  value="Viernes"  type="hidden"  >
+                                        <th scope="col">Viernes</th>
+                                        <input   name="DiaSemanas"  value="Sabado"  type="hidden"  >
+                                        <th scope="col">Sábado</th>
+                                        <input   name="DiaSemanad"  value="Domingo"  type="hidden"  >
+                                        <th scope="col">Domingo</th>
+                          
+
+
+                                      </tr>
+                                    </thead>
+                                    <tbody>
+                                     @foreach($detalleoperador as $op) 
+                                      <tr>
+                                            <input   name="NombreTrabajadori[]"  value="{{$op->NombreOperador}}"  type="hidden"  >
+                                        <th scope="row" name="NombreTrabajador" >
+                                                {{$op->NombreOperador}}
+
+                                        </th>
+                                        <input   name="RutTrabajadori[]"  value="{{$op->RutOperador}}"  type="hidden"  > 
+                                        <td name="RutTrabajador[]"  value="{{$op->RutOperador}}"> 
+                                                {{$op->RutOperador}}
+                                        </td>                                        
+                                        <td>
+                                            <input   name="CorreoTrabajadori[]"  value="{{$op->Correo}}"  type="hidden"  >
+                                                <p align="justify"><select name="nombreturnol[]" >
+                                                        @foreach($detalletiposdeturnos as $dtt)  
+                                                        <option value="{{$dtt->IdDetalleTipoTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
+                                                          @endforeach    
+                                                        </select> 
+                                                </p>                                                        
+                                           </td>
+                                           <td>
+                                                <p align="justify"><select name="nombreturnom[]" >
+                                                        @foreach($detalletiposdeturnos as $dtt)
+                                                        <option value="{{$dtt->IdDetalleTipoTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
+                                                         @endforeach                                                        
+                                                        </select> 
+                                                </p>                                                        
+                                           </td>
+                                           <td>
+                                                <p align="justify"><select name="nombreturnomm[]" >
+                                                        @foreach($detalletiposdeturnos as $dtt)
+                                                        <option value="{{$dtt->IdDetalleTipoTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
+                                                          @endforeach  
+                                                        </select> 
+                                                </p>                                                        
+                                           </td>
+                                           <td>
+                                                <p align="justify"><select name="nombreturnoj[]" >
+                                                        @foreach($detalletiposdeturnos as $dtt)  
+                                                        <option value="{{$dtt->IdDetalleTipoTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
+                                                       @endforeach                                                        
+                                                        </select> 
+                                                </p>                                                        
+                                           </td>
+                                           <td>
+                                                <p align="justify"><select name="nombreturnov[]" >
+                                                        @foreach($detalletiposdeturnos as $dtt)
+                                                        <option value="{{$dtt->IdDetalleTipoTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
+                                                        @endforeach   
+                                                        </select> 
+                                                </p>                                                        
+                                           </td>
+                                           <td>
+                                                <p align="justify"><select name="nombreturnos[]" >
+                                                        @foreach($detalletiposdeturnos as $dtt)   
+                                                        <option value="{{$dtt->IdDetalleTipoTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
+                                                       @endforeach                                                        
+                                                        </select> 
+                                                </p>                                                        
+                                           </td>
+                                           <td>
+                                                <p align="justify"><select name="nombreturnod[]" >
+                                                        @foreach($detalletiposdeturnos as $dtt)
+                                                        <option value="{{$dtt->IdDetalleTipoTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
+                                                        @endforeach  
+                                                        </select> 
+                                                </p>                                                        
+                                           </td>
+                                      </tr>
                                      
-                                </th>
-                                <input   name="DiaSemanav"  value="viernes"  type="hidden"  >
-                                <th name="DiaDeLaSemanaAsignado[]" value="viernes" class="text-center">
-                                    Viernes
-                                    
-                                    <br>
-                                     
-                                </th>
-                                <input   name="DiaSemanas"  value="sabado"  type="hidden"  >
-                                <th name="DiaDeLaSemanaAsignado[]"  value="sabado" class="text-center">
-                                    Sábado
-                                    
-                                    <br>
-                                   
-                                </th>
-                                <input   name="DiaSemanad"  value="domingo"  type="hidden"  >
-                                <th name="DiaDeLaSemanaAsignado[]" value="domingo"  class="text-center">
-                                    
-                                    
-                                    Domingo
-                                    
-                                    <br>
-                                   
-                                </th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                                                          
-                                        @foreach($detalleoperador as $op) 
-                                        <tr>       <input   name="NombreTrabajadori[]"  value="{{$op->NombreOperador}}"  type="hidden"  >  
-                                            <th class="text-nowrap" name="NombreTrabajador"   scope="row">{{$op->NombreOperador}}</th> 
-                                            <input   name="RutTrabajadori[]"  value="{{$op->RutOperador}}"  type="hidden"  >   
-                                            <th class="text-nowrap" name="RutTrabajador[]"  value="{{$op->RutOperador}}"  scope="row">{{$op->RutOperador}}</th>                                                                                      
-                                            <input   name="CorreoTrabajadori[]"  value="{{$op->Correo}}"  type="hidden"  >   
-                                            
-                                                                                                                        
-                                                <td>
-                                                        <p align="justify"><select name="nombreturnol[]" >
-                                                                @foreach($detalletiposdeturnos as $dtt)                                                                                                         
-                                                                      
-                                                                <option value="{{$dtt->IdDetalleTipoTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
-                                                                
-                                                                @endforeach    
-                                                            
-                                                                </select> 
-                                                        </p>                                                        
-                                                   </td>
+                                      @endforeach  
+                                    </tbody>
+                                  </table>
+    
+    
+    
+    
+    
+                              </div>
 
-
-                                                   <td>
-                                                        <p align="justify"><select name="nombreturnom[]" >
-                                                                @foreach($detalletiposdeturnos as $dtt)
-                                                                                                            
-                                                                      
-
-                                                                <option value="{{$dtt->AbreviacionTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
-                                                                
-                                                                @endforeach    
-                                                            
-                                                                </select> 
-                                                        </p>                                                        
-                                                   </td>
-
-
-                                                   <td>
-                                                        <p align="justify"><select name="nombreturnomm[]" >
-                                                                @foreach($detalletiposdeturnos as $dtt)
-                                                                                                            
-                                                                      
-
-                                                                <option value="{{$dtt->AbreviacionTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
-                                                                
-                                                                @endforeach    
-                                                            
-                                                                </select> 
-                                                        </p>                                                        
-                                                   </td>
-
-
-                                                   <td>
-                                                        <p align="justify"><select name="nombreturnoj[]" >
-                                                                @foreach($detalletiposdeturnos as $dtt)
-                                                                                                            
-                                                                      
-
-                                                                <option value="{{$dtt->AbreviacionTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
-                                                                
-                                                                @endforeach    
-                                                            
-                                                                </select> 
-                                                        </p>                                                        
-                                                   </td>
-
-
-                                                   <td>
-                                                        <p align="justify"><select name="nombreturnov[]" >
-                                                                @foreach($detalletiposdeturnos as $dtt)
-                                                                                                            
-                                                                      
-
-                                                                <option value="{{$dtt->AbreviacionTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
-                                                                
-                                                                @endforeach    
-                                                            
-                                                                </select> 
-                                                        </p>                                                        
-                                                   </td>
-
-
-                                                   <td>
-                                                        <p align="justify"><select name="nombreturnos[]" >
-                                                                @foreach($detalletiposdeturnos as $dtt)
-                                                                                                            
-                                                                      
-
-                                                                <option value="{{$dtt->AbreviacionTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
-                                                                
-                                                                @endforeach    
-                                                            
-                                                                </select> 
-                                                        </p>                                                        
-                                                   </td>
-
-
-                                                   <td>
-                                                        <p align="justify"><select name="nombreturnod[]" >
-                                                                @foreach($detalletiposdeturnos as $dtt)
-                                                                                                            
-                                                                      
-
-                                                                <option value="{{$dtt->AbreviacionTurno}}"selected>{{$dtt->AbreviacionTurno}}</option> 
-                                                                
-                                                                @endforeach    
-                                                            
-                                                                </select> 
-                                                        </p>                                                        
-                                                   </td>
-
-
-                                                    
-                                     
-                                        </tr> 
-                                        @endforeach      
-                                        
-                                        
+                            
 
 
 
 
 
-
-                        </tbody>
-                      
-                    </table>
+ 
                     <button type="submit"class="btn btn-primary">Publicar turnos</button>                   
                 </form>
                 </div>

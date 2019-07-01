@@ -91,7 +91,7 @@
                                                           <div class="form-group row">
                                                             <label for="inputdescripcion" class="col-sm-2 col-form-label">Nueva Contraseña</label>
                                                             <div class="col-sm-5">
-                                                                    <input id="new-password" type="password" class="form-control" name="new-password" placeholder="Nueva Contraseña"  required> 
+                                                                    <input id="new-password" type="password" class="form-control" name="new-password" placeholder="Número-Letra-Cáracter Especial-May-Min-Min-6"  required> 
                                                                
                                                             </div>
                                                           </div>
@@ -99,7 +99,7 @@
                                                           <div class="form-group row">
                                                             <label for="inputdescripcion" class="col-sm-2 col-form-label">Confirmar Nueva Contraseña</label>
                                                             <div class="col-sm-5">
-                                                                    <input id="new-password-confirm" type="password" class="form-control"  placeholder="Nueva Contraseña" name="new-password_confirmation" required>
+                                                                    <input id="new-password-confirm" type="password" class="form-control"  placeholder="Número-Letra-Cáracter Especial-May-Min-Min-6" name="new-password_confirmation" required>
                                                         
                                                             </div>
                                                           </div>
@@ -120,7 +120,7 @@
                                                             <div class="form-group">
                                                                 <div class="col-md-6 col-md-offset-4">
                                                                     <button type="submit" class="btn btn-primary">
-                                                                        Change Password
+                                                                        Cambiar Contraseña
                                                                     </button>
                                                                 </div>
                                                             </div>

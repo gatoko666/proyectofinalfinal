@@ -68,5 +68,26 @@ class Operador extends Authenticatable
                     return $this->hasMany(Solicitud::class);
                 }
 
+
+                protected $hidden = [
+                    'Password', 'remember_token',
+                ];
+
+               
+    
+                // Función copiada del archivo:
+                // vendor\laravel\framework\src\Illuminate\Auth\Passwords\CanResetPassword.php     
+                /**
+                * Send the password reset notification.
+                *
+                * @param  string  $token
+                * @return void
+                */
+               public function sendPasswordResetNotification($token)
+               {
+                   $this->notify(new ResetPassword($token));
+               }
+
+
    
 }

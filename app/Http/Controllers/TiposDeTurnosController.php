@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Carbon\Carbon;
 use App\TipoDeTurno;
 use Illuminate\Support\Facades\Auth;
+use Validator;
+use App\Http\Requests\ValidarTipoDeTurno;
+
 
 class TiposDeTurnosController extends Controller
 {
@@ -18,7 +21,7 @@ class TiposDeTurnosController extends Controller
          }
 
 
-         public function store(Request $request)
+         public function store(ValidarTipoDeTurno $request)
          {       
      
              $tipodeturno= new TipoDeTurno;
@@ -40,7 +43,7 @@ class TiposDeTurnosController extends Controller
      
      
      
-         public function update(Request $request,  $IdDetalleTipoTurno)
+         public function update(ValidarTipoDeTurno $request,  $IdDetalleTipoTurno)
          {       
            
              $validatedData = $request->validate([
@@ -52,7 +55,7 @@ class TiposDeTurnosController extends Controller
              ]);
              
              TipoDeTurno::where('IdDetalleTipoTurno', $IdDetalleTipoTurno)->update($validatedData);
-             return redirect('tiposdeturnos')->with('success', 'Tipo de turno  is successfully updated');
+             return redirect('tiposdeturnos')->with('success', 'Tipo de turno  es actualizado correctamente.');
                }
      
      
@@ -65,7 +68,7 @@ class TiposDeTurnosController extends Controller
                     return redirect('tiposdeturnos')->with('success','Tipo de turno eliminado correctamente');      
                     
                 } catch (\Throwable $th) {
-                    return redirect('tiposdeturnos')->with('success','Problema al eliminar el Tipo de turno');   
+                    return redirect('tiposdeturnos')->with('error','Problema al eliminar el Tipo de turno');   
                 }
 
 

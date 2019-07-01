@@ -23,13 +23,13 @@ class DetalleTurnoAsignado extends Model
 
    // public $timestamps = false;
 
-      
+      /*
             
            public function operador()
                 {
                     return $this->belongsTo(Operador::class);
                 }
 
-
+*/
     
 }

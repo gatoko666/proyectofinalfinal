@@ -78,10 +78,6 @@ class SolicitudControllerAdmin extends Controller
                                 $this->notificarEstadoSolicitud($correoOperador,$nombreOperador,$tipoSolicitud,$nombreAdmin,$estadoSolicitud,$idSolicitud);
                                 return view('administrador.menuadministrador.menusolicitudes.revisarsolicitud', compact('listadoSolicitud'))->with('success','Solicitud Aprobada Correctamente ');
 
- 
-                                
-
-
 
                             }
 
@@ -90,7 +86,53 @@ class SolicitudControllerAdmin extends Controller
 
                             public function rechazarSolicitud(Request $request){
 
-                                
+                                $estadoSolicitud='Rechazado';
+                                $RutAdministrador=Auth::id();  
+
+                                $idSolicitud=$request->idSolicitud;
+                                $RutOperador=$request->RutOperador;
+                                $created_at=$request->created_at;
+                                $correoAdministrador=Auth::user()->mail;
+                                $tipoSolicitud=$request->TipoSolicitud;
+                                $nombreAdmin=Auth::user()->name;
+                                $data2=array(    
+                                    'EstadoSolicitud'=>$estadoSolicitud
+                                );
+
+
+
+
+                                Solicitud::where('RutOperador', $RutOperador)
+                                -> where('RutAdministrador', $RutAdministrador) 
+                                ->where('created_at', $created_at) 
+                               // ->where('DiaSemana', $DiaSemana) 
+                                ->update($data2); 
+
+
+                                $admin=Auth::id();                                                    
+                                $listadoSolicitud=DB::table('solicitud') 
+                                ->where('RutAdministrador','=',$admin)
+                                ->orderBy('created_at', 'desc')
+                                ->get();
+                        
+
+                                $nombreOperador=DB::table('operador')                                                                  
+                               // ->join('operador', 'administrador.RutAdministrador','=','operador.IdAdministrador') 
+                                 ->where('RutOperador','=',$RutOperador)
+                                //  ->select('email') 
+                               ->value('NombreOperador');
+
+                               $correoOperador=DB::table('operador')                                                                  
+                               // ->join('operador', 'administrador.RutAdministrador','=','operador.IdAdministrador') 
+                                 ->where('RutOperador','=',$RutOperador)
+                                //  ->select('email') 
+                               ->value('Correo');
+
+                                $this->notificarEstadoSolicitud($correoOperador,$nombreOperador,$tipoSolicitud,$nombreAdmin,$estadoSolicitud,$idSolicitud);
+                                return view('administrador.menuadministrador.menusolicitudes.revisarsolicitud', compact('listadoSolicitud'))->with('success','Solicitud Aprobada Correctamente ');
+
+
+                                /*
 
                                 $estadoSolicitud='Rechazado';
                                 $RutAdministrador=Auth::id();  
@@ -137,7 +179,7 @@ class SolicitudControllerAdmin extends Controller
                                 return view('administrador.menuadministrador.menusolicitudes.revisarsolicitud', compact('listadoSolicitud'))->with('success','Solicitud Aprobada Correctamente ');
 
  
-                                
+                                */
 
 
 

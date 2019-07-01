@@ -71,7 +71,7 @@
                                                       <div class="form-group row">
                                                             <label for="inputdescripcion" class="col-sm-2 col-form-label">Correo</label>
                                                             <div class="col-sm-5">
-                                                               <input type="text" class="form-control" id="inputdescripcion" disabled placeholder="{{ Auth::user()->Correo}}">
+                                                               <input type="text" class="form-control" id="inputdescripcion" disabled placeholder="{{ Auth::user()->email}}">
                                                             </div>
                                                           </div>
 
@@ -117,7 +117,7 @@
                                                             <div class="form-group">
                                                                 <div class="col-md-6 col-md-offset-4">
                                                                     <button type="submit" class="btn btn-primary">
-                                                                        Change Password
+                                                                        Cambiar Contraseña
                                                                     </button>
                                                                 </div>
                                                             </div>

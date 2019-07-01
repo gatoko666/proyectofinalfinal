@@ -35,6 +35,12 @@
                           <p>{{ $message }}</p>
                       </div>
                   @endif 
+                  <br>
+                  @if (session('error'))
+                  <div class="alert alert-danger">
+                      {{ session('error') }}
+                  </div>
+              @endif
 
                  
                     <div class="container">

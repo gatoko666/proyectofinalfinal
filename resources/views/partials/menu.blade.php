@@ -12,36 +12,16 @@
                 </button>
             </div>
             <!-- Search-from -->
-            <form action="#" method="post" class="form-inline mx-auto search-form">
-                <input class="form-control mr-sm-2" type="search" placeholder="Buscar" aria-label="Buscar" required="">
-                <button class="btn btn-style my-2 my-sm-0" type="submit">Buscar</button>
-            </form>
+           
             <!--// Search-from -->
             <ul class="top-icons-agileits-w3layouts float-right">
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true"
                         aria-expanded="false">
                         <i class="far fa-bell"></i>
-                        <span class="badge">4</span>
-                    </a>
-                    <div class="dropdown-menu top-grid-scroll drop-1">
-                        <h3 class="sub-title-w3-agileits">User notifications</h3>
-                        <a href="#" class="dropdown-item mt-3">
-                            <div class="notif-img-agileinfo">
-                                <img src="images/clone.jpg" class="img-fluid" alt="Responsive image">
-                            </div>
-                            <div class="notif-content-wthree">
-                                <p class="paragraph-agileits-w3layouts py-2">
-                                    <span class="text-diff">John Doe</span> Curaon null lis quis ac lectus.</p>
-                                <h6>4 mins ago</h6>
-                            </div>
-                        </a>
                         
-                       
-                       
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">view all notifications</a>
-                    </div>
+                    </a>
+               
                 </li>
                 <li class="nav-item dropdown mx-3">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown1" role="button" data-toggle="dropdown" aria-haspopup="true"
@@ -57,34 +37,23 @@
                     </a>
                     <div class="dropdown-menu drop-3">
                         <div class="profile d-flex mr-o">
-                            <div class="profile-l align-self-center">
-                                <img src="images/profile.jpg" class="img-fluid mb-3" alt="Responsive image">
-                            </div>
+                          
                             <div class="profile-r align-self-center">
                                 <h3 class="sub-title-w3-agileits"> {{ Auth::user()->name }}</h3>
                                 <a href="mailto:info@example.com">{{ Auth::user()->email }}</a>
                             </div>
                         </div>
-                        <a href="perfil" class="dropdown-item mt-3">
+                        <a href="{{ url('perfil')}}" class="dropdown-item mt-3">
                             <h4>
                                 <i class="far fa-user mr-3"></i>Mi Perfil</h4>
                         </a>
-                        <a href="#" class="dropdown-item mt-3">
+                        
+                        <a href="{{ url('revisarsolicitudadmin')}}" class="dropdown-item mt-3">
                             <h4>
-                                <i class="fas fa-link mr-3"></i>Actividades</h4>
+                                <i class="far fa-envelope mr-3"></i>Solicitudes</h4>
                         </a>
-                        <a href="notificacion" class="dropdown-item mt-3">
-                            <h4>
-                                <i class="far fa-envelope mr-3"></i>Notificaciones</h4>
-                        </a>
-                        <a href="#" class="dropdown-item mt-3">
-                            <h4>
-                                <i class="far fa-question-circle mr-3"></i>Faq</h4>
-                        </a>
-                        <a href="#" class="dropdown-item mt-3">
-                            <h4>
-                                <i class="far fa-thumbs-up mr-3"></i>Soporte</h4>
-                        </a>
+                         
+                       
                         <div class="dropdown-divider"></div>
 
 

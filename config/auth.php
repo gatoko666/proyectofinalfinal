@@ -50,6 +50,7 @@ return [
         'operador' => [
             'driver' => 'session',
             'provider' => 'operadores',
+            'hash' => false,
         ],
 
 

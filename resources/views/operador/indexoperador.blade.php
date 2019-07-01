@@ -47,7 +47,7 @@
                     <div class="outer-w3-agile col-xl mt-3 mx-xl-3 p-xl-0 px-md-5">
                         <div class="header">
                             <div class="text">
-                                <img src="images/profile.jpg" class="img-fluid rounded-circle" alt="Responsive image">
+                               
                                 <h2>{{ Auth::user()->NombreOperador }}</h2>
                                 <a href="mailto:info@example.com">{{ Auth::user()->Correo }}</a>
                             </div>
@@ -99,24 +99,11 @@
                             <li class="menu">
                                 <ul>
                                     <li class="button">
-                                        <a href="#">
+                                        <a href="perfiloperador">
                                             <i class="fas fa-user"></i> Perfil</a>
                                     </li>
                                     <li class="dropdown">
-                                        <ul class="icon-navigation">
-                                            <li>
-                                                <a href="#">Cambiar imagen</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Cambiar nombre usuario</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">About us</a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Contact me</a>
-                                            </li>
-                                        </ul>
+                                        
                                     </li>
                                 </ul>
                             </li>
@@ -124,49 +111,7 @@
                     </div>
                     <!--// Profile -->
                     <!-- Browser stats -->
-                    <div class="outer-w3-agile col-xl mt-3">
-                        <h4 class="tittle-w3-agileits mb-4">Estadísticas </h4>
-                        <div class="stats-info stats-body">
-                            <ul class="list-unstyled">
-                                <li class="pb-3">GoogleChrome
-                                    <span class="float-right">85%</span>
-                                    <div class="progress progress-striped active progress-right">
-                                        <div class="bar green" style="width:85%;"></div>
-                                    </div>
-                                </li>
-                                <li class="py-md-4 py-3">Firefox
-                                    <span class="float-right">35%</span>
-                                    <div class="progress progress-striped active progress-right">
-                                        <div class="bar yellow" style="width:35%;"></div>
-                                    </div>
-                                </li>
-                                <li class="py-md-4 py-3">Internet Explorer
-                                    <span class="float-right">78%</span>
-                                    <div class="progress progress-striped active progress-right">
-                                        <div class="bar red" style="width:78%;"></div>
-                                    </div>
-                                </li>
-                                <li class="py-md-4 py-3">Safari
-                                    <span class="float-right">50%</span>
-                                    <div class="progress progress-striped active progress-right">
-                                        <div class="bar blue" style="width:50%;"></div>
-                                    </div>
-                                </li>
-                                <li class="py-md-4 py-3">Opera
-                                    <span class="float-right">80%</span>
-                                    <div class="progress progress-striped active progress-right">
-                                        <div class="bar light-blue" style="width:80%;"></div>
-                                    </div>
-                                </li>
-                                <li class="last py-md-4 py-3">Others
-                                    <span class="float-right">60%</span>
-                                    <div class="progress progress-striped active progress-right">
-                                        <div class="bar orange" style="width:60%;"></div>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
+                 
                     <!--// Browser stats -->
                 </div>
             </div>

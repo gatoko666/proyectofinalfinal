@@ -8,6 +8,9 @@ use App\Documento;
 use Illuminate\Support\Facades\Auth;
 use Validator,Redirect,Response,File;
 use Illuminate\Support\Facades\Storage;
+use App\Http\Requests\ValidarDocumento;
+ 
+
 
 
 class DocumentoController extends Controller
@@ -32,9 +35,10 @@ class DocumentoController extends Controller
 
 
 
-                            public function store(Request $request) {
+                            public function store(ValidarDocumento $request) {
 
                               try {
+                                 
                                  $operador=Auth::id(); 
 
                                  //$documento=$request->file('file') ;
@@ -87,7 +91,7 @@ class DocumentoController extends Controller
     
                                     return redirect('documentos')->with('success','Documento Agregado correctamente.'); 
                               } catch (\Throwable $th) {
-                                 return redirect('documentos')->with('success','Problema al realizar la accion requerida.'); 
+                                 return redirect('documentos')->with('error','Problema al realizar la acción requerida.'); 
                               }
 
                            
@@ -121,8 +125,7 @@ class DocumentoController extends Controller
 
                             public function eliminarArchivo($id){
 
-                                $idDocumento=Documento::where('IdDocumento', $id)->first();
-                             
+                                $idDocumento=Documento::where('IdDocumento', $id)->first();                            
 
                                  Storage::delete('Documentos/'.$idDocumento->Ruta);
                                  Documento::where('IdDocumento',$id)->delete();
@@ -139,9 +142,7 @@ class DocumentoController extends Controller
 
                                  
                                  
-                                    $idDocumento=Documento::where('IdDocumento', $id)->first();
-
-                                 
+                                    $idDocumento=Documento::where('IdDocumento', $id)->first();                                
 
                                     return Storage::download('Documentos/'.$idDocumento->Ruta);
 

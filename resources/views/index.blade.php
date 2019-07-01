@@ -20,6 +20,55 @@
 		function hideURLbar() {
 			window.scrollTo(0, 1);
 		}
+
+		function checkRut(rut) {
+			// Despejar Puntos
+			var valor = rut.value.replace('.','');
+			// Despejar Guión
+			valor = valor.replace('-','');
+			
+			// Aislar Cuerpo y Dígito Verificador
+			cuerpo = valor.slice(0,-1);
+			dv = valor.slice(-1).toUpperCase();
+			
+			// Formatear RUN
+			rut.value = cuerpo + '-'+ dv
+			
+			// Si no cumple con el mínimo ej. (n.nnn.nnn)
+			if(cuerpo.length < 7) { rut.setCustomValidity("RUT Incompleto"); return false;}
+			
+			// Calcular Dígito Verificador
+			suma = 0;
+			multiplo = 2;
+			
+			// Para cada dígito del Cuerpo
+			for(i=1;i<=cuerpo.length;i++) {
+			
+				// Obtener su Producto con el Múltiplo Correspondiente
+				index = multiplo * valor.charAt(cuerpo.length - i);
+				
+				// Sumar al Contador General
+				suma = suma + index;
+				
+				// Consolidar Múltiplo dentro del rango [2,7]
+				if(multiplo < 7) { multiplo = multiplo + 1; } else { multiplo = 2; }
+		  
+			}
+			
+			// Calcular Dígito Verificador en base al Módulo 11
+			dvEsperado = 11 - (suma % 11);
+			
+			// Casos Especiales (0 y K)
+			dv = (dv == 'K')?10:dv;
+			dv = (dv == 0)?11:dv;
+			
+			// Validar que el Cuerpo coincide con su Dígito Verificador
+			if(dvEsperado != dv) { rut.setCustomValidity("RUT Inválido"); return false; }
+			
+			// Si todo sale bien, eliminar errores (decretar que es válido)
+			rut.setCustomValidity('');
+		}
+		
 	</script>
 	<!--// Meta tag Keywords -->
     
@@ -35,6 +84,7 @@
 	<!-- //css files -->
 	
 	<!--web font-->
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
 	<link href="//fonts.googleapis.com/css?family=Raleway:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i&amp;subset=latin-ext" rel="stylesheet">
 	<!--//web font-->
 
@@ -76,18 +126,29 @@
 <div class="header-top">
 	<header>
 		<div class="top-head ml-lg-auto text-center">
-			<div class="row mr-0">
-
-		 
-				<div class="col-md-3 col-4 sign-btn">
-					<a href="#" data-toggle="modal" data-target="#exampleModalCenter">
-						<i class="fas fa-lock"></i> Ingresar Administrador</a>
-                </div>
-                <div class="col-md-3 col-4 sign-btn">
-					<a href="#" data-toggle="modal" data-target="#exampleModalCenter4">
-						<i class="fas fa-lock"></i> Ingresar Operador</a>
-                </div>
-                
+			<div class="row mr-0">				 
+					<div class="col-md-4 col-5 ">						 
+								
+										<select class="form-control" id="myselect">
+												<i class="fas fa-lock"> </i>
+												<option value="">Seleccione el perfil</option>
+												<option value="exampleModalCenter">Ingresar Administrador</option>
+												<option value="exampleModalCenter4">Ingresar Operador</option>
+											</select> 								
+								   
+						</div>			
+							<script type="text/javascript">						 
+								$(document).ready(function(){ //Make script DOM ready
+									$('#myselect').change(function() { //jQuery Change Function
+										var opval = $(this).val(); //Get value from select element
+										if(opval=="exampleModalCenter"){ //Compare it and if true
+											$('#exampleModalCenter').modal("show"); //Open Modal
+										}else{
+											$('#exampleModalCenter4').modal("show"); //Open Modal
+										}
+									});
+								});
+								</script>	
 				<div class="col-md-3 col-4 sign-btn">
 					<a href="#" data-toggle="modal" data-target="#exampleModalCenter2">
 						<i class="fas fa-user"></i> Registrar</a>
@@ -463,17 +524,17 @@
 				<div class="fv3-contact">
 					<span class="fas fa-envelope-open mr-2"></span>
 					<p>
-						<a href="mailto:example@email.com">info@example.com</a>
+						<a href="mailto:example@email.com">contacto@adturn.cl</a>
 					</p>
 				</div>
 				<div class="fv3-contact my-3">
 					<span class="fas fa-phone-volume mr-2"></span>
-					<p>+1(23) 4567 7890</p>
+					<p>+56 9 98887584</p>
 				</div>
 				<div class="fv3-contact">
 					<span class="fas fa-home mr-2"></span>
-					<p>321 Block,4th Building,
-						<br>2nd Street State 3489.</p>
+					 <p>Guardia Vieja 255, oficina 352, Providencia. </p>
+						 
 				</div>
 			</div>
 
@@ -530,15 +591,13 @@
                 <div class="modal-body">
 
                     <div class="login px-4 mx-auto mw-100">
-                        <h5 class="text-center mb-4">Acceder al sitio Administrador</h5>
-                       
+                        <h5 class="text-center mb-4">Acceder al sitio Administrador</h5>                       
 						
 						<form method="POST" action="{{ route('loginadministrador') }} ">
 							@csrf
 	
 							<div class="form-group row">
-								<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo Electrónico') }}</label>
-	
+								<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo Electrónico') }}</label>	
 								<div class="col-md-6">
 									<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
 	
@@ -554,8 +613,7 @@
 
 	
 							<div class="form-group row">
-								<label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>
-	
+								<label for="password" class="col-md-4 col-form-label text-md-right">{{ __('Contraseña') }}</label>	
 								<div class="col-md-6">
 									<input id="password" type="password" class="form-control @error('password') is-invalid @enderror" name="password" required autocomplete="current-password">
 	
@@ -584,11 +642,7 @@
 										{{ __('Login') }}
 									</button>	
 							 
-										<a class="btn btn-link" href="#" data-toggle="modal" data-target="#exampleModalCenter3"  >
-
-											{{ __('Recordar contraseña') }}
-										</a>
-
+									 
 									 
 
 								 
@@ -665,12 +719,7 @@
 									<button type="submit" class="btn btn-primary submit mb-4">
 										{{ __('Login') }}
 									</button>	
-							 
-										<a class="btn btn-link" href="#" data-toggle="modal" data-target="#exampleModalCenter3"  >
-
-											{{ __('Recordar contraseña') }}
-										</a>
-
+							  
 									 
 
 								 
@@ -702,11 +751,31 @@
                 <div class="modal-body">
 
                     <div class="login px-4 mx-auto mw-100">
-                        <h5 class="text-center mb-4">Acceder al sitio</h5>
-                       
-						
-				<p>HOla</p>
-
+                        <h5 class="text-center mb-4">Recuperar Contraseña</h5>
+						<form method="POST" action="{{ route('olvidomailop') }} ">
+							@csrf
+	
+							<div class="form-group row">
+								<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo Electrónico') }}</label>
+	
+								<div class="col-md-6">
+									<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+	
+									@error('email')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
+							</div>			
+						 
+						 
+							<button type="submit" class="btn btn-primary submit mb-4">
+								{{ __('Enviar enlace de recuperación de contraseña') }}
+							</button>	
+	 
+						 
+						</form>
 
 
 
@@ -759,7 +828,7 @@
 
 							<div class="form-group">
 								<label>Rut</label>
-								<input id="rut" type="rut" size="20" class="form-control @error('rut') is-invalid @enderror"required oninput="checkRut(this)"   name="rut" value="{{ old('rut') }}" required autocomplete="rut">
+								<input id="rut" type="rut" size="20" class="form-control @error('rut') is-invalid @enderror"required oninput="checkRut(this)"     name="rut" value="{{ old('rut') }}" required autocomplete="rut">
 							 
 								@error('rut')
                                     <span class="invalid-feedback" role="alert">

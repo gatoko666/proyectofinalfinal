@@ -7,6 +7,7 @@ use App\Operador;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Freshwork\ChileanBundle\Rut;
+use Notifiable;
 
 class OperadorController extends Controller
 {
@@ -63,6 +64,7 @@ class OperadorController extends Controller
          
     }
 
+    
 
             public function authenticated(){
 

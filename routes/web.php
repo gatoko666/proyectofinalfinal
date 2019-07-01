@@ -128,3 +128,18 @@ Route::get('revisarsolicitudadmin', 'SolicitudControllerAdmin@revisarSolicitudAd
 Route::post('aprobarsolicitud', 'SolicitudControllerAdmin@aprobarSolicitud')->name('aprobarsolicitud')->middleware('auth');
 
 Route::post('rechazarsolicitud', 'SolicitudControllerAdmin@rechazarSolicitud')->name('rechazarsolicitud')->middleware('auth');
+
+
+ 
+// Password Reset Routes...
+//Route::get('password/reset', 'Auth\ForgotPasswordController@showLinkRequestForm');
+//Route::post('password/email', 'Auth\ForgotPasswordController@sendResetLinkEmail')->name('olvidomail');
+//Route::get('password/reset/{token}', 'Auth\ResetPasswordController@showResetForm');
+//Route::post('password/reset', 'Auth\ResetPasswordController@reset');
+
+
+Route::get('password-reset', 'PasswordController@showForm'); //I did not create this controller. it simply displays a view with a form to take the email
+Route::post('password-reset', 'PasswordControllerOp@sendPasswordResetToken')->name('olvidomailop');
+Route::get('reset-password/{token}', 'PasswordControllerOp@showPasswordResetForm');
+Route::post('reset-password/{token}', 'PasswordControllerOp@resetPassword')->name('password.update');
+

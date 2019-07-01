@@ -10,6 +10,8 @@ use App\Solicitud;
 use Illuminate\Support\Facades\DB;
 use Mail;
 use Carbon\Carbon;
+use App\Http\Requests\ValidarSolicitud;
+
 
 class SolicitudController extends Controller
 {
@@ -21,7 +23,7 @@ class SolicitudController extends Controller
 
     }
 
-                                            public function realizarSolicitud( request $request){
+                                            public function realizarSolicitud(ValidarSolicitud $request){
 
 
                                               try {
@@ -51,12 +53,19 @@ class SolicitudController extends Controller
                                                    ->where('RutOperador','=',$operador)
                                                   //  ->select('email') 
                                                  ->value('name');
-                                                 
-                                                               
-                                   //dd($nombreOperador);
+                                                 /*
+                                                 $validatedData = $request->validate([
+                                                  'tipoDeSolicitud' => 'required|regex:DiaLibre|Vacacion|DiaAdministrativo|InformarLicencia|InformarAusencia|confirmed',
+                                                  'rutAdministrador' => 'required',
+                                                  'operador' => 'required',
+                                                  'LocalizacionOperador' => 'required',
+
+
+                                                   ]);     */
+                          
             
                                                     $solicitud= new Solicitud;
-                                                    $solicitud->TipoSolicitud=$request->tipoDeSolicitud;
+                                                   // $solicitud->TipoSolicitud=$request->tipoDeSolicitud;
                                                     $solicitud->RutAdministrador=$rutAdministrador;
                                                     $solicitud->RutOperador=$operador;
                                                     $solicitud->TipoSolicitud=$request->tipoDeSolicitud;
@@ -68,15 +77,18 @@ class SolicitudController extends Controller
                                                    
                                                     $tipoSolicitud=$request->tipoDeSolicitud;
                                                     $this->notificarSolicitud($correoAdministrador,$nombreOperador,$tipoSolicitud,$nombreAdmin);
-                                                    return view('operador.menuoperador.menusolicitudes.indexsolicitud')->with('success','Solicitud Realizada Correctamente ');
+                                                    
+
+                                                    return redirect()->back()->with('success', 'Solicitud Realizada Correctamente .'); 
+                                                 //   return view('operador.menuoperador.menusolicitudes.indexsolicitud')->with('success','Solicitud Realizada Correctamente ');
             
 
 
 
                                                 
                                               } catch (\Throwable $th) {
+                                                return redirect()->back()->with('error', 'Error al realizar la solicitud.'); 
                                                 
-                                                echo('Error en la solicitud');
 
                                               }
                                               

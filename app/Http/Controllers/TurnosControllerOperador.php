@@ -51,9 +51,9 @@ class TurnosControllerOperador extends Controller
 
         $turnoOperadorlunes=DB::table('detalletipoturno')
         ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
-      ->join('operador', 'operador.RutOperador', '=', 'turnoasignado.RutOperador')                              
-      ->select('operador.NombreOperador','detalletipoturno.AbreviacionTurno','turnoasignado.NumeroSemanaAno','turnoasignado.DiaSemana')
-      ->where(function ($query) use ($request)  {
+        ->join('operador', 'operador.RutOperador', '=', 'turnoasignado.RutOperador')                              
+        ->select('operador.NombreOperador','detalletipoturno.AbreviacionTurno','turnoasignado.NumeroSemanaAno','turnoasignado.DiaSemana')
+        ->where(function ($query) use ($request)  {
         $IdAdministrador=Auth::id();    
          $numberWeek=$request->input('NumeroSemanaAno');
         $query->where('operador.RutOperador', '=', $IdAdministrador)  
@@ -62,8 +62,6 @@ class TurnosControllerOperador extends Controller
        ->orderBy('turnoasignado.NumeroSemanaAno', 'ASC')
         ->orderByRaw(DB::raw("FIELD(turnoasignado.DiaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo')"))
         ->get();
-
-
 
         
        return view('operador/menuoperador/menuturnos/revisarturnos',

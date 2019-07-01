@@ -26,7 +26,7 @@
 
 
                         <div class="outer-w3-agile mt-3">
-                            <h4 class="tittle-w3-agileits mb-4">Solicitud  </h4>
+                            <h4 class="tittle-w3-agileits mb-4">Realizar Solicitud  </h4>
                             <br>
                             @if ($errors->any())
                       <div class="alert alert-danger">
@@ -56,28 +56,11 @@
                                        
                                                   <div class="tab-content" id="nav-tabContent">
 
-                                                        @if ($errors->any())
-                                                        <div class="alert alert-danger">
-                                                            <ul>
-                                                                @foreach ($errors->all() as $error)
-                                                                <li>{{ $error }}</li>
-                                                                @endforeach
-                                                            </ul>
-                                                        </div><br />
-                                                        @endif
+                                                       
                                                           <br>
                                                          
                                                               
-                                                              @if (session('error'))
-                                                              <div class="alert alert-danger">
-                                                                  {{ session('error') }}
-                                                              </div>
-                                                          @endif
-                                                              @if (session('success'))
-                                                                  <div class="alert alert-success">
-                                                                      {{ session('success') }}
-                                                                  </div>
-                                                              @endif
+                                                            
                                                               
                                                     <div class="tab-pane fade show active" id="dia-libre" role="tabpanel" aria-labelledby="nav-home-tab">
                                                             <form action="{{route('realizarsolicitud')}}" method="POST" form autocomplete="off" >                                                             
@@ -85,6 +68,8 @@
                                                                     <div class="form-group row">
                                                                             <label for="inputtiposolicitud" class="col-sm-2 col-form-label">Tipo de Solicitud</label>
                                                                             <div class="col-sm-5">
+                                                                                    
+
                                                                                     <select name="tipoDeSolicitud" class="custom-select">
                                                                                             <option value="DiaLibre">Solicitud Día libre</option>
                                                                                             <option value="Vacacion">Solicitud Vacaciones</option>
@@ -92,7 +77,7 @@
                                                                                             <option value="InformarLicencia">Solicitud Informar Licencia</option>
                                                                                             <option value="InformarAusencia">Solicitud Ausencia</option>
                                                                                           </select>
-
+                                                                                            
 
 
                                                                                    </div>

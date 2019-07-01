@@ -36,6 +36,11 @@
                       </div>
                   @endif     
                     <br>
+                    @if (session('error'))
+                    <div class="alert alert-danger">
+                        {{ session('error') }}
+                    </div>
+                @endif
                     
                     <table class="table table-bordered table-striped">
                         <thead>
@@ -60,13 +65,16 @@
                                         
                                         </th>
                                         <th class="text-center">
-
-                                                <a href="documentos/create" class="btn btn-primary">Crear</a>  
-
- 
+                                                <button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal3">
+                                                        <a href="#fee-details2" data-toggle="modal">Subir documento</a>
+                            
+                                                        
+                                                      </button> 
                                                 <br>
                                             
-                                            </th>                                      
+                                            </th>                     
+
+                                                            
                                     </tr>
 
 
@@ -248,7 +256,46 @@
                             </div><!-- /.modal-dialog -->
                         </div><!-- /.modal -->
 
+   <div class="modal fade" id="fee-details2" tabindex="-1" role="dialog" aria-labelledby="fee-details-label" aria-hidden="true">
+                                <div class="modal-dialog modal-lg modal-xl">
+                                    <div class="modal-content">
+                                        
+                                        <div class="modal-body">
+                                            
+                                          
+                                                <section class="grids-section bd-content">
+                                                        <!-- Grids Info -->
+                                                        <div class="outer-w3-agile mt-3">
+                                                            <h4 class="tittle-w3-agileits mb-4">Tipos de turnos</h4>
 
+                                                            <div class="container">
+                                                                    <form action="{{ route('documentos.store') }}" method="post"   files="true"  enctype="multipart/form-data">
+                                                                        @csrf
+                                                                        <div class="form-group">
+                                                                            <input type="file" class="form-control-file" accept="application/pdf"  name="userfile" id="exampleInputFile" aria-describedby="fileHelp">
+                                                                            <br>
+                                                                            <label for="exampleFormControlTextarea1">Nombre Archivo</label>
+                                                                            <input type="text" class="form-control" id="exampleFormControlTextarea1" maxlength="20" name="NombreDocumento" rows="3"></input>  
+                                                                            <br>
+                                                                          <label for="exampleFormControlTextarea1">Descripción</label>
+                                                                          <textarea class="form-control" id="exampleFormControlTextarea1" name="Descripcion" rows="3"></textarea>      
+                                                                          <br>
+                                                                            <br>
+                                                                          <small id="fileHelp" class="form-text text-muted">Por favor, solo suba archivos de 2MB o menos.</small>
+                                                                            <br>
+                                                                        </div>
+                                                                        <button type="submit" class="btn btn-primary">Subir</button>
+                                                                    </form>
+                                                             
+                                                            </div> 
+                                                        </div>                                        
+                                                 </section>
+                                                 <div class="modal-footer">
+                                                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cerrar</button>                                                     
+                                                      </div>     
+                                        </div>                                        
+                                    </div><!-- /.modal-content -->                                    
+                                </div><!-- /.modal-dialog -->
 
 
 
@@ -279,14 +326,16 @@
 
    
                 <!--// Countdown -->
-                <!-- Copyright -->
-
-                @include('partials/footer')
-
+                
 
 
                 <!--// Copyright -->
             </div>
+
+            <!-- Copyright -->
+
+                @include('partials/footer')
+
         </div>
     
     

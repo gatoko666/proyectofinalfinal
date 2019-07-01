@@ -96,7 +96,22 @@
                             <tr>
                                     @foreach ($listadoSolicitud as $item)                                   
                                 <th class="text-nowrap" scope="row">{{$item->IdSolicitud}}</th>
-                                <td   class="text-nowrap" scope="row">{{$item->TipoSolicitud}}</td>    
+                                <td   class="text-nowrap" scope="row">
+                                
+                                        @if (($item->TipoSolicitud) ==='DiaLibre')
+                                        Solicitud Día libre
+                                           @elseif  (($item->TipoSolicitud) ==='Vacacion')
+                                                Solicitud Vacaciones
+                                           @elseif  (($item->TipoSolicitud) ==='DiaAdministrativo')
+                                           Solicitud Día Administrativo
+                                           @elseif  (($item->TipoSolicitud) ==='InformarLicencia')
+                                           Solicitud Informar Licencia
+                                           @elseif  (($item->TipoSolicitud) ==='InformarAusencia')
+                                           Solicitud Ausencia
+                                        
+                                        @endif
+
+                                </td>    
                                 <td   class="text-nowrap" scope="row">{{$item->EstadoSolicitud}}</td>  
                                 <td    class="text-nowrap" id="numerosemana" scope="row">{{$item->DesdeSolicitud}} 
                                                             

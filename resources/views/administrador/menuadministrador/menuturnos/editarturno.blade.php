@@ -81,11 +81,23 @@
                                 <input type="hidden"  name="AbreviacionTurno[]" class="form-control" value="{{$op->AbreviacionTurno}}"  >
                                 <td class="text-nowrap" name="AbreviacionTurno[]"   scope="row">{{$op->AbreviacionTurno}}  
                                         <td>
-                                                <p align="justify"><select name="tipodeTurnoCambiar[]" >
+                                                <p align="justify">
+                                                <select name="tipodeTurnoCambiar[]" >
+
+                                                     
+
+
+                                                            
+
                                                         @foreach($detalletiposdeturnos as $dtt)    
                                                         
-                                                        <option value="{{$dtt->IdDetalleTipoTurno}}">                                                            
-                                                            {{$dtt->AbreviacionTurno}}</option>                                                                                                        
+                                                        <option value="{{$dtt->IdDetalleTipoTurno}} " selected >  
+                                                                {{$dtt->AbreviacionTurno}}      
+                                                            
+                                                          
+                                                        </option>  
+                                                        
+                                                        
                                                         @endforeach                                                        
                                                         </select> 
                                                 </p>                                                        
