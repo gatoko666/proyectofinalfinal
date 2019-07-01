@@ -641,7 +641,11 @@
 									<button type="submit" class="btn btn-primary submit mb-4">
 										{{ __('Login') }}
 									</button>	
-							 
+							 <a class="btn btn-link" href="#" data-toggle="modal" data-target="#exampleModalCenter3"  >
+
+											{{ __('Recordar contraseña') }}
+										</a>
+
 									 
 									 
 
@@ -719,7 +723,11 @@
 									<button type="submit" class="btn btn-primary submit mb-4">
 										{{ __('Login') }}
 									</button>	
-							  
+									<a class="btn btn-link" href="#" data-toggle="modal" data-target="#exampleModalCenter3"  >
+
+											{{ __('Recordar contraseña') }}
+										</a>
+
 									 
 
 								 

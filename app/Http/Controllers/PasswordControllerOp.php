@@ -119,7 +119,7 @@ class PasswordControllerOp extends Controller
          $tokenData = DB::table('password_resets')
          ->where('token', $token)->first();
     
-         $user = Operador::where('email', $tokenData->email)->first();
+         $user = Operador::where('Correo', $tokenData->email)->first();
          if ( !$user ) return redirect()->to('/'); //or wherever you want
     
          $user->password = Hash::make($password);
@@ -129,9 +129,16 @@ class PasswordControllerOp extends Controller
          Auth::login($user);
     
         // If the user shouldn't reuse the token later, delete the token 
-        DB::table('password_resets')->where('email', $user->email)->delete();
+      //  DB::table('password_resets')->where('email', $user->email)->delete();
+
+        DB::table('password_resets')->where('token', $token)->delete();
+
+
     
         //redirect where we want according to whether they are logged in or not.
+        return redirect('/')->with('success', 'Se ha realizado la actualización de la contraseña.'); 
+       // return redirect()->back()->with('success', 'Se ha realizado la actualización de la contraseña.'); 
+
 
      }
     
