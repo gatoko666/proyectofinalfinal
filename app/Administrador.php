@@ -17,6 +17,7 @@ class Administrador extends Model
             
 
     ];
+    
     public $incrementing=false;
 
 

@@ -143,8 +143,9 @@
                                 <td>{{$op->FechaAltaOperador}}</td>                                                        
                                 <td>{{$op->LocalizacionOperador}}</td>  
                                 
-                                <td>                                  
-                                            <a href="{{ route('administracionoperador.edit',$op)}}" class="btn btn-secondary">Editar</a> 
+                                <td>                
+             
+                                            <a href="{{ route('administracionoperador.edit',Crypt::encrypt($op->RutOperador))}}" class="btn btn-secondary">Editar</a> 
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2">
                                         Eliminar
                                       </button>   

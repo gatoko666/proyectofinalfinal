@@ -31,7 +31,7 @@
                           <p>{{ $message }}</p>
                       </div>
                   @endif     
-                    <br>
+                    <br> 
                     <form method="post" action="{{ route('tiposdeturnos.update', $detalletiposdeturnos->IdDetalleTipoTurno) }}">
                             <div class="form-group">
                                 @csrf

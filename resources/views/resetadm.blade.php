@@ -28,11 +28,10 @@
                 <strong>{{ $message }}</strong>
             </div>
             @endif
-      
             
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('password.update') }}">
+                    <form method="POST" action="{{ route('password.updateadm') }}">
                         @csrf
 
                         <input type="hidden" name="token" value="{{ $token }}">

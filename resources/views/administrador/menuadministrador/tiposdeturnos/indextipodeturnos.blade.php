@@ -104,7 +104,7 @@
                                 <td>{{$dtt->HoraInicioTurno}}</td>
                                 <td>{{$dtt->HoraTerminoTurno}}</td>    
                                 <td>          
-                                <a href="{{ route('tiposdeturnos.edit',$dtt)}}" class="btn btn-secondary">Editar</a>     
+                                <a href="{{ route('tiposdeturnos.edit',Crypt::encrypt($dtt->IdDetalleTipoTurno))}}" class="btn btn-secondary">Editar</a>     
                                     <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#exampleModal2">
                                         Eliminar
                                       </button>   

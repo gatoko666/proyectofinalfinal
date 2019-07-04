@@ -7,12 +7,14 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
  use Illuminate\Contracts\Auth\MustVerifyEmail;
  use Notifiable;
 use SoftDeletes;
+//use Propaganistas\LaravelFakeId\RoutesWithFakeIds;
 
 
 
 class Operador extends Authenticatable
 {
      
+    //use RoutesWithFakeIds;
 
     protected $guard='operador' ;
     

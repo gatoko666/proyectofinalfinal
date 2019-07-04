@@ -43,6 +43,15 @@ Route::get('imprimirturnos', 'TurnosControllerOperador@imprimirturnos')->name('i
 
 Route::resource('administracionoperador','OperadorGestionController')->middleware('auth');
 
+Route::post('/editaroperador1','OperadorGestionController@editarOperador')->name('editarOperador');
+
+Route::post('/updateOperador','OperadorGestionController@update')->name('updateOperador')->middleware('auth');
+
+
+//Route::post('administracionoperador/{IdOperador}','OperadorGestionController@edit')->name('administracionoperador.edit')->middleware('auth');
+
+
+
 
 
 //Route::get('administracionoperador','OperadorController@index')->middleware('auth');
@@ -86,24 +95,7 @@ Route::post('/changePasswordOp','PerfilController@changePasswordOp')->name('chan
 
 //Route::get('notificacionoperador', 'MailTurnosNotificacionController@notificarOperadorTurnos')->name('notificacionoperador')->middleware('auth:operador');
 
-
-Route::get('sendemail', function () {
-
-    $data = array(
-        'name' => "Curso Laravel",
-    );
-
-    Mail::send('testmail', $data, function ($message) {
-
-        $message->from('adturnmail@gmail.com', 'Curso Laravel');
-
-        $message->to('adturnmail@gmail.com')->subject('test email Curso Laravel');
-
-    });
-
-    return "Tú email ha sido enviado correctamente";
-
-});
+ 
 
 Route::get('notificacionadmin', 'MailTurnosNotificacionController@notificarAdministrador')->name('notificacionadmin')->middleware('auth');
 
@@ -138,8 +130,15 @@ Route::post('rechazarsolicitud', 'SolicitudControllerAdmin@rechazarSolicitud')->
 //Route::post('password/reset', 'Auth\ResetPasswordController@reset');
 
 
-Route::get('password-reset', 'PasswordController@showForm'); //I did not create this controller. it simply displays a view with a form to take the email
+//Route::get('password-reset', 'PasswordController@showForm'); //I did not create this controller. it simply displays a view with a form to take the email
 Route::post('password-reset', 'PasswordControllerOp@sendPasswordResetToken')->name('olvidomailop');
 Route::get('reset-password/{token}', 'PasswordControllerOp@showPasswordResetForm');
 Route::post('reset-password/{token}', 'PasswordControllerOp@resetPassword')->name('password.update');
+
+//reset password AdminController
+Route::get('password-resetadm', 'PasswordControllerAdm@showForm'); //I did not create this controller. it simply displays a view with a form to take the email
+Route::post('password-resetadm', 'PasswordControllerAdm@sendPasswordResetTokenAdm')->name('olvidomailadm');
+Route::get('reset-passwordadm/{token}', 'PasswordControllerAdm@showPasswordResetFormAdm');
+Route::post('reset-passwordadm/{token}', 'PasswordControllerAdm@resetPasswordAdm')->name('password.updateadm');
+
 

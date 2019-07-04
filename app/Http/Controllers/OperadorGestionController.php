@@ -9,6 +9,8 @@ use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Freshwork\ChileanBundle\Rut;
+use Illuminate\Support\Facades\Crypt;
+use Mail;
 class OperadorGestionController extends Controller
 {
  //Almacenaje del Operador
@@ -37,14 +39,23 @@ class OperadorGestionController extends Controller
                          $operador->IdAdministrador=Auth::id();
                          $operador->RutOperador=Rut::parse($request->RutOperador)->fix()->format(); 
                          $operador->LocalizacionOperador=$request->LocalizacionOperador;   
-                         $operador->save();                    
+                         $operador->save();               
+                             
 
+                         $Correo=$request->Correo;
+                         $FechaAltaOperador=now();
+                         $NombreOperador=$request->NombreOperador;
+
+
+                         $this->notificarOperadorTurnosActualizacion($Correo,$FechaAltaOperador,$NombreOperador);
                         } catch (\Exception   $exception) {
-                            return redirect('administracionoperador')->with('warning', 'Error al ingresar nuevo usuario');
-                            return redirect('/')->with('warning', 'Error al ingresar nuevo usuario');
+                            return redirect('administracionoperador')->with('warning', 'Error al ingresar nuevo usuario'.$exception);
+                           // return redirect('/')->with('warning', 'Error al ingresar nuevo usuario');
                         }
-                                      
-                                         
+                                
+                        
+
+                         
                      return redirect('administracionoperador')->with('success','Operador Agregado correctamente');
                                   
                  }
@@ -53,10 +64,34 @@ class OperadorGestionController extends Controller
 
                  public function edit($IdOperador)
                  {                     
+
+                  $IdOperador =  Crypt::decrypt($IdOperador);
+  
+ 
+
                     $operador = Operador::findOrFail($IdOperador);             
                     return view('administrador.menuadministrador.administracionoperador.editaroperador', compact('operador'));             
                  }
                  
+
+                 public function editarOperador(Request $request){
+
+                   // dd(                  $request->all()                  );
+
+                  $IdOperador=$request->RutOperador;  
+                  $IdAdministrador=$request->IdAdministrador;  
+                   
+                  $operador = Operador::findOrFail($IdOperador);
+                  //$operador = Operador::where('RutOperador',$IdOperador) ;
+
+              //    dd(                  $operador                 );    
+
+                // return view('administrador.menuadministrador.administracionoperador.editaroperador', compact('operador')); 
+                 return view('email', compact('operador')); 
+              //  return redirect('administrador.menuadministrador.administracionoperador.editaroperador', compact('operador'));
+
+                }
+                  
 
                  public function update(Request $request,  $RutOperador)
                  {       
@@ -94,6 +129,39 @@ class OperadorGestionController extends Controller
 
 
 
+
+                       function notificarOperadorTurnosActualizacion($Correo,$FechaAltaOperador,$NombreOperador){    
+                        $data = array(
+                          // 'name' => "Turno Semana ",
+                         // 'nombreadmin' => "$Admin",
+                          'nombreoperador' => "$NombreOperador",
+                          'fechaalta' => "$FechaAltaOperador",  
+                            'correooperador' => "$Correo",                           
+                                      
+                        );                              
+                      $correo=$data["correooperador"];
+                      $operadorName=$data["nombreoperador"];
+                      $fechaAlta=$data["fechaalta"];
+
+                        Mail::send('partials.notifigeneracionop', $data,function ($message)use ($correo,$operadorName,$fechaAlta) {                                      
+                          
+                
+                                                            try     {
+
+                                                              $message->from('adturnmail@gmail.com', 'Gestor de turnos Adturn.');                      
+                                                              $message->to($correo);  
+                                                              $message->subject('Generación de Usuario'); 
+
+
+                                                                                    /* Envio del Email */   
+                                                                                }
+                                                                                catch (\Exception $e)
+                                                                                {
+                                                                                    echo("Error al enviar el correo");
+                                                                                }    
+                        });                
+                               
+                      }
 
 
 

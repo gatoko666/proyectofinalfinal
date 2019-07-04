@@ -185,7 +185,7 @@ class TurnosController extends Controller
     
                                 return redirect()->back()->with('success','Turno Insertado correctamente. Notifiación realizada con éxito.');
                                   } catch (\Throwable $th) {
-                                    return redirect()->back()->with('error', 'Error al ingresar los turnos.'.$th);                            
+                                    return redirect()->back()->with('error', 'Error al ingresar los turnos.');                            
                                   }
                                   return redirect()->back()->with('error', 'Error al ingresar los turnos.');                            
 
@@ -379,6 +379,9 @@ class TurnosController extends Controller
                         return view('administrador/menuadministrador/menuturnos.editarturno', compact('turnoOperadorlunes','detalletiposdeturnos'));
 
                       }
+
+
+
 
 
 

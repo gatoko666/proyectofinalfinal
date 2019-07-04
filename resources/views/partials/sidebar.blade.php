@@ -35,9 +35,7 @@
                     <li>
                         <a href="{{ url('revisarturnos')}}">Revisar Turnos</a>
                     </li>
-                    <li>
-                            <a href="{{ url('revisarsolicitudadmin')}}">Revisar Solicitudes</a>
-                        </li>
+                   
 
                     <li>
                         <a href="{{ url('tiposdeturnos')}}">Tipos de turno</a>

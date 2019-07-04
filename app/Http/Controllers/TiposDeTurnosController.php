@@ -8,6 +8,7 @@ use App\TipoDeTurno;
 use Illuminate\Support\Facades\Auth;
 use Validator;
 use App\Http\Requests\ValidarTipoDeTurno;
+use Illuminate\Support\Facades\Crypt;
 
 
 class TiposDeTurnosController extends Controller
@@ -35,7 +36,11 @@ class TiposDeTurnosController extends Controller
                          
          }
          public function edit($IdDetalleTipoTurno)
+
+
+
          {        
+            $IdDetalleTipoTurno =  Crypt::decrypt($IdDetalleTipoTurno);
             $detalletiposdeturnos = TipoDeTurno::findOrFail($IdDetalleTipoTurno);
             return view('administrador/menuadministrador/tiposdeturnos.editartiposdeturnos', compact('detalletiposdeturnos'));
      

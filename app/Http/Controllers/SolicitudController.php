@@ -87,7 +87,7 @@ class SolicitudController extends Controller
 
                                                 
                                               } catch (\Throwable $th) {
-                                                return redirect()->back()->with('error', 'Error al realizar la solicitud.'); 
+                                                return redirect()->back()->with('error', 'Error al realizar la solicitud.'.$th); 
                                                 
 
                                               }
@@ -121,7 +121,7 @@ class SolicitudController extends Controller
                   
                                                                                       $message->from('adturnmail@gmail.com', 'Gestor de turnos Adturn.');                      
                                                                                       $message->to($correoAdministrador);  
-                                                                                      $message->subject('Solicitud realizada por '.$nombreOperador.'de tipo '.$tipoSolicitud); 
+                                                                                      $message->subject('Solicitud realizada por '.$nombreOperador.' de tipo '.$tipoSolicitud); 
                   
                   
                                                                                                             /* Envio del Email */   

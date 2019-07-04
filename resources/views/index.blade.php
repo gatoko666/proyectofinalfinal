@@ -115,6 +115,18 @@
 							<strong>{{ $message }}</strong>
 						</div>
 						@endif
+						@if ($message = Session::get('404'))
+						<div class="alert alert-warning alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>Usuario no existe</strong>
+						</div>
+						@endif
+						@if ($message = Session::get('error'))
+						<div class="alert alert-warning alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+						@endif
 						
 
 
@@ -641,7 +653,7 @@
 									<button type="submit" class="btn btn-primary submit mb-4">
 										{{ __('Login') }}
 									</button>	
-							 <a class="btn btn-link" href="#" data-toggle="modal" data-target="#exampleModalCenter3"  >
+							 <a class="btn btn-link" href="#" data-toggle="modal" data-target="#exampleModalCenter9"  >
 
 											{{ __('Recordar contraseña') }}
 										</a>
@@ -747,7 +759,7 @@
 
 
 
-	<!--/Recuperar password-->
+	<!--/Recuperar password Operador-->
     <div  class="modal fade" id="exampleModalCenter3" tabindex="-1" role="dialog" aria-hidden="true">
         <div class="modal-dialog modal-dialog-centered" role="document">
             <div class="modal-content">
@@ -759,7 +771,7 @@
                 <div class="modal-body">
 
                     <div class="login px-4 mx-auto mw-100">
-                        <h5 class="text-center mb-4">Recuperar Contraseña</h5>
+                        <h5 class="text-center mb-4">Recuperar Contraseña Operador</h5>
 						<form method="POST" action="{{ route('olvidomailop') }} ">
 							@csrf
 	
@@ -797,7 +809,55 @@
         </div>
     </div>
 	<!--//Login-->
+	<!--/Recuperar password Admin-->
+    <div  class="modal fade" id="exampleModalCenter9" tabindex="-1" role="dialog" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-centered" role="document">
+            <div class="modal-content">
+                <div class="modal-header text-center">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
 
+                    <div class="login px-4 mx-auto mw-100">
+                        <h5 class="text-center mb-4">Recuperar Contraseña Administrador</h5>
+						<form method="POST" action="{{ route('olvidomailadm') }} ">
+							@csrf
+	
+							<div class="form-group row">
+								<label for="email" class="col-md-4 col-form-label text-md-right">{{ __('Correo Electrónico') }}</label>
+	
+								<div class="col-md-6">
+									<input id="email" type="email" class="form-control @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus>
+	
+									@error('email')
+										<span class="invalid-feedback" role="alert">
+											<strong>{{ $message }}</strong>
+										</span>
+									@enderror
+								</div>
+							</div>			
+						 
+						 
+							<button type="submit" class="btn btn-primary submit mb-4">
+								{{ __('Enviar enlace de recuperación de contraseña') }}
+							</button>	
+	 
+						 
+						</form>
+
+
+
+
+
+
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
 
     <!--/Register-->
     <div class="modal fade" id="exampleModalCenter2" tabindex="-1" role="dialog" aria-hidden="true">

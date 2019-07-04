@@ -31,7 +31,7 @@ class ValidarSolicitud extends FormRequest
             'tipoDeSolicitud' => 'required|regex:/[InformarAusencia]/',
             'desdeSolicitud' => 'date',
             'hastaSolicitud' => 'date',
-            'Comentario' => 'max:200',
+            'Comentario' => 'required|max:200',
 
         ];
     }
