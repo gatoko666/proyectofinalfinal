@@ -9,6 +9,10 @@ use App\Operador;
 use Illuminate\Support\Facades\Hash;
 use Freshwork\ChileanBundle\Rut;
 use App\Services\PayUService\Exception;
+use App\Http\Requests\ValidarRegistrar;
+use Validator;
+
+
 
 
 
@@ -63,16 +67,35 @@ class LoginController extends Controller
 
      
 
-    protected function registrar(Request $request)
+    protected function registrar(ValidarRegistrar $request)
     {
+
+        
         try {
+           
+            $pass1=$request->password|'required|min:9';
             
-            $insertAdmin=new Administrador;
-            $insertAdmin->RutAdministrador=Rut::parse($request->rut)->number(); 
-            $insertAdmin->name=$request->name;
-            $insertAdmin->email=$request->email;        
-            $insertAdmin->password=Hash::make($request->password);     
-            $insertAdmin->save();
+            $pass2con=$request->password_confirmation|'required|min:9';
+            
+
+
+            if($pass1==$pass2con){
+
+                $insertAdmin=new Administrador;
+                //$insertAdmin->RutAdministrador=Rut::parse($request->rut)->number(); 
+               // $insertAdmin->RutAdministrador=Rut::parse($request->rut)->fix()->format(); 
+                           
+                 $insertAdmin->RutAdministrador=Rut::parse($request->rut)->number(); 
+                $insertAdmin->name=$request->name;
+                $insertAdmin->email=$request->email;        
+                $insertAdmin->password=Hash::make($request->password);     
+                $insertAdmin->save();
+
+            }else {
+                return redirect('/')->with('warning', 'Las contraseñas no coinciden.');
+
+            }
+          
 
         } catch (\Exception   $exception) {
 
