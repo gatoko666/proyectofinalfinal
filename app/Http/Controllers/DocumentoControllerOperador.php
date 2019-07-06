@@ -13,15 +13,30 @@ use Illuminate\Support\Facades\DB;
 class DocumentoControllerOperador extends Controller
 {
     public function index(Request $request)
-    {     
+        {     
+       
+        
 
+     
+
+/*
                 $detalledocumentos=DB::table('operador')
                                         ->join('administrador', 'operador.IdAdministrador', '=', 'administrador.RutAdministrador') 
                                         ->join('documento', 'administrador.RutAdministrador', '=', 'documento.IdAdministrador')                              
                                         ->select('documento.Ruta','documento.IdDocumento','documento.NombreDocumento','documento.Descripcion','documento.created_at') 
                                         ->get();
-
+*/
                              //  dd($detalledocumentos);
+                             $operador=Auth::id();
+
+                             $idadmin=DB::table('administrador')                                                                  
+                                                  ->join('operador', 'administrador.RutAdministrador','=','operador.IdAdministrador') 
+                                                   ->where('RutOperador','=',$operador)
+                                                  //  ->select('email') 
+                                                 ->value('RutAdministrador');
+
+                                                 $detalledocumentos = Documento::where('IdAdministrador', $idadmin)->paginate(10);
+
 
      //   $operador=Auth::id();
      //   $detalledocumentos = Documento::where('IdAdministrador', $operador)->paginate(10);

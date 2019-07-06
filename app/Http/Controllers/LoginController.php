@@ -73,9 +73,9 @@ class LoginController extends Controller
         
         try {
            
-            $pass1=$request->password|'required|min:9';
+            $pass1=$request->password|'required|min:8';
             
-            $pass2con=$request->password_confirmation|'required|min:9';
+            $pass2con=$request->password_confirmation|'required|min:8';
             
 
 
@@ -92,14 +92,14 @@ class LoginController extends Controller
                 $insertAdmin->save();
 
             }else {
-                return redirect('/')->with('warning', 'Las contraseñas no coinciden.');
+                return redirect('/')->with('warningr', 'Las contraseñas no coinciden.');
 
             }
           
 
         } catch (\Exception   $exception) {
 
-            return redirect('/')->with('warning', 'Error al ingresar nuevo usuario');
+            return redirect('/')->with('warningr', 'Error al ingresar nuevo usuario');
         }
        
 

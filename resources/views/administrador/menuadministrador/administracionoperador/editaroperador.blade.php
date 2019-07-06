@@ -42,12 +42,12 @@
                       
                         <div class="form-group">
                                 <label for="price">Correo Operador  :</label>
-                                <input type="mail" class="form-control" name="Correo" maxlength="20" value="{{$operador->Correo}}"/>
+                                <input type="mail" class="form-control" name="Correo" maxlength="80" value="{{$operador->Correo}}"/>
                             </div>
 
                             <div class="form-group">
                                 <label for="price">Teléfono Operador  :</label>
-                                <input type="text" class="form-control" name="TelefonoOperador" maxlength="13" value="{{$operador->TelefonoOperador}}"/>
+                                <input type="text" class="form-control" name="TelefonoOperador" maxlength="15" value="{{$operador->TelefonoOperador}}"/>
                             </div>                            
 
                             
@@ -57,7 +57,7 @@
                                 </div>
                               
                          
-                        <button type="submit" class="btn btn-primary">Actualizar Operador Externo</button>
+                        <button type="submit" class="btn btn-primary">Actualizar Operador </button>
                     </form>
                
             </div>

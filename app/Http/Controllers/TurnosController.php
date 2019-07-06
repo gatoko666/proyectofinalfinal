@@ -24,7 +24,10 @@ class TurnosController extends Controller
         $operadorexterno=Auth::id();
         $detalleoperador = Operador::where('IdAdministrador', $operador)-> paginate(100);
         $detalletiposdeturnos = TipoDeTurno::where('IdAdministrador', $operador)-> paginate(100);  
-         return view('administrador/menuadministrador/menuturnos.generarturnos', compact('detalleoperador','detalletiposdeturnos',));
+        // return view('administrador/menuadministrador/menuturnos.generarturnos', compact('detalleoperador','detalletiposdeturnos',));
+         return view('administrador/menuadministrador/menuturnos.generarturnos')->with(compact('detalleoperador','detalletiposdeturnos'));
+         
+         
                 
     }
 

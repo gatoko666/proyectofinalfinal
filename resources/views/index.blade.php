@@ -523,7 +523,7 @@
 			<div class="col-lg-4 col-md-6 footer-top">
 				<h3 class="mb-4 pb-3 w3f_title">Suscríbete</h3>
 				<p>Enterate de todas nuestras noticias</p>
-				<form action="#" method="post">
+				<form action="" method="">
 					<input type="email" name="Email" placeholder="Ingresa tu  email..." required="">
 					<button class="btn1"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
 					<div class="clearfix"> </div>
@@ -870,7 +870,15 @@
                 </div>
                 <div class="modal-body">
                     <div class="login px-4 mx-auto mw-100">
-                        <h5 class="text-center mb-4">Registrar</h5>
+						<h5 class="text-center mb-4">Registrar</h5>
+						@if ($message = Session::get('warningr'))
+						<div class="alert alert-warning alert-block">
+							<button type="button" class="close" data-dismiss="alert">×</button>	
+							<strong>{{ $message }}</strong>
+						</div>
+						@endif
+						
+
 						<form method="POST" action="{{ route('registrar') }} ">
 							@csrf
                             <div class="form-group">
@@ -896,7 +904,7 @@
 
 							<div class="form-group">
 								<label>Rut</label>
-								<input id="rut" type="rut" size="20" class="form-control @error('rut') is-invalid @enderror"required oninput="checkRut(this)"     name="rut" value="{{ old('rut') }}" required autocomplete="rut">
+								<input id="rut" type="rut" size="20" class="form-control @error('rut') is-invalid @enderror"required oninput="checkRut(this)"   name="rut" value="{{ old('rut') }}" required autocomplete="rut">
 							 
 								@error('rut')
                                     <span class="invalid-feedback" role="alert">
@@ -911,7 +919,7 @@
 
                             <div class="form-group">
                                 <label class="mb-2">Password</label>
-								<input type="password" class="form-control" id="password"  placeholder=""  name="password" required autocomplete="new-password">
+								<input type="password" class="form-control" id="password"    name="password"  placeholder="Mínimo 9 cartáteres"  required autocomplete="new-password">
 								@error('password')
 								<span class="invalid-feedback" role="alert">
 									<strong>{{ $message }}</strong>
@@ -923,7 +931,7 @@
 
                             <div class="form-group">
                                 <label>Confirmar Password</label>
-                                <input type="password" class="form-control" id="password-confirm" type="password" placeholder="" name="password_confirmation" required autocomplete="new-password">
+                                <input type="password" class="form-control" id="password-confirm" type="password" placeholder="Mínimo 9 cartáteres"  name="password_confirmation" required autocomplete="new-password">
                             </div>
 
                             <button type="submit" class="btn btn-primary submit mb-4">Registrar</button>

@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Solicitud extends Model
 {
-    protected $table = 'Solicitud';
+    protected $table = 'solicitud';
     protected $primaryKey = 'IdSolicitud';
     protected $fillable = [
         'RutOperador', 'RutAdministrador',

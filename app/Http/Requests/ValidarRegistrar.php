@@ -27,7 +27,7 @@ class ValidarRegistrar extends FormRequest
         return [
             'email' => 'required|email',
             'name' => 'required|max:50',
-            'password' => 'required|min:9',
+            'password' => 'required|min:8',
              'rut' => 'required|cl_rut',
       
         ];
