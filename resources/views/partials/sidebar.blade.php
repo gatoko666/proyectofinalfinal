@@ -24,9 +24,7 @@
                 <ul class="collapse list-unstyled" id="homeSubmenu1">
                     
                      
-                <li>
-                    <a href="{{ url('administracionoperador')}}">Administrar trabajadores</a>
-                </li>                   
+                               
                 
 
                     <li>
@@ -87,9 +85,22 @@
                
             </a>
         </li>
+        <li>
+                <a href="{{ url('administracionoperador')}}">
+                        <i class="fas fa-briefcase"></i>
+                     
+                    Administrar trabajadores
+                </a>
+            </li>
+
+
+        
+
+
         
         <li>
                 <a href="{{ url('perfil')}}">
+
                     <i class="fas fa-user"></i>
                     Perfil
                 </a>

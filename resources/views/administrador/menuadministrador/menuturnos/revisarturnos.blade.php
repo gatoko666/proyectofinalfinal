@@ -47,6 +47,8 @@
                             Fecha     
                             <form action="{{ route('buscarturnos') }}" method="POST">
                                     @csrf         
+                                   
+ 
 
                                     <input name="NumeroSemanaAno"  value="NumeroSemanaAno" type="week"> 
                                     <button type="submit" class="btn btn-primary ">Buscar</button>

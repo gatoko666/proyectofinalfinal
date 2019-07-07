@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Hash;
 use Freshwork\ChileanBundle\Rut;
 use Illuminate\Support\Facades\Crypt;
 use Mail;
+use Validator;
 class OperadorGestionController extends Controller
 {
  //Almacenaje del Operador
@@ -27,6 +28,8 @@ class OperadorGestionController extends Controller
 
                  public function store(Request $request)
                  {    
+
+
                   
                      try {
                          $operador= new Operador;
@@ -39,6 +42,7 @@ class OperadorGestionController extends Controller
                          $operador->IdAdministrador=Auth::id();
                          $operador->RutOperador=Rut::parse($request->RutOperador)->fix()->format(); 
                          $operador->LocalizacionOperador=$request->LocalizacionOperador;   
+                         $operador->estadoop=$request->estadoOperador;   
                          $operador->save();               
                              
 
@@ -95,13 +99,19 @@ class OperadorGestionController extends Controller
 
                  public function update(Request $request,  $RutOperador)
                  {       
-                   
+                  
                      $validatedData = $request->validate([
                          'NombreOperador' => 'required|max:40',                               
                          'Correo' => 'required|email',
-                         'TelefonoOperador' => 'required|max:10',
-                         'LocalizacionOperador'  => 'required|max:10',
+                         'TelefonoOperador' => 'required|max:20',
+                         'estadoop' => 'required|max:1',
+                         'LocalizacionOperador'  => 'required|max:15',
                      ]);
+
+                     //dd(
+                   //   $validatedData
+                   //   );
+
 
                    //  dd($validatedData);
                      Operador::where('RutOperador', $RutOperador)->update($validatedData);

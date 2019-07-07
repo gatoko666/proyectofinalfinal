@@ -80,6 +80,11 @@
                                             <br>
                                            
                                         </th>
+                                        <th class="text-center">
+                                             
+                                            <br>
+                                           
+                                        </th>
                                        
                                         <th class="text-center">
                                              
@@ -121,6 +126,10 @@
                                                     Fecha Alta
                                                     <br>                                                
                                                 </th>
+                                                <th class="text-center">
+                                                    Estado
+                                                    <br>                                                
+                                                </th>
                                                 
                                                     <th class="text-center">
                                                         Localización
@@ -140,7 +149,16 @@
                                            
                                 <td>{{$op->Correo}}</td>   
                                 <td>{{$op->TelefonoOperador}}</td>                                                     
-                                <td>{{$op->FechaAltaOperador}}</td>                                                        
+                                <td>{{$op->FechaAltaOperador}}</td>    
+                                <td>
+
+                                        @if (($op->estadoop) =='0')
+                                        Activo
+                                           @elseif  (($op->estadoop) =='1')
+                                        Inactivo
+                                        @endif                                   
+                                    
+                                </td>                                                      
                                 <td>{{$op->LocalizacionOperador}}</td>  
                                 
                                 <td>                
@@ -240,6 +258,10 @@
                                                                                     Fecha de Alta
                                                                                     <br>                                                                                
                                                                                 </th>
+                                                                                <th class="text-center">
+                                                                                    Estado
+                                                                                    <br>                                                                                
+                                                                                </th>
                                                                         <th class="text-center">
                                                                                 Acción
                                                                                 <br>                                                                            
@@ -303,7 +325,7 @@
                                                             <h4 class="tittle-w3-agileits mb-4">Operador </h4>
 
                                                             <div class="container">
-                                                                <form action="{{ route('administracionoperador.store') }}" method="POST">
+                                                                <form action="{{ route('administracionoperador.store') }}" method="POST" autocomplete="off">
                                                                         @csrf
                                           
                                                                             <div class="form-group row">
@@ -317,13 +339,13 @@
                                                                             <div class="form-group row">
                                                                               <label for="inputrut" class="col-sm-2 col-form-label">Rut</label>
                                                                               <div class="col-sm-5">
-                                                                                <input type="text" name="RutOperador" required oninput="checkRut(this)" class="form-control" id="inputrut"  onfocus="this.value=''"  placeholder="Rut">
+                                                                                <input type="text" name="RutOperador" required oninput="checkRut(this)" class="form-control" id="inputrut"   placeholder="Rut">
                                                                               </div>
                                                                             </div>
                                                                             <div class="form-group row">
                                                                                 <label for="inputpassword" class="col-sm-2 col-form-label">Password</label>
                                                                                 <div class="col-sm-5">
-                                                                                  <input type="password" name="Password" class="form-control" id="inputpassword"  onfocus="this.value=''"  placeholder="Password">
+                                                                                  <input type="password" name="Password" class="form-control" id="inputpassword"   placeholder="Password">
                                                                                 </div>
                                                                               </div>
                                                                          
@@ -331,23 +353,38 @@
                                                                             <div class="form-group row">
                                                                               <label for="inputemail" class="col-sm-2 col-form-label">Email</label>
                                                                               <div class="col-sm-5">
-                                                                                <input type="text" name="Correo" class="form-control" id="inputemail"   onfocus="this.value=''" placeholder="Email">
+                                                                                <input type="text" name="Correo" class="form-control" id="inputemail"     placeholder="Email">
                                                                               </div>
                                                                             </div>
 
                                                                             <div class="form-group row">
                                                                               <label for="inputtelefono" class="col-sm-2 col-form-label">Teléfono</label>
                                                                               <div class="col-sm-5">
-                                                                                <input type="text"  name="TelefonoOperador" class="form-control" id="inputtelefono"   maxlength="10" onfocus="this.value=''" placeholder="Teléfono">
+                                                                                <input type="text"  name="TelefonoOperador" class="form-control" id="inputtelefono"   maxlength="15"   placeholder="Teléfono">
                                                                               </div>
                                                                             </div> 
-
-                                                                        
+                                                                            
+                                                                              <div class="form-group row">
+                                                                                <label for="inputtiposolicitud" class="col-sm-2 col-form-label">Estado Operador</label>
+                                                                                <div class="col-sm-5">
+                                                                                        
+    
+                                                                                        <select name="estadoOperador" class="custom-select">
+                                                                                                <option value="0">Activo</option>
+                                                                                                <option value="1">Inactivo</option>
+                                                                                               
+                                                                                              </select>
+                                                                                                
+    
+    
+                                                                                       </div>
+                                                                              </div>
+    
       
                                                                           <div class="form-group row">
                                                                               <label for="inputlocalizacion" class="col-sm-2 col-form-label">Localización</label>
                                                                               <div class="col-sm-5">
-                                                                                <input type="text" name="LocalizacionOperador" class="form-control" id="inputlocalizacion"   onfocus="this.value=''" placeholder="Localización">
+                                                                                <input type="text" name="LocalizacionOperador" class="form-control" id="inputlocalizacion"    placeholder="Localización">
                                                                               </div>
                                                                             </div>                                                     </div>
                                                                             <button type="submit" class="btn btn-primary ">Agregar</button>

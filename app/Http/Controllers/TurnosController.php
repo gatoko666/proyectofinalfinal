@@ -22,9 +22,15 @@ class TurnosController extends Controller
       
         $operador=Auth::id();
         $operadorexterno=Auth::id();
-        $detalleoperador = Operador::where('IdAdministrador', $operador)-> paginate(100);
+        $detalleoperador = Operador::where('IdAdministrador', $operador)->where('estadoop', '0')-> paginate(100);
         $detalletiposdeturnos = TipoDeTurno::where('IdAdministrador', $operador)-> paginate(100);  
         // return view('administrador/menuadministrador/menuturnos.generarturnos', compact('detalleoperador','detalletiposdeturnos',));
+
+
+
+
+
+
          return view('administrador/menuadministrador/menuturnos.generarturnos')->with(compact('detalleoperador','detalletiposdeturnos'));
          
          
@@ -51,201 +57,110 @@ class TurnosController extends Controller
                                           
                            //  ->orderBy('turnoasignado.NumeroSemanaAno', 'ASC')
                             //  ->orderByRaw(DB::raw("FIELD(turnoasignado.DiaSemana, 'lunes', 'martes', 'miercoles', 'jueves', 'viernes', 'sabado', 'domingo')"))
-                              ->value('operador.NombreOperador');
-
-                                
-                      
-
-                     //dd(   $turnoOperadorlunes       );    
-
-
+                              ->value('operador.NombreOperador');   
+                     //dd(   $turnoOperadorlunes       ); 
                      
 
-
-
-               
-                        
-                       
+                  
 
                                 if(!($turnoOperadorlunes)){
-
-
-                                  try {
-                                 
+                                  try {                                 
                                     if(count($request->NombreTrabajadori) > 0)
                                 {
-
-
-
-
                                 foreach($request->NombreTrabajadori as $trabajador=>$t){   
+
                                   $Admin=Auth::user()->name;
                                   $NumernoSemanaAno=$request->NumeroSemanaAno;
                                   $NombreTrabajador=$request->NombreTrabajadori[$trabajador];
                                   $CorreoOp=$request->CorreoTrabajadori[$trabajador];  
-                                  $RutOperador=$request->RutTrabajadori[$trabajador];                 
-                                     
-    
-                                    $data2=array(    
-                                       
+                                  $RutOperador=$request->RutTrabajadori[$trabajador];   
+                                    $data2=array(                                           
                                         'RutOperador'=>$request->RutTrabajadori[$trabajador],
                                         'NumeroSemanaAno'=>$request->NumeroSemanaAno,
                                         'IdDetalleTipoTurno'=>$request->nombreturnol[$trabajador] ,
-                                         'DiaSemana'=>$request->DiaSemanal,
-                                         
-                                                                    
-                                    );    
-                                  
-                                        
-                                    DetalleTurnoAsignado::insert($data2);
-    
-    
-                                    $data2=array(    
-                                       
+                                         'DiaSemana'=>$request->DiaSemanal,   
+                                         'created_at'=>Carbon::now(),                                                                 
+                                    );          
+                                    DetalleTurnoAsignado::insert($data2);  
+                                    $data2=array(                                           
                                         'RutOperador'=>$request->RutTrabajadori[$trabajador],
                                         'NumeroSemanaAno'=>$request->NumeroSemanaAno,
                                         'IdDetalleTipoTurno'=>$request->nombreturnom[$trabajador] ,
-                                         'DiaSemana'=>$request->DiaSemanam,
-                                         
-                                                                    
-                                    ); 
-                                    
-                                    
-                                    //dd(   $data2       ); 
-                                        
-                                    DetalleTurnoAsignado::insert($data2);
-    
-    
-                                    $data2=array(    
-                                       
+                                         'DiaSemana'=>$request->DiaSemanam, 
+                                         'created_at'=>Carbon::now(),    
+                                    );                                         
+                                    DetalleTurnoAsignado::insert($data2);  
+                                    $data2=array(                                           
                                         'RutOperador'=>$request->RutTrabajadori[$trabajador],
                                         'NumeroSemanaAno'=>$request->NumeroSemanaAno,
                                         'IdDetalleTipoTurno'=>$request->nombreturnomm[$trabajador] ,
-                                         'DiaSemana'=>$request->DiaSemanamm,
-                                         
-                                                                    
-                                    );    
-                                        
-                                    DetalleTurnoAsignado::insert($data2);
-    
-    
-                                    $data2=array(    
-                                       
+                                         'DiaSemana'=>$request->DiaSemanamm,  
+                                         'created_at'=>Carbon::now(),   
+                                    );                                           
+                                    DetalleTurnoAsignado::insert($data2);   
+                                    $data2=array(                                           
                                         'RutOperador'=>$request->RutTrabajadori[$trabajador],
                                         'NumeroSemanaAno'=>$request->NumeroSemanaAno,
                                         'IdDetalleTipoTurno'=>$request->nombreturnoj[$trabajador] ,
-                                         'DiaSemana'=>$request->DiaSemanaj,
-                                         
-                                                                    
-                                    );    
-                                        
-                                    DetalleTurnoAsignado::insert($data2);
-    
+                                         'DiaSemana'=>$request->DiaSemanaj,     
+                                         'created_at'=>Carbon::now(),   
+                                    );                                            
+                                    DetalleTurnoAsignado::insert($data2);    
                                     $data2=array(    
                                        
                                         'RutOperador'=>$request->RutTrabajadori[$trabajador],
                                         'NumeroSemanaAno'=>$request->NumeroSemanaAno,
                                         'IdDetalleTipoTurno'=>$request->nombreturnov[$trabajador] ,
-                                         'DiaSemana'=>$request->DiaSemanav,
-                                         
-                                                                    
-                                    );    
-                                        
-                                    DetalleTurnoAsignado::insert($data2);
-    
-                                    $data2=array(    
-                                       
+                                         'DiaSemana'=>$request->DiaSemanav,   
+                                         'created_at'=>Carbon::now(),   
+                                    );                                            
+                                    DetalleTurnoAsignado::insert($data2);    
+                                    $data2=array(                                           
                                         'RutOperador'=>$request->RutTrabajadori[$trabajador],
                                         'NumeroSemanaAno'=>$request->NumeroSemanaAno,
                                         'IdDetalleTipoTurno'=>$request->nombreturnos[$trabajador] ,
-                                         'DiaSemana'=>$request->DiaSemanas,
-                                         
-                                                                    
-                                    );    
-                                        
-                                    DetalleTurnoAsignado::insert($data2);
-    
-                                    $data2=array(    
-                                       
+                                         'DiaSemana'=>$request->DiaSemanas,    
+                                         'created_at'=>Carbon::now(),       
+                                    );                                            
+                                    DetalleTurnoAsignado::insert($data2);    
+                                    $data2=array(                                           
                                         'RutOperador'=>$request->RutTrabajadori[$trabajador],
                                         'NumeroSemanaAno'=>$request->NumeroSemanaAno,
                                         'IdDetalleTipoTurno'=>$request->nombreturnod[$trabajador] ,
-                                         'DiaSemana'=>$request->DiaSemanad,                                    
-                                                                    
-                                    );      
-                                    
-                                    
-
-
+                                         'DiaSemana'=>$request->DiaSemanad,  
+                                         'created_at'=>Carbon::now(),        
+                                    );
                                     DetalleTurnoAsignado::insert($data2);             
                                     $this->notificarOperadorTurnos($Admin,$NumernoSemanaAno,$NombreTrabajador,$CorreoOp);                              
                             }                     
-                                }    
-                              
-    
-    
-                                  
-    
+                                }             
                                 return redirect()->back()->with('success','Turno Insertado correctamente. Notifiación realizada con éxito.');
                                   } catch (\Throwable $th) {
                                     return redirect()->back()->with('error', 'Error al ingresar los turnos.');                            
                                   }
-                                  return redirect()->back()->with('error', 'Error al ingresar los turnos.');                            
-
-
-
-
-
+                                  return redirect()->back()->with('error', 'Error al ingresar los turnos.');    
                                 }else{
-
-
-
-                                  
-
                                   return redirect()->back()->with('error', 'Existe un operador con turnos asignados,favor de editar el turno del operador.'); 
                                 }
-
-                            
-
-                            
-               
-                    
                      
                         }
 
 
 
-                         function notificarOperadorTurnos($Admin,$NumernoSemanaAno,$NombreTrabajador,$CorreoOp){
-
-                          //dd($CorreoOp);
-
+                         function notificarOperadorTurnos($Admin,$NumernoSemanaAno,$NombreTrabajador,$CorreoOp){                        
                           $data = array(
                              // 'name' => "Turno Semana ",
                              'nombreadmin' => "$Admin",
                              'semana' => "$NumernoSemanaAno",
                              'nombretrabajador' => "$NombreTrabajador",  
-                              'correooperador' => "$CorreoOp",                           
-                                         
+                              'correooperador' => "$CorreoOp",  
                           );      
-
-
                         //  $correo=$data->correooperador;
                        //  $correo=var_dump($data["correooperador"]);
                        //  $operadorName=var_dump($data["nombretrabajador"]);
                          $correo=$data["correooperador"];
                          $operadorName=$data["nombretrabajador"];
                          $semana=$data["semana"];
-
-                        //dd($correo);
-
-
-                         // Mail::to($CorreoOp);
-
-
-
-
-
-
                           Mail::send('partials.tnotificacion', $data,function ($message)use ($correo,$operadorName,$semana) {                                      
                             
                             //$correo=var_dump($data["correooperador"]);                         
@@ -323,7 +238,7 @@ class TurnosController extends Controller
                         $turnoOperadorlunes=DB::table('detalletipoturno')
                         ->join('turnoasignado', 'detalletipoturno.IdDetalleTipoTurno', '=', 'turnoasignado.IdDetalleTipoTurno') 
                       ->join('operador', 'operador.RutOperador', '=', 'turnoasignado.RutOperador')                              
-                      ->select('operador.NombreOperador','operador.RutOperador','detalletipoturno.AbreviacionTurno','turnoasignado.NumeroSemanaAno','turnoasignado.DiaSemana')
+                      ->select('operador.estadoop','operador.NombreOperador','operador.RutOperador','detalletipoturno.AbreviacionTurno','turnoasignado.NumeroSemanaAno','turnoasignado.DiaSemana')
                       ->where(function ($query) use ($request)  {
                         $IdAdministrador=Auth::id();    
                          $numberWeek=$request->input('NumeroSemanaAno');

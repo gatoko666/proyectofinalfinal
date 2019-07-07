@@ -211,7 +211,7 @@
 					</li>
 				</li>
 				<li class="nav-item">
-				<a class="nav-link" href="#">Carácteristicas</a>
+				<a class="nav-link" href="#caracter">Carácteristicas</a>
 				</li>
 
 					<li class="nav-item">
@@ -344,18 +344,18 @@
 <!-- //welcome bottom -->
 
 <!-- Features -->
-<section class="features py-5">
+<section class="features py-5" id="caracter">
 	<div class="container py-sm-5">
 		<div class="heading pb-4">
 			<h3 class="heading mb-2 text-center"> <span>  </span>  Carácteristicas de Adturn </h3>
-			<p class="para mb-5 text-center">Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id.</p>
+			<p align="justify"  class="para mb-5   ">Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id.</p>
 		</div>
 		<div class="feature-grids row">
 			<div class="col-lg-4 col-md-6">
 				<div class="f1 p-sm-5 p-4">
 					<i class="fas fa-arrow-right" aria-hidden="true"></i>
 					<h3 class="my-3">Feature 1</h3>
-					<p>Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id erat eu ullamcorper. Nunc id ipsum.</p>
+					<p>El sistema funciona correctamente para los navegadores Opera,Edge y Chrome,de momento Firefox y Safari no estan soportados .</p>
 				</div>
 			</div>
 			<div class="col-lg-4 col-md-6 mt-md-0 mt-sm-5 mt-4">

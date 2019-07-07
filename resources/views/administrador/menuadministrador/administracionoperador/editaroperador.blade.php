@@ -49,7 +49,29 @@
                                 <label for="price">Teléfono Operador  :</label>
                                 <input type="text" class="form-control" name="TelefonoOperador" maxlength="15" value="{{$operador->TelefonoOperador}}"/>
                             </div>                            
+                            <div class="form-group ">
+                                    <label for="inputtiposolicitud" name="estadoop" class="col-sm-2 col-form-label">Estado Operador :</label>
+                                   
+                                            <select name="estadoop" class="custom-select">
 
+                                               @if ($operador->estadoop=='0')
+                                               <option value="0">Activo</option>  
+                                               <option value="1">Inactivo</option>
+                                                @elseif ($operador->estadoop=='1')
+                                                <option value="1">Inactivo</option>
+                                                <option value="0">Activo</option>  
+                                                @else
+                                                
+                                                @endif
+
+
+ 
+                                                
+                                                
+
+                                             </select>
+                                          
+                                  </div>
                             
                             <div class="form-group">
                                     <label for="price">Localización Operador  :</label>

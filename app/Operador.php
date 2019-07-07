@@ -28,7 +28,7 @@ class Operador extends Authenticatable
         , 'TelefonoOperador', 'FechaAltaOperador'
         , 'IdAdministrador', 'LocalizacionOperador'
         , 'created_at'
-        , 'updated_at',  
+        , 'updated_at',   'remember_token', 'estadoop',
 
     ];
  
