@@ -92,14 +92,14 @@ class LoginController extends Controller
                 $insertAdmin->save();
 
             }else {
-                return redirect('/')->with('warningr', 'Las contraseñas no coinciden.');
+                return redirect('/')->with('warning', 'Las contraseñas no coinciden.');
 
             }
           
 
         } catch (\Exception   $exception) {
 
-            return redirect('/')->with('warningr', 'Error al ingresar nuevo usuario');
+            return redirect('/')->with('warning', 'Error al ingresar nuevo usuario');
         }
        
 

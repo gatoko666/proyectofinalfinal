@@ -71,7 +71,7 @@ class PerfilController extends Controller
     
             $validatedData = $request->validate([
                 'current-password' => 'required',
-                'new-password' => 'required|string|min:3|confirmed',
+                'new-password' => 'required|string|min:6|regex:/^.*(?=.{3,})(?=.*[a-zA-Z])(?=.*[0-9])(?=.*[\d\X])(?=.*[!$#%]).*$/|confirmed',
             ]);
     
             //Change Password
@@ -79,7 +79,7 @@ class PerfilController extends Controller
             $user->password = bcrypt($request->get('new-password'));
             $user->save();
     
-            return redirect()->back()->with("success","Password changed successfully !");
+            return redirect()->back()->with("success","Password actualizada con éxito !");
     
         }
 

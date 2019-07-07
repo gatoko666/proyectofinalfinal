@@ -871,12 +871,7 @@
                 <div class="modal-body">
                     <div class="login px-4 mx-auto mw-100">
 						<h5 class="text-center mb-4">Registrar</h5>
-						@if ($message = Session::get('warningr'))
-						<div class="alert alert-warning alert-block">
-							<button type="button" class="close" data-dismiss="alert">×</button>	
-							<strong>{{ $message }}</strong>
-						</div>
-						@endif
+					 
 						
 
 						<form method="POST" action="{{ route('registrar') }} ">
