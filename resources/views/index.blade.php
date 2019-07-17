@@ -1,8 +1,5 @@
 
 
-
-
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -90,6 +87,13 @@
 
 </head>
 
+
+ 
+	
+		 
+
+
+
 <body>
 
 
@@ -165,34 +169,16 @@
 					<a href="#" data-toggle="modal" data-target="#exampleModalCenter2">
 						<i class="fas fa-user"></i> Registrar</a>
 				</div>
-				<div class="search col-md-2 col-4">
-					<div class="mobile-nav-button">
-						<button id="trigger-overlay" type="button">
-							<i class="fas fa-search"></i>
-						</button>
-					</div>
-					<!-- open/close -->
-					<div class="overlay overlay-door">
-						<button type="button" class="overlay-close">
-							<i class="fa fa-times" aria-hidden="true"></i>
-						</button>
-						<form action="#" method="post" class="d-flex">
-							<input class="form-control" type="search" placeholder="Ingrese búsqueda" required="">
-							<button type="submit" class="btn btn-primary submit">
-								<i class="fas fa-search"></i>
-							</button>
-						</form>
-					</div>
-					<!-- open/close -->
-				</div>
+				 
 			</div>
 		</div>
 		<div class="clearfix"></div>
 		<nav class="navbar navbar-expand-lg navbar-light">
 			<div class="logo">
 				<h1>
-					<a class="navbar-brand" href="#">
-						<i class="fab fa-cloudversify"></i> Adturn</a>
+					<a class="navbar-brand" href="#">							 
+							<img  class="img-responsive" src="{{URL::to('/')}}/imagesindex/menu1.jpg" width="187" height="90" alt="Logo Axiovista">
+						Adturn</a>
 				</h1>
 			</div>
 			<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -325,264 +311,11 @@
 </section>
 
 
-<!-- welcome -->
-
-<!-- welcome bottom -->
-<section class="Welcome-bottom">
-	<div class="bs-slider-overlay">
-		<div class="container">
-			<div class="welcome-bottom-grids row">
-				
-				<!-- Counter -->
-				
-				<!-- //Counter -->
-				 
-			</div>	
-		</div>	
-	</div>	
-</section>
-<!-- //welcome bottom -->
-
-<!-- Features -->
-<section class="features py-5" id="caracter">
-	<div class="container py-sm-5">
-		<div class="heading pb-4">
-			<h3 class="heading mb-2 text-center"> <span>  </span>  Carácteristicas de Adturn </h3>
-			<p align="justify"  class="para mb-5   ">Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id.</p>
-		</div>
-		<div class="feature-grids row">
-			<div class="col-lg-4 col-md-6">
-				<div class="f1 p-sm-5 p-4">
-					<i class="fas fa-arrow-right" aria-hidden="true"></i>
-					<h3 class="my-3">Feature 1</h3>
-					<p>El sistema funciona correctamente para los navegadores Opera,Edge y Chrome,de momento Firefox y Safari no estan soportados .</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mt-md-0 mt-sm-5 mt-4">
-				<div class="f2-active p-sm-5 p-4">
-					<i class="fas fa-arrow-right" aria-hidden="true"></i>
-					<h3 class="my-3">Feature 2</h3>
-					<p>Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id erat eu ullamcorper. Nunc id ipsum.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mt-lg-0 mt-sm-5 mt-4">
-				<div class="f1 p-sm-5 p-4">
-					<i class="fas fa-arrow-right" aria-hidden="true"></i>
-					<h3 class="my-3">Feature 3</h3>
-					<p>Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id erat eu ullamcorper. Nunc id ipsum.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mt-sm-5 mt-4">
-				<div class="f1 p-sm-5 p-4">
-					<i class="fas fa-arrow-right" aria-hidden="true"></i>
-					<h3 class="my-3">Feature 4</h3>
-					<p>Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id erat eu ullamcorper. Nunc id ipsum.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mt-sm-5 mt-4">
-				<div class="f1 p-sm-5 p-4">
-					<i class="fas fa-arrow-right" aria-hidden="true"></i>
-					<h3 class="my-3">Feature 5</h3>
-					<p>Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id erat eu ullamcorper. Nunc id ipsum.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mt-sm-5 mt-4">
-				<div class="f1 p-sm-5 p-4">
-					<i class="fas fa-arrow-right" aria-hidden="true"></i>
-					<h3 class="my-3">Feature 6</h3>
-					<p>Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id erat eu ullamcorper. Nunc id ipsum.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- //Features -->
-
-<!-- Skills -->
-<section class="bottom-last">
-	<div class="bottom-bg py-5 bs-slider-overlay text-left">
-		<div class="container py-md-5">
-			<div class="heading pb-4">
-				<h3 class="heading mb-2 text-center text-white"> Manual </h3>
-				<p class="para mb-5 text-center">Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id.</p>
-			</div>
-			<div class="row grids">
-				<div class="col-lg-6">
-					<h4 class="title">Proffessional Skills</h4>
-					<p class="my-4">Excepteur sint occaecat non proident, sunt in culpa quis. Int Phasellus lacinia id erat eu ullamcorper. 
-					Nunc id ipsum eur fringillats, gravida felis vitae. Phasellus lacinia id, sunt in culp quis. Phasellus lacinia. gravida felis vitae. 
-					Phasellus lacinia id. sunt inculpa quis. Phasellus lacinia. gravida felis vitae.</p>
-					<div class="bnr-button">
-						<button type="button" class="btn btn-primary play" data-toggle="modal" data-target="#exampleModal">
-							<i class="fas fa-play"></i> 
-						</button> <span class="text-white ml-2">Watch Video </span>
-					</div>
-				</div>
-				<div class="col-md-6 mt-lg-0 mt-5">
-					<div class="progress-one">
-						<h4 class="progress-tittle">Web Design</h4>
-						<div class="progress">
-							<div class="progress-bar progress-bar-striped" role="progressbar" style="width: 20%" aria-valuenow="20" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-					</div>
-					<div class="progress-one my-4">
-						<h4 class="progress-tittle">PHP Development</h4>
-						<div class="progress">
-							<div class="progress-bar progress-bar-striped bg-success" role="progressbar" style="width: 35%" aria-valuenow="35" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-					</div>
-					<div class="progress-one">
-						<h4 class="progress-tittle">Branding</h4>
-						<div class="progress">
-							<div class="progress-bar progress-bar-striped bg-info" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-					</div>
-					<div class="progress-one my-4">
-						<h4 class="progress-tittle">Marketing</h4>
-						<div class="progress">
-							<div class="progress-bar progress-bar-striped bg-warning" role="progressbar" style="width: 70%" aria-valuenow="70" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-					</div>
-					<div class="progress-one">
-						<h4 class="progress-tittle">Web Features</h4>
-						<div class="progress">
-							<div class="progress-bar progress-bar-striped bg-danger" role="progressbar" style="width: 90%" aria-valuenow="90" aria-valuemin="0" aria-valuemax="100"></div>
-						</div>
-					</div>
-                </div>				
-			</div>
-		</div>
-	</div>
-</section>
-<!-- //Skills -->
-
-<!-- team -->
-<!-- Features -->
-<section class="features py-5">
-	<div class="container py-sm-5">
-		<div class="heading pb-4">
-			<h3 class="heading mb-2 text-center"> Planes</h3>
-			<p class="para mb-5 text-center">Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id.</p>
-		</div>
-		<div class="feature-grids row">
-			<div class="col-lg-4 col-md-6">
-				<div class="f1 p-sm-5 p-4">
-					<i class="fas fa-arrow-right" aria-hidden="true"></i>
-					<h3 class="my-3">Feature 1</h3>
-					<p>Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id erat eu ullamcorper. Nunc id ipsum.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mt-md-0 mt-sm-5 mt-4">
-				<div class="f2-active p-sm-5 p-4">
-					<i class="fas fa-arrow-right" aria-hidden="true"></i>
-					<h3 class="my-3">Feature 2</h3>
-					<p>Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id erat eu ullamcorper. Nunc id ipsum.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mt-lg-0 mt-sm-5 mt-4">
-				<div class="f1 p-sm-5 p-4">
-					<i class="fas fa-arrow-right" aria-hidden="true"></i>
-					<h3 class="my-3">Feature 3</h3>
-					<p>Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id erat eu ullamcorper. Nunc id ipsum.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mt-sm-5 mt-4">
-				<div class="f1 p-sm-5 p-4">
-					<i class="fas fa-arrow-right" aria-hidden="true"></i>
-					<h3 class="my-3">Feature 4</h3>
-					<p>Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id erat eu ullamcorper. Nunc id ipsum.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mt-sm-5 mt-4">
-				<div class="f1 p-sm-5 p-4">
-					<i class="fas fa-arrow-right" aria-hidden="true"></i>
-					<h3 class="my-3">Feature 5</h3>
-					<p>Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id erat eu ullamcorper. Nunc id ipsum.</p>
-				</div>
-			</div>
-			<div class="col-lg-4 col-md-6 mt-sm-5 mt-4">
-				<div class="f1 p-sm-5 p-4">
-					<i class="fas fa-arrow-right" aria-hidden="true"></i>
-					<h3 class="my-3">Feature 6</h3>
-					<p>Excepteur sint occaecat non proident, sunt in culpa quis. Phasellus lacinia id erat eu ullamcorper. Nunc id ipsum.</p>
-				</div>
-			</div>
-		</div>
-	</div>
-</section>
-<!-- //team -->
-
-<!-- brands -->
-
-<!-- //brands -->
-
-<!-- footer -->
-<footer class="footer py-5">
-	<div class="container py-sm-4">
-		<div class="row">
-			<div class="col-lg-4 col-md-6 footer-top">
-				<h3 class="mb-4 pb-3 w3f_title">Suscríbete</h3>
-				<p>Enterate de todas nuestras noticias</p>
-				<form action="" method="">
-					<input type="email" name="Email" placeholder="Ingresa tu  email..." required="">
-					<button class="btn1"><i class="fas fa-arrow-right" aria-hidden="true"></i></button>
-					<div class="clearfix"> </div>
-				</form>
-
-			</div>
-		
-			<div class="col-lg-3 col-md-6 mt-lg-0 mt-5">
-				<h3 class="mb-4 pb-3 w3f_title">Contáctanos</h3>
-				<div class="fv3-contact">
-					<span class="fas fa-envelope-open mr-2"></span>
-					<p>
-						<a href="mailto:example@email.com">contacto@adturn.cl</a>
-					</p>
-				</div>
-				<div class="fv3-contact my-3">
-					<span class="fas fa-phone-volume mr-2"></span>
-					<p>+56 9 98887584</p>
-				</div>
-				<div class="fv3-contact">
-					<span class="fas fa-home mr-2"></span>
-					 <p>Guardia Vieja 255, oficina 352, Providencia. </p>
-						 
-				</div>
-			</div>
-
-			<div class="col-lg-3 col-md-6 footerv2-w3ls mt-lg-0 mt-5">
-				<h3 class="mb-4 w3f_title pb-3">Siguenos en nuestras redes sociales</h3>
-				<p>Excepteur sint occaecat non proident, sunt in culpa qui.</p>
-				<ul class="social-iconsv2 agileinfo mt-4">
-					<li>
-						<a href="#">
-							<i class="fab fa-facebook-f"></i>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fab fa-twitter"></i>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fab fa-google-plus-g"></i>
-						</a>
-					</li>
-					<li>
-						<a href="#">
-							<i class="fab fa-linkedin-in"></i>
-						</a>
-					</li>
-				</ul>
-			</div>
-		</div>
-	</div>
-	<!-- //footer bottom -->
-</footer>
-<!-- //footer -->
+ 
 
 <!-- copyright -->
+
+
 <div class="cpy-right text-center">
 	<p>© Proyecto de título Adturn 2019.
 		<a href="#"></a>
@@ -650,7 +383,9 @@
 							</div>	
 							<div class="form-group row mb-0">
 								<div class="col-md-8 offset-md-4">
-									<button type="submit" class="btn btn-primary submit mb-4">
+										<button type="submit" class="btn" style="background:#09B400; color:#fff; ">
+                               
+								 
 										{{ __('Login') }}
 									</button>	
 							 <a class="btn btn-link" href="#" data-toggle="modal" data-target="#exampleModalCenter9"  >
@@ -732,7 +467,7 @@
 							</div>	
 							<div class="form-group row mb-0">
 								<div class="col-md-8 offset-md-4">
-									<button type="submit" class="btn btn-primary submit mb-4">
+										<button type="submit" class="btn" style="background:#09B400; color:#fff; ">
 										{{ __('Login') }}
 									</button>	
 									<a class="btn btn-link" href="#" data-toggle="modal" data-target="#exampleModalCenter3"  >
@@ -790,7 +525,7 @@
 							</div>			
 						 
 						 
-							<button type="submit" class="btn btn-primary submit mb-4">
+							<button type="submit" class="btn" style="background:#09B400; color:#fff; ">
 								{{ __('Enviar enlace de recuperación de contraseña') }}
 							</button>	
 	 
@@ -840,7 +575,7 @@
 							</div>			
 						 
 						 
-							<button type="submit" class="btn btn-primary submit mb-4">
+							<button type="submit" class="btn" style="background:#09B400; color:#fff; ">
 								{{ __('Enviar enlace de recuperación de contraseña') }}
 							</button>	
 	 
@@ -929,7 +664,7 @@
                                 <input type="password" class="form-control" id="password-confirm" type="password" placeholder="Mínimo 9 cartáteres"  name="password_confirmation" required autocomplete="new-password">
                             </div>
 
-                            <button type="submit" class="btn btn-primary submit mb-4">Registrar</button>
+                            <button type="submit" class="btn" style="background:#09B400; color:#fff; ">Registrar</button>
                             <p class="text-center pb-4">
                               
                             </p>
@@ -966,29 +701,7 @@
 		</div>
 	</div>
 	<!-- //video Model Popup -->
-
-	<!-- Vertically centered Modal -->
-	<div class="modal fade" id="exampleModalCenter1" tabindex="-1" role="dialog" aria-labelledby="exampleModalCenter" aria-hidden="true">
-		<div class="modal-dialog modal-dialog-centered" role="document">
-			<div class="modal-content">
-				<div class="modal-header">
-					<h5 class="modal-title text-capitalize text-center" id="exampleModalLongTitle"><i class="fab fa-cloudversify"></i> Flex Art</h5>
-					<button type="button" class="close" data-dismiss="modal" aria-label="Close">
-						<span aria-hidden="true">&times;</span>
-					</button>
-				</div>
-			<div class="modal-body">
-				<img src="imagesindex/bg.jpg" class="img-fluid mb-3" alt="Modal Image" />
-				Vivamus eget est in odio tempor interdum. Mauris maximus fermentum arcu, ac finibus ante. Sed mattis risus at ipsum elementum,
-				ut auctor turpis cursus. Sed sed odio pharetra, aliquet velit cursus, vehicula enim. Mauris porta aliquet magna, eget laoreet ligula.
-			</div>
-			<div class="modal-footer">
-				<button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary">Save changes</button>
-			</div>
-		</div>
-	  </div>
-	</div>
+ 
 	<!-- //Vertically centered Modal -->
 
 	<!-- js -->

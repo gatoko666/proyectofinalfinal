@@ -35,18 +35,18 @@ a:hover { text-decoration: underline !important; }
                         </tr>
                         <tr>
                             <td style="padding:0 15px;">
-                                <h1 style="color:#3075BA; font-weight:400; margin:0;font-size:30px;">
+                                <h1 style="color:#09B400; font-weight:400; margin:0;font-size:30px;">
                                     Has solicitado restablecer tu contraseña</h1>
                                 <span style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                 <p style="color:#171f23de; font-size:15px;line-height:24px; margin:0;">
                                    
-No podemos simplemente enviarle su antigua contraseña. Se ha generado un enlace único para restablecer su contraseña. Para restablecer su contraseña, haga clic en el siguiente enlace y siga las instrucciones.
-Este enlace de restablecimiento de contraseña caducará en 60 minutos.
+                                No podemos simplemente enviarle su antigua contraseña. Se ha generado un enlace único para restablecer su contraseña. Para restablecer su contraseña, haga clic en el siguiente enlace y siga las instrucciones.
+
                                     <br>
 
 
                                 </p>
-                                <a href="{{url('reset-password/'.$token).'?email='.$email}}" style="background:#3075BA;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 12px;display:inline-block;border-radius:3px;">
+                                <a href="{{url('reset-password/'.$token).'?email='.$email}}" style="background:#09B400;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 12px;display:inline-block;border-radius:3px;">
                                     Restablecer la contraseña</a>
                             </td>
                          

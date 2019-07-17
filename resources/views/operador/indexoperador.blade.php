@@ -36,82 +36,26 @@
             <!--// three-grids -->
             <div class="container-fluid">
                 <div class="row">
-                    <!-- Calender -->
-                    <div class="outer-w3-agile col-xl mt-3">
-                        <h4 class="tittle-w3-agileits mb-4">Calendario</h4>
-                        <div class="multi-select-calender"></div>
-                        <div class="box"></div>
-                    </div>
-                    <!--// Calender -->
-                    <!-- Profile -->
-                    <div class="outer-w3-agile col-xl mt-3 mx-xl-3 p-xl-0 px-md-5">
-                        <div class="header">
-                            <div class="text">
-                               
-                                <h2>{{ Auth::user()->NombreOperador }}</h2>
-                                <a href="mailto:info@example.com">{{ Auth::user()->Correo }}</a>
-                            </div>
+
+
+                        <!-- Profile -->
+                        <div class="container">
+                                <div class="jumbotron">
+                                        <h1 class="display-4">Bienvenido a Adturn:</h1>
+                                        <h3>Sr(a):  {{ Auth::user()->NombreOperador }}</h3><br>
+                                     
+                                        <p class="lead">La herramienta perfecta para administrar los turno de su equipo de trabajo.</p>
+            
+                                        <hr class="my-4">
+                                      
+                                        <div class="header">
+                                             
+                                            </div>
+                                      </div>
                         </div>
-                        <div class="container-flud">
-                            <div class="followers row">
-                                <div class="f-left col">
-                                    <a href="#">
-                                        <i class="far fa-comments"></i>
-                                    </a>
-                                </div>
-                                <div class="f-left col border-left border-right">
-                                    <a href="#">
-                                        <i class="fas fa-eye"></i>
-                                    </a>
-                                </div>
-                                <div class="f-left col">
-                                    <a href="#">
-                                        <i class="far fa-heart"></i>
-                                    </a>
-                                </div>
-                            </div>
-                        </div>
-                        <ul class="prof-widgt-content">
-                            <li class="menu">
-                                <ul>
-                                    
-                                    <li class="dropdown">
-                                        <ul class="icon-navigation">
-                                            <li>
-                                                <a href="#">Inbox
-                                                    <span class="float-right">[09]</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Outbox
-                                                    <span class="float-right">[01]</span>
-                                                </a>
-                                            </li>
-                                            <li>
-                                                <a href="#">Sent messages
-                                                    <span class="float-right">[03]</span>
-                                                </a>
-                                            </li>
-                                        </ul>
-                                    </li>
-                                </ul>
-                            </li>
-                            <li class="menu">
-                                <ul>
-                                    <li class="button">
-                                        <a href="perfiloperador">
-                                            <i class="fas fa-user"></i> Perfil</a>
-                                    </li>
-                                    <li class="dropdown">
-                                        
-                                    </li>
-                                </ul>
-                            </li>
-                        </ul>
-                    </div>
-                    <!--// Profile -->
-                    <!-- Browser stats -->
-                 
+
+                        
+                     
                     <!--// Browser stats -->
                 </div>
             </div>
@@ -152,124 +96,7 @@
         });
     </script>
     <!--// Sidebar-nav Js -->
-
-    <!-- Graph -->
-    <script src="js/SimpleChart.js"></script>
-    <script>
-        var graphdata4 = {
-            linecolor: "Random",
-            title: "Thursday",
-            values: [{
-                    X: "6",
-                    Y: 300.00
-                },
-                {
-                    X: "7",
-                    Y: 101.98
-                },
-                {
-                    X: "8",
-                    Y: 140.00
-                },
-                {
-                    X: "9",
-                    Y: 340.00
-                },
-                {
-                    X: "10",
-                    Y: 470.25
-                },
-                {
-                    X: "11",
-                    Y: 180.56
-                },
-                {
-                    X: "12",
-                    Y: 680.57
-                },
-                {
-                    X: "13",
-                    Y: 740.00
-                },
-                {
-                    X: "14",
-                    Y: 800.89
-                },
-                {
-                    X: "15",
-                    Y: 420.57
-                },
-                {
-                    X: "16",
-                    Y: 980.24
-                },
-                {
-                    X: "17",
-                    Y: 1080.00
-                },
-                {
-                    X: "18",
-                    Y: 140.24
-                },
-                {
-                    X: "19",
-                    Y: 140.58
-                },
-                {
-                    X: "20",
-                    Y: 110.54
-                },
-                {
-                    X: "21",
-                    Y: 480.00
-                },
-                {
-                    X: "22",
-                    Y: 580.00
-                },
-                {
-                    X: "23",
-                    Y: 340.89
-                },
-                {
-                    X: "0",
-                    Y: 100.26
-                },
-                {
-                    X: "1",
-                    Y: 1480.89
-                },
-                {
-                    X: "2",
-                    Y: 1380.87
-                },
-                {
-                    X: "3",
-                    Y: 1640.00
-                },
-                {
-                    X: "4",
-                    Y: 1700.00
-                }
-            ]
-        };
-        $(function () {
-            $("#Hybridgraph").SimpleChart({
-                ChartType: "Hybrid",
-                toolwidth: "50",
-                toolheight: "25",
-                axiscolor: "#E6E6E6",
-                textcolor: "#6E6E6E",
-                showlegends: false,
-                data: [graphdata4],
-                legendsize: "140",
-                legendposition: 'bottom',
-                xaxislabel: 'Hours',
-                title: 'Weekly Profit',
-                yaxislabel: 'Profit in $'
-            });
-        });
-    </script>
+ 
     <!--// Graph -->
     <!-- Bar-chart -->
     <script src="js/rumcaJS.js"></script>

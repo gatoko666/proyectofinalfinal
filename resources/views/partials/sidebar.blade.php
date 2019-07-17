@@ -21,8 +21,7 @@
                     Planificador
                     <i class="fas fa-angle-down fa-pull-right"></i>
                 </a>
-                <ul class="collapse list-unstyled" id="homeSubmenu1">
-                    
+                <ul class="collapse list-unstyled" id="homeSubmenu1">               
                      
                                
                 
@@ -42,39 +41,19 @@
                 </ul>
             </li>
 
-            <li>
-                <a href="{{ url('#homeSubmenu6')}}" data-toggle="collapse" aria-expanded="false">
-                    <i class="fas fa-calendar-minus"></i>
-                    Turnos
-                    <i class="fas fa-angle-down fa-pull-right"></i>
-                </a>
-                <ul class="collapse list-unstyled" id="homeSubmenu6">
-                    <li>
-                        <a href="{{ url('revisarturnos')}}">Revisar Turnos</a>
-                    </li>
-                   
-              
-                </ul>
-            </li>
-
-
+            
      
 
               
 
                         <li>
-                                <a href="{{ url('#homeSubmenu5')}}" data-toggle="collapse" aria-expanded="false">
-                                    <i class="fas fa-file"></i>
-                                    Documentos
-                                    <i class="fas fa-angle-down fa-pull-right"></i>
+                                <a href="{{ url('documentos')}}">
+                                        <i class="fas fa-file"></i>  
+                                    Documentos</a>
+                                                                    
+                                    
                                 </a>
-                                <ul class="collapse list-unstyled" id="homeSubmenu5">
-                                    
-                                    <li>
-                                        <a href="{{ url('documentos')}}">Revisar archivos</a>
-                                    </li>
-                                    
-                                </ul>
+                                
                             </li>
 
 

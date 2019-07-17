@@ -23,12 +23,10 @@ class ValidarDocumento extends FormRequest
      */
     public function rules()
     {
-        return [
-          
+        return [          
             'Descripcion' => 'required|max:180' ,
             'NombreDocumento' => 'required|max:45',
-            'userfile' => 'required|mimes:pdf|max:2048' ,
-           
+            'userfile' => 'required|mimes:pdf|max:2048' ,           
         ];
     }
 }

@@ -158,30 +158,27 @@ class TurnosController extends Controller
                         //  $correo=$data->correooperador;
                        //  $correo=var_dump($data["correooperador"]);
                        //  $operadorName=var_dump($data["nombretrabajador"]);
-                         $correo=$data["correooperador"];
-                         $operadorName=$data["nombretrabajador"];
-                         $semana=$data["semana"];
+                            $correo=$data["correooperador"];
+                            $operadorName=$data["nombretrabajador"];
+                            $semana=$data["semana"];
                           Mail::send('partials.tnotificacion', $data,function ($message)use ($correo,$operadorName,$semana) {                                      
                             
                             //$correo=var_dump($data["correooperador"]);                         
                             //dd($correo);
                            // $correo=array_get($correo,'Correo');        
                               
-                                                              try     {
-
-                                                                $message->from('adturnmail@gmail.com', 'Gestor de turnos Adturn.');                      
-                                                                $message->to($correo);  
-                                                                $message->subject('Turnos de la Semana '.$semana); 
-
-
-                                                                                      /* Envio del Email */   
-                                                                                  }
-                                                                                  catch (\Exception $e)
-                                                                                  {
-                                                                                      echo("Error al enviar el correo");
-                                                                                  }    
+                             try     {
+                                          $message->from('adturnmail@gmail.com', 'Gestor de turnos Adturn.');                      
+                                          $message->to($correo);  
+                                          $message->subject('Turnos de la Semana '.$semana); 
+                                            /* Envio del Email */   
+                                      }
+                             catch (\Exception $e)
+                                      {
+                                           echo("Error al enviar el correo");
+                                       }    
                           });                
-                          //return redirect()->back();                 
+                            
                       }
 
 

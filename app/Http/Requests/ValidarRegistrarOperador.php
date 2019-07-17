@@ -25,10 +25,11 @@ class ValidarRegistrarOperador extends FormRequest
     public function rules()
     {
         return [
-            'email' => 'required|email',
-            'name' => 'required|max:50',
-            'password' => 'required|min:9',
-             'rut' => 'required|cl_rut',
+            'Correo' => 'required|email',
+            'NombreOperador' => 'required|max:50',
+            'Password' => 'required|min:5',
+             'RutOperador' => 'required|cl_rut',
+             'estadoOperador' => 'required|max:1', 
       
         ];
     }

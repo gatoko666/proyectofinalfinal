@@ -35,16 +35,29 @@ a:hover { text-decoration: underline !important; }
                         </tr>
                         <tr>
                             <td style="padding:0 15px;">
-                                    <h1 style="color:#09B400; font-weight:400; margin:0;font-size:30px;"> Has solicitado restablecer tu contraseña</h1>
+                                <h1 style="color:#3075BA; font-weight:400; margin:0;font-size:30px;">
+									Turno actualizado de la Semana  {{$semana}}.
+
+	
+								</h1>
+								<h1 style="color:#3075BA; font-weight:400; margin:0;font-size:30px;">
+									
+
+	
+								</h1>
+
                                 <span style="display:inline-block; vertical-align:middle; margin:29px 0 26px; border-bottom:1px solid #cecece; width:100px;"></span>
                                 <p style="color:#171f23de; font-size:15px;line-height:24px; margin:0;">
-                                    No podemos simplemente enviarle su antigua contraseña. Se ha generado un enlace único para restablecer su contraseña. Para restablecer su contraseña, haga clic en el siguiente enlace y siga las instrucciones.
- 
-                                    <br>
+									
+									
+									Estimado operador Sr(a). {{$nombretrabajador}}, se a realizado la publiasdasdcación del turno correspondiente a la semana {{$semana}}, favor de revisarlo en el sitio web.
+									<br>
+									Atentamente su supervisor Sr(a). {{$nombreadmin}}.
+
 
 
                                 </p>
-                                <a href="{{url('reset-passwordadm/'.$token).'?email='.$email}}" style="background:#09B400;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 12px;display:inline-block;border-radius:3px;">Restablecer la contraseña</a>
+                                <a href="{{url('/')}}" style=style="background:#09B400;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 12px;display:inline-block;border-radius:3px;">      Revisar Turnos</a>
                             </td>
                          
                         </tr>
@@ -58,7 +71,8 @@ a:hover { text-decoration: underline !important; }
          	</tr>
           <tr>
     			  <td style="text-align:center;">
-					     <p style="font-size:14px; color:#455056bd; line-height:18px; margin:0 0 0;"> <strong>Adturn Sistema de turnos.</strong></p>
+					     <p style="font-size:14px; color:#455056bd; line-height:18px; margin:0 0 0;"><strong>Adturn Sistema de turnos.
+                        </strong></p>
             </td>
          	</tr>
           <tr>
@@ -70,3 +84,8 @@ a:hover { text-decoration: underline !important; }
 </table><!--/100% body table-->
 </body>
 </html>
+
+
+
+
+

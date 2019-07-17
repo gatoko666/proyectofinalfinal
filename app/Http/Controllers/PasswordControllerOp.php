@@ -71,7 +71,7 @@ class PasswordControllerOp extends Controller
 
                                               $message->from('adturnmail@gmail.com', 'Gestor de turnos Adturn.');                      
                                               $message->to($correo);  
-                                              $message->subject('Reiniciar Contraseña '); 
+                                              $message->subject('Restablecer Contraseña '); 
 
 
                                                                     /* Envio del Email */   

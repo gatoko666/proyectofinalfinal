@@ -35,22 +35,21 @@
                           <p>{{ $message }}</p>
                       </div>
                   @endif
-                  @if ($message = Session::get('errors'))
-                  <div class="alert alert-danger">
-                      <p>{{ $message }}</p>
-                  </div>
-              @endif
+                  
               @if ($message = Session::get('warning'))
               <div class="alert alert-warning">
                   <p>{{ $message }}</p>
               </div>
           @endif
                   <br>
-                         
-                    <table class="table table-bordered table-striped">
 
-                            <thead>
-                                    <tr>                                       
+
+
+
+                  <div class="table-responsive">
+                    <table class="table table-bordered table-striped table-hover">
+                        <thead>
+                                <tr>                                       
                                         
                                      
                                         <th class="text-center">
@@ -102,49 +101,24 @@
                                             </th>
                                        
                                     </tr>
-                                </thead>                        
-                        <thead>
-                                <tr>                                                                    
-                                        <th class="text-center">
-                                                Nombre 
-                                            <br>                                           
-                                        </th>                                        
-                                        <th class="text-center">
-                                                Rut 
-                                            <br>                                          
-                                        </th>
-                                        <th class="text-center">
-                                                Correo 
-                                            <br>                                           
-                                        </th>  
-                                        <th class="text-center">
-                                          Teléfono 
-                                      <br>                                           
-                                  </th>           
-                                        
-                                            <th class="text-center">
-                                                    Fecha Alta
-                                                    <br>                                                
-                                                </th>
-                                                <th class="text-center">
-                                                    Estado
-                                                    <br>                                                
-                                                </th>
-                                                
-                                                    <th class="text-center">
-                                                        Localización
-                                                        <br>                                                    
-                                                    </th>
-                                            <th class="text-center">
-                                                    Acción
-                                                    <br>                                                
-                                                </th>                                       
-                                    </tr>
+                          <tr>                                       
+                            <th scope="col">Nombre</th>
+                            <th scope="col"> Rut </th>                            
+                            <th scope="col">Correo</th>                            
+                            <th scope="col">Teléfono</th>                            
+                            <th scope="col">Fecha Alta</th>
+                            <th scope="col">Estado</th>
+                            <th scope="col">Localización</th>
+                            <th scope="col">Acción</th>                            
+                                       
+
+
+                          </tr>
                         </thead>
                         <tbody>
                             @foreach($detalleoperador as $op)
                             <tr>
-                                <th class="text-nowrap" scope="row">{{$op->NombreOperador}}</th>                                 
+                                <th scope="row">{{$op->NombreOperador}}</th>                                 
                                 <td>{{$op->RutOperador}}</td>   
                                            
                                 <td>{{$op->Correo}}</td>   
@@ -170,7 +144,26 @@
 
                             </td>       
                             </tr>                                   
-                            @endforeach    
+                            @endforeach   
+                        </tbody>
+                      </table>
+                  </div>
+
+
+
+
+
+
+
+
+
+
+
+                         
+                    <table class="table table-bordered table-striped">
+             
+                        <thead>
+                                
                           
 
                                 <!-- Modal -->

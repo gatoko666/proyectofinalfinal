@@ -57,7 +57,7 @@ a:hover { text-decoration: underline !important; }
 
 
                                 </p>
-                                <a href="{{url('/')}}" style="background:#3075BA;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 12px;display:inline-block;border-radius:3px;">
+                                <a href="{{url('/')}}" style=style="background:#09B400;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 12px;display:inline-block;border-radius:3px;">
                                     Revisar Turnos</a>
                             </td>
                          

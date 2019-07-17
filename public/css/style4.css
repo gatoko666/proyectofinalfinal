@@ -77,7 +77,7 @@ span {
 #sidebar {
     min-width: 250px;
     max-width: 250px;
-    background: #5A5A59;
+    background: #a8b9c3;
     color: #fff;
     transition: all 0.3s;
 }
@@ -86,7 +86,7 @@ span {
     font-size: 2.3em;
     letter-spacing: 3px;
     color: #fff;
-    text-shadow: 2px 2px 3px #39393a;
+    text-shadow: 2px 2px 3px #a8b9c3;
 }
 
 #sidebar.active {
@@ -152,7 +152,7 @@ span {
 
 #sidebar .sidebar-header {
     padding: 20px;
-    background: #5A5A59;
+    background: #a8b9c3;
 }
 
 #sidebar .sidebar-header span {
@@ -175,7 +175,7 @@ span {
 }
 
 #sidebar ul li a:hover {
-    color: #5A5A59;
+    color: #a8b9c3;
     background: #fff;
 }
 
@@ -187,7 +187,7 @@ span {
 #sidebar ul li.active>a,
 #sidebar a[aria-expanded="true"] {
     color: #fff;
-    background: #5A5A59;
+    background: #a8b9c3;
 }
 
 ul.list-unstyled li a:focus a i.fa-caret-down {
@@ -213,7 +213,7 @@ a[aria-expanded="true"]::before {
 ul ul a {
     font-size: 0.9em !important;
     padding-left: 30px !important;
-    background: #5A5A59;
+    background: #a8b9c3;
 }
 
 /*

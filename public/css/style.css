@@ -778,7 +778,7 @@ ul.icon-navigation li a {
 /*-- Copyright --*/
 
 .copyright-w3layouts p {
-	color: #c7c7c7;
+	color: #fff;
 	font-size: 13px;
 	letter-spacing: 1.8px;
 	text-align: center;
@@ -795,7 +795,7 @@ ul.icon-navigation li a {
 }
 
 .copyright-w3layouts {
-	background: #151414;
+	background: #464646;
 	border-top: 1px solid #464646;
 }
 
@@ -1014,8 +1014,8 @@ ul.list-unstyled li {
 
 .btn-outline-primary:hover {
 	color: #fff;
-	background-color: #4c6ef5;
-	border-color: #4463dc;
+	background-color: #09B400;
+	border-color: #09B400;
 }
 
 .card-deck .card {

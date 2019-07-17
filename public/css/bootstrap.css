@@ -1727,12 +1727,12 @@ pre code {
 }
 
 .table-hover .table-primary:hover {
-  background-color: #9fcdff;
+  background-color: #09B400;
 }
 
 .table-hover .table-primary:hover > td,
 .table-hover .table-primary:hover > th {
-  background-color: #9fcdff;
+  background-color: #09B400;
 }
 
 .table-secondary,
@@ -2509,8 +2509,8 @@ fieldset:disabled a.btn {
 
 .btn-primary:hover {
   color: #fff;
-  background-color: #0069d9;
-  border-color: #0062cc;
+  background-color: #09B400;
+  border-color: #09B400;
 }
 
 .btn-primary:focus, .btn-primary.focus {

@@ -36,7 +36,7 @@ a:hover { text-decoration: underline !important; }
                         <tr>
                             <td style="padding:0 15px;">
                                 <h1 style="color:#3075BA; font-weight:400; margin:0;font-size:30px;">
-									Turno actualizado de la Semana  {{$semana}}.
+									Turno generado de la Semana  {{$semana}}.
 
 	
 								</h1>
@@ -57,8 +57,7 @@ a:hover { text-decoration: underline !important; }
 
 
                                 </p>
-                                <a href="{{url('/')}}" style="background:#3075BA;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 12px;display:inline-block;border-radius:3px;">
-                                    Revisar Turnos</a>
+                                <a href="{{url('/')}}" style=style="background:#09B400;text-decoration:none !important; font-weight:500; margin-top:35px; color:#fff;text-transform:uppercase; font-size:14px;padding:10px 12px;display:inline-block;border-radius:3px;">      Revisar Turnos</a>
                             </td>
                          
                         </tr>

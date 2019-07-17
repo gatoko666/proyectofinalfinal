@@ -12,6 +12,9 @@ use Freshwork\ChileanBundle\Rut;
 use Illuminate\Support\Facades\Crypt;
 use Mail;
 use Validator;
+use App\Http\Requests\ValidarRegistrarOperador;
+
+
 class OperadorGestionController extends Controller
 {
  //Almacenaje del Operador
@@ -26,11 +29,8 @@ class OperadorGestionController extends Controller
                          return view('administrador.menuadministrador.administracionoperador.generaoperador', compact('detalleoperador'));                       
                  }
 
-                 public function store(Request $request)
-                 {    
-
-
-                  
+                 public function store(ValidarRegistrarOperador $request)
+                 {                     
                      try {
                          $operador= new Operador;
                          $operador->NombreOperador=$request->NombreOperador;                                
@@ -43,7 +43,7 @@ class OperadorGestionController extends Controller
                          $operador->RutOperador=Rut::parse($request->RutOperador)->fix()->format(); 
                          $operador->LocalizacionOperador=$request->LocalizacionOperador;   
                          $operador->estadoop=$request->estadoOperador;   
-                         $operador->save();               
+                         $operador->save();            
                              
 
                          $Correo=$request->Correo;
@@ -53,7 +53,7 @@ class OperadorGestionController extends Controller
 
                          $this->notificarOperadorTurnosActualizacion($Correo,$FechaAltaOperador,$NombreOperador);
                         } catch (\Exception   $exception) {
-                            return redirect('administracionoperador')->with('warning', 'Error al ingresar nuevo usuario'.$exception);
+                            return redirect('administracionoperador')->with('warning', 'Error al ingresar nuevo usuario');
                            // return redirect('/')->with('warning', 'Error al ingresar nuevo usuario');
                         }
                                 
